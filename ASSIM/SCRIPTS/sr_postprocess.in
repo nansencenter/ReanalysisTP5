@@ -49,9 +49,9 @@ else
       Ihice=1
    else
       Hflag=1.0
-      Ihice=$(echo ${BINDIR}/../hice.log)
+      Ihice=$(cat ${BINDIR}/../hice.log)
       if [ ${Ihice} -lt 2 ]; then
-         Hflag=0.75
+         Hflag=0.8
       fi 
       (( Ihice = Ihice + 1 ))
    fi
