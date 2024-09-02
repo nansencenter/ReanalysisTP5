@@ -20,6 +20,7 @@ set -u # exit on unset variables
 Jdy1=26934
 Jdy2=26966
 
+
 Ncore=12
 
 (( Delt = ${Jdy2} - ${Jdy1} ))
