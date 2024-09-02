@@ -1,13 +1,11 @@
 #!/bin/bash -l
 
-#SBATCH --account=nn9481k --qos=preproc 
-##SBATCH --account=nn2993k --qos=preproc
+##SBATCH --account=nn9481k --qos=devel
+#SBATCH --account=nn2993k 
 #
 #SBATCH -J  TP5_ave
-#SBATCH -N 1
+#SBATCH -N 4
 #SBATCH --exclusive 
-#SBATCH --ntasks=100 --cpus-per-task=1
-#SBATCH --mem-per-cpu=2G
 
 ### System message output file
 #SBATCH -o log/hycompost.JNAME.out
@@ -16,7 +14,7 @@
 #SBATCH -e log/hycompost.JNAME.err
 #
 ### How long job takes, wallclock time hh:mm:ss
-#SBATCH -t 06:00:00
+#SBATCH -t 00:30:00
 #
 ### Usage  ------------
 ### Firstly: Calculate the daily averages according to the defined elements in the ensemble directory
@@ -132,9 +130,9 @@ if [ -r ${Flist0} -a -r ${Flist1} -a ${irestart} -eq 1 ]; then
          Finib=${Finia:0:NN-1}b
          if [ -r ${Finia} -a -r ${Finib} ]; then
             echo "moving ${Finia} to" ../data/${hycombase}_${cmem1}.a
-            [ ! -s ../data/${hycombase}_${cmem1}.a ] && mv ${Finia} ../data/${hycombase}_${cmem1}.a
+            mv ${Finia} ../data/${hycombase}_${cmem1}.a
             echo "moving ${Finib} to" ../data/${hycombase}_${cmem1}.b
-            [ ! -s ../data/${hycombase}_${cmem1}.b ] && mv ${Finib} ../data/${hycombase}_${cmem1}.b
+            mv ${Finib} ../data/${hycombase}_${cmem1}.b
          fi
       done
    done
@@ -150,7 +148,7 @@ if [ -r ${Flist0} -a -r ${Flist1} -a ${irestart} -eq 1 ]; then
          Fmemnc=${Fline0/${cmem0}/${cmem1}}
          if [ -r ${Fmemnc} ]; then
             echo "moving ${Fmemnc} to" ../data/cice/${icebase}_${cmem1}.nc
-            [ ! -s ../data/cice/${icebase}_${cmem1}.nc ] && mv ${Fmemnc} ../data/cice/${icebase}_${cmem1}.nc
+            mv ${Fmemnc} ../data/cice/${icebase}_${cmem1}.nc
          fi
       done
    done
@@ -195,6 +193,30 @@ if [ ${iclean} -eq 1 ]; then
    done
    #[ -s ${Flist} ] && rm ${Flist}
    #find ${S} -maxdepth 1 -name 'restart.*.?' > ${Flist}
+   #Nl1=$(sed -n '$=' ${Flist})
+   #if [ ! -z "$Nl1" ]; then
+   #   if [ $Nl1 -gt 0 ]; then
+   #      for ii in `seq 1 ${Nl1}`; do
+   #         Fline0=$(sed -n "${ii}p" ${Flist})
+   #         Fini=$(readlink -f ${Fline0})
+   #         rm ${Fini}
+   #      done
+   #   fi
+   #fi
+   #Flist=list.clean
+   #[ -s ${Flist} ] && rm ${Flist}
+   #find ${S}/cice -maxdepth 1 -name 'iced.*.nc' > ${Flist}
+   #Nl1=$(sed -n '$=' ${Flist})
+   #if [ ! -z "$Nl1" ]; then
+   #   if [ $Nl1 -gt 0 ]; then
+   #      for ii in `seq 1 ${Nl1}`; do
+   #         Fline0=$(sed -n "${ii}p" ${Flist})
+   #         Fini=$(readlink -f ${Fline0})
+   #         rm ${Fini}
+   #      done
+   #   fi
+   #fi
+   #rm ${Flist} 
 
 elif [ ${iclean} -eq 0 ]; then
    exit

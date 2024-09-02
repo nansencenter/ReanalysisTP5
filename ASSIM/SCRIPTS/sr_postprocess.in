@@ -29,9 +29,34 @@ JULDAY=EXVAR4
 Modday=EXVAR_1
 RESULTSDIR=EXVAR_2
 
-module load NCO/4.9.7-iomkl-2020a
-
+ml load NCO/5.1.9-iomkl-2022a
 cd "${ANALYSISDIR}"
+
+# whether assimilating hice or not
+Fhice=observations.uf.HICE
+echo ${Fhice}
+if [ $(wc -l < "${Fhice}") -eq 0 ]; then
+   echo 'no '${Fhice}
+   Hflag=0
+   [ -s ${BINDIR}/../hice.log ] && rm ${BINDIR}/../hice.log
+else
+   echo 'find ' ${Fhice}
+   echo ${BINDIR}/../hice.log
+   # SIT observation impact which can be tuned like 0.5 for the first time assimilation in Autumn.
+   if [ ! -s ${BINDIR}/../hice.log ]; then
+      Hflag=0.5
+      Ihice=1
+   else
+      Hflag=1.0
+      Ihice=$(cat ${BINDIR}/../hice.log)
+      if [ ${Ihice} -lt 2 ]; then
+         Hflag=0.8
+      fi 
+      (( Ihice = Ihice + 1 ))
+   fi
+   echo ${Ihice} > ${BINDIR}/../hice.log
+fi
+
 istep=0
 if [ ${istep} -eq 0 ]; then
    Nbin=50
@@ -48,8 +73,8 @@ if [ ${istep} -eq 0 ]; then
                echo "ERROR: EnKF_assemble.sh failed for member ${e}"
                exit 1;
             else
-               echo "fixhycom analysis${mem}.a ${imem} forecast${mem}.nc ice_forecast${mem}.nc ${Modday}"
-               ${BINDIR}/fixhycom analysis${mem}.a ${imem} forecast${mem}.nc ice_forecast${mem}.nc ${Modday} &
+               echo "fixhycom analysis${mem}.a ${imem} forecast${mem}.nc ice_forecast${mem}.nc ${Modday} ${Hflag}"
+               ${BINDIR}/fixhycom analysis${mem}.a ${imem} forecast${mem}.nc ice_forecast${mem}.nc ${Modday} ${Hflag} &
                if [ $? -ne 0 ]; then
                   echo "ERROR: fixhycom failed for member ${imem}"
                   exit 1;
@@ -74,7 +99,7 @@ while [ $istep -gt 0 ]; do
       if [ "$tmpsize" -gt 1 ]; then
          Fnams=$(cat ${Ftemp})
          for inam in ${Fnams} ; do
-            ${BINDIR}/fixhycom analysis${inam}.a ${inam} forecast${inam}.nc ice_forecast${inam}.nc ${Modday} &
+            ${BINDIR}/fixhycom analysis${inam}.a ${inam} forecast${inam}.nc ice_forecast${inam}.nc ${Modday} ${Hflag} &
          done
          wait
          sleep 1
@@ -160,5 +185,13 @@ if [ -s fix_ice_forecast.nc ]; then
    cp fix_ice_forecast001.nc ${RESULTSDIR}/${JULDAY}/ANALYSIS/ice_analysis001.nc 
    mv fix_ice_forecast.nc ${RESULTSDIR}/${JULDAY}/ANALYSIS/ice_analysis.nc 
 fi
+
+
+
+
+
+
+
+
 
 echo "FINISHED (postprocess)" 

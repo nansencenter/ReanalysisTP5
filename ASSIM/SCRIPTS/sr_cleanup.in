@@ -153,4 +153,4 @@ fi
 #fi
 
 
-echo "FINISHED (cleanup)" > EnKFPost.OK
+echo "FINISHED (cleanup)" >> EnKFPost.OK

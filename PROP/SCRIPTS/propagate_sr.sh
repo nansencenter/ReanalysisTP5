@@ -111,7 +111,8 @@ then
        echo "3. Launching the batch jobs:"
        echo "   "`date`
        cd ${MODELDIR}
-       NN=10      # how many members in one batch 
+       NN=10     # how many members in one batch 
+       #NN=13      # how many members in one batch 
        (( NHYCOM = ($ENSSIZE - 1) / $NN + 1 ))
        for (( proc = 0; proc < $NHYCOM; ++proc ))
          do

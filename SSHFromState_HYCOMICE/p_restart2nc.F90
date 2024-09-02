@@ -159,7 +159,7 @@ program p_restart2nc
   call parse_blkdat('thbase', 'real', thbase, idummy)
 
   tbaric = kapflg == thflag
-  tbaric=kapflg==-1
+  !tbaric=kapflg==-1
   print *, 'blkdat.input: kapflg =', kapflg
   print *, 'blkdat.input: thflag =', thflag
   print *, 'blkdat.input: thbase =', thbase
