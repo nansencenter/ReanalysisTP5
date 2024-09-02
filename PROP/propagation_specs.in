@@ -3,7 +3,7 @@
 
 # do not edit below
 #
-EXPT=expt_02.1
+EXPT=expt_04.1
 EXPT_short=${EXPT#expt_}
 CWD=`pwd`
 INFILEDIR="${CWD}/INFILE"
