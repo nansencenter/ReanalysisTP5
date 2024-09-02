@@ -2,7 +2,8 @@
 #
 # Project:
 #!SBATCH --account=nn2993k --qos=short
-#SBATCH --account=nn2993k --qos=devel
+##SBATCH --account=nn2993k --qos=devel
+#SBATCH --account=nn2993k --qos=preproc
 #
 # Job name:
 #SBATCH -J "Nenkf"
@@ -10,10 +11,8 @@
 #SBATCH -N 1 
 #SBATCH --exclusive
 #
-# design the input parameters for Nproc=16 
-##SBATCH --nodes=1 --ntasks-per-node=8 --cpus-per-task=1
-##SBATCH --mem-per-cpu=4GB
-#
+#SBATCH --ntasks=100 --cpus-per-task=1
+#SBATCH --mem-per-cpu=4GB
 # Wall clock limit
 #SBATCH -t 01:00:00
 ##SBATCH -t 02:00:00

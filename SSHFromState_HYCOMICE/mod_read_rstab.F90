@@ -224,7 +224,7 @@ contains
       integer iversn,iexpt
       character(len=80) :: file1
       logical :: ex
-      character(len=80) :: ctitle(4)
+      character(len=80) :: ctitle(6)
 
 
       ! Check for existence of blkdat.input file
@@ -235,29 +235,22 @@ contains
       stop
    end if
  
-    
-
-open(10,file=file1,form='formatted',status='old')
- read(10,116) ctitle,iversn,iexpt,idm,jdm,dump1,dump2,kdm
-
-close (10)
-116 format (a80/a80/a80/a80/ &
-      i4,4x,'''iversn'' = hycom version number x10'/  &
-      i4,4x,'''iexpt '' = experiment number x10'/  &
-      i4,4x,'''idm   '' = longitudinal array size'/  &
-      i4,4x,'''jdm   '' = latitudinal  array size'/  &
-      i4,4x,'''itest '' = Year of integration start '/  &
-      i4,4x,'''jtest '' = Day of integration start'/  &
-      i4,4x,'''kdm   '' = Vertical     array size')  
-!116  format (a80/a80/a80/a80/ &
-!       i4,3x,36x/ &
-!       i4,3x,32x/  &
-!       i4,3x,34x/  &
-!!       i4,3x,34x/  &
-!       i4,3x,60x/  &
-!       i4,3x,60x/  &
-!       i4,3x,27x)  
-
+   open(10,file=file1,form='formatted',status='old')
+     !read(10,116) ctitle,iversn,iexpt,idm,jdm,dump1,dump2,kdm
+     read(10,'(a80/a80/a80/a80/a80/a80)') ctitle
+     read(10,'(i4,4x,a80)') idm,ctitle(1)
+     read(10,'(i4,4x,a80)') jdm,ctitle(1)
+     read(10,'(a80/a80)') ctitle(1:2)
+     read(10,'(i4,4x,a80)') kdm,ctitle(1)
+   close (10)
+!116 format (a80/a80/a80/a80/ &
+!      i4,4x,'''iversn'' = hycom version number x10'/  &
+!      i4,4x,'''iexpt '' = experiment number x10'/  &
+!      i4,4x,'''idm   '' = longitudinal array size'/  &
+!      i4,4x,'''jdm   '' = latitudinal  array size'/  &
+!      i4,4x,'''itest '' = Year of integration start '/  &
+!      i4,4x,'''jtest '' = Day of integration start'/  &
+!      i4,4x,'''kdm   '' = Vertical     array size')  
    end subroutine read_gridindex
 
    subroutine read_thbase(thbase)
@@ -269,7 +262,7 @@ close (10)
       integer iversn,iexpt
       character(len=80) :: file1
       logical :: ex
-      character(len=80) :: ctitle(22)
+      character(len=80) :: ctitle(25)
 
 
       ! Check for existence of blkdat.input file
@@ -279,16 +272,16 @@ close (10)
       print *,'File blkdat.input does not exist'
       stop
    end if
- 
-    
+   
+   open(10,file=file1,form='formatted',status='old')
+     read(10,117) ctitle,thbase
+     print*,'thbase inside read_thbase',thbase
+   close (10)
 
-open(10,file=file1,form='formatted',status='old')
- read(10,116) ctitle,thbase
-print*,'thbase inside read_thbase',thbase
-close (10)
-116  format (a80/a80/a80/a80/a80/a80/a80/a80/a80/a80/a80/ &
+117  format (a80/a80/a80/a80/a80/a80/a80/a80/a80/a80/a80/ &
              a80/a80/a80/a80/a80/a80/a80/a80/a80/a80/a80/ &
-       2x,f3.1,3x,'''thbase'' = reference density (sigma units)') 
+             a80/a80/a80/ &
+       2x,f4.1,3x,'''thbase'' = reference density (sigma units)') 
 
    end subroutine read_thbase
 

@@ -339,7 +339,6 @@ then
 	then
 	    EEND=$ENSSIZE
 	fi
-# write script on Fram
 
     cat ${CWD}/SCRIPTS/sr_postprocess.in |\
 	sed "s/ESTART/${ESTART}/" |\

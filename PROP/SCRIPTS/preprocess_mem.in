@@ -37,7 +37,7 @@ Idir=$(pwd)
 
 echo "Idir=${Idir} $SLURM_SUBMIT_DIR"
 
-iPert=0
+iPert=1
 Pervars="airtmp mslprs precip wndewd wndnwd nswrad radflx shwflx"
 
 if [ ! -s ./force_perturb-2.2 ]; then

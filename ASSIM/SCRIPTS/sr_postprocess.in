@@ -29,8 +29,7 @@ JULDAY=EXVAR4
 Modday=EXVAR_1
 RESULTSDIR=EXVAR_2
 
-module load NCO/4.9.7-iomkl-2020a
-
+ml load NCO/5.1.9-iomkl-2022a
 cd "${ANALYSISDIR}"
 
 # whether assimilating hice or not
@@ -49,9 +48,9 @@ else
       Ihice=1
    else
       Hflag=1.0
-      Ihice=$(echo ${BINDIR}/../hice.log)
+      Ihice=$(cat ${BINDIR}/../hice.log)
       if [ ${Ihice} -lt 2 ]; then
-         Hflag=0.75
+         Hflag=0.8
       fi 
       (( Ihice = Ihice + 1 ))
    fi

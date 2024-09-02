@@ -4,6 +4,7 @@
 # And requires the ensemble daily ice velocity available
 
 osisaf_dir=/cluster/projects/nn2993k/TP4b0.12/idrft_osisaf/
+osisaf_dir=/cluster/projects/nn2993k/TP4b0.12/idrft2d_osisaf/
 
 
 prg=~/REANALYSIS_TP5_spinup/ReanalysisTP5/ASSIM/BIN/icedrift_osisafNC

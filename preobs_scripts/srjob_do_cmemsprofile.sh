@@ -17,8 +17,9 @@
 set -e # exit on error
 set -u # exit on unset variables
 
-Jdy1=26300
-Jdy2=26360
+Jdy1=26934
+Jdy2=26966
+
 
 Ncore=12
 
