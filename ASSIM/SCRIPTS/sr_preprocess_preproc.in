@@ -87,8 +87,8 @@ if [ ${istep} -eq 1 ]; then
    fi
 
    # select the right module on Betzy
-   #module load NCO/4.9.7-iomkl-2020a
-   ml load NCO/5.1.9-iomkl-2022a
+#   module load NCO/4.9.7-iomkl-2020a
+   ml load  NCO/5.1.9-iomkl-2022a
    # calcuating the state means of ocean and ice
    if [ ${istep} -eq -1 ]; then
       for ifile in forecast ice_forecast ; do

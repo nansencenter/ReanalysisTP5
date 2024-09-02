@@ -1,6 +1,7 @@
 #!/bin/bash -l
 
-#SBATCH --account=nn2993k 
+#SBATCH --account=nn9481k 
+##SBATCH --account=nn2993k 
 
 #SBATCH -J  T04BJNAME
 
@@ -15,7 +16,7 @@
 #SBATCH -e log/HYCICE.JNAME.err
 
 ## How long job takes, wallclock time hh:mm:ss
-#SBATCH -t 02:30:00
+#SBATCH -t 24:00:00
 #SBATCH --exclusive 
 
 #SBATCH  --mail-type=END
@@ -76,10 +77,15 @@ echo "NMPI =$NMPI (Number of MPI tasks needed for running job) "
 ulimit -s 2000000
 
 
-iPert=2
-if [ ${iPert} -gt 0 ]; then
+iPert=0
+Pervars=""
+PervarsTest=""
+if [ ${iPert} -eq 1]; then
    #Pervars="airtmp mslprs precip wndewd wndnwd nswrad radflx shwflx"
    Pervars="airtmp mslprs precip wndewd wndnwd radflx shwflx"
+elif [ ${iPert} -gt 1 ]; then
+   Pervars="airtmp precip radflx shwflx"
+   PervarsTest="mslprs wndewd wndnwd"
 fi
 
 # submit job
@@ -101,7 +107,7 @@ for imem in `seq $mem1 $mem2`; do
          fi
       fi
       if [ ${READYRT} == 0 ]; then 
-         if [ ${iPert} -gt 0 ]; then
+         if [ ${iPert} -gt 1 ]; then
             for ifile in ${Pervars}; do
                rm forcing.${ifile}.[ab]
                ln ../../SCRATCH/forcing.${ifile}.a .
@@ -117,7 +123,8 @@ for imem in `seq $mem1 $mem2`; do
                fi
             done
          fi
-         srun --mpi=pmi2 -N $Ncor -n $NMPI -t 00:15:00 ./hycom_cice  
+         #srun --mpi=pmi2 -N $Ncor -n $NMPI -t 00:15:00 ./hycom_cice  
+         srun --mpi=pmi2 -N $Ncor -n $NMPI ./hycom_cice  
       fi
    fi
 done

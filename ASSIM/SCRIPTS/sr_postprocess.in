@@ -29,8 +29,7 @@ JULDAY=EXVAR4
 Modday=EXVAR_1
 RESULTSDIR=EXVAR_2
 
-module load NCO/4.9.7-iomkl-2020a
-
+ml load NCO/5.1.9-iomkl-2022a
 cd "${ANALYSISDIR}"
 
 # whether assimilating hice or not

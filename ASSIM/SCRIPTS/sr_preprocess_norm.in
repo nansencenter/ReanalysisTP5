@@ -2,18 +2,17 @@
 #
 # Project:
 ##SBATCH --account=nn9481k --qos=devel
-#SBATCH --account=nn2993k --qos=preproc 
+#SBATCH --account=nn2993k 
 #
 # Job name:
 #SBATCH -J "en_pre"
 #
-#SBATCH -N 1 
+#SBATCH -N 4 
 #SBATCH --exclusive
 #SBATCH --ntasks=100 --cpus-per-task=1
-#SBATCH --mem-per-cpu=6G
 #
 # Wall clock limit:
-#SBATCH -t 01:00:00
+#SBATCH -t 00:30:00
 #
 #SBATCH -o en_pre.out
 #SBATCH -e en_pre.err
@@ -87,8 +86,8 @@ if [ ${istep} -eq 1 ]; then
    fi
 
    # select the right module on Betzy
-   #module load NCO/4.9.7-iomkl-2020a
-   ml load NCO/5.1.9-iomkl-2022a
+#   module load NCO/4.9.7-iomkl-2020a
+   ml load  NCO/5.1.9-iomkl-2022a
    # calcuating the state means of ocean and ice
    if [ ${istep} -eq -1 ]; then
       for ifile in forecast ice_forecast ; do
