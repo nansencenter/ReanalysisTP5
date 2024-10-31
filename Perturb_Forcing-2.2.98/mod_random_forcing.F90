@@ -241,16 +241,15 @@ contains
       logical, save :: first=.true.
       integer, save :: ccount=1
 
-      real, dimension(idm,jdm) :: modlon, modlat
+      real, dimension(idm,jdm) :: modlon, modlat, wprsfac
 
       logical, parameter :: randf_test=.true.
       logical, save :: lfirst=.true.
       real, parameter :: rhoa = 1.2 , cdfac = 0.0012
 
-      real :: cd_new,w4,wfact,wndfac, fcor
+      real :: cd_new,w4,wfact,wndfac, fcor, dx
       real, dimension(1-nbdy:idm+nbdy,1-nbdy:jdm+nbdy) :: dpresx,dpresy
       real :: ucor, vcor, ueq,veq,wcor
-      real :: wprsfac, minscpx, maxscpx
 
       real, parameter :: radtodeg=57.2957795
       real, parameter :: wlat=15.
@@ -306,25 +305,28 @@ contains
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-      ! grid size min max
-      minscpx=minval(scpx)
-      maxscpx=maxval(scpx)
       wprsfac=1.
       ! flag used in prsflg=2
       if (rf_prsflg==2) then
+         fcor=2*sin(40./radtodeg)*2*pi/86400 * rhoa; ! Constant
+!$OMP PARALLEL DO PRIVATE (ix,jy)
+!$OMP&SCHEDULE(STATIC,jblk)
+         do jy=1,jdm
+         do ix=1,idm
+            ! typical pressure gradient  change it from default mBar in TP4 to Pa
+            !!YY: grid spacing at grid point ix,jy
+            dx = sqrt(scpx(ix,jy)**2+scpy(ix,jy)**2)
+            wprsfac(ix,jy)=Sslp*sqrt(vars%slp)/(rh*dx)
 
-         fcor=2*sin(40./radtodeg)*2*pi/86400; ! Constant 
+            ! results in this typical wind magnitude
+            wprsfac(ix,jy)=wprsfac(ix,jy)/fcor
 
-         ! typical pressure gradient  change it from default mBar in TP4 to Pa
-         wprsfac=Sslp*sqrt(vars%slp)/(rh*minscpx)
-
-         ! results in this typical wind magnitude
-         wprsfac=wprsfac/fcor
-
-         ! but should give wind according to vars%wndspd
-         ! this is a correction factor for that
-         wprsfac=sqrt(vars%wndspd)/wprsfac
-
+            ! but should give wind according to vars%wndspd
+            ! this is a correction factor for that
+            wprsfac(ix,jy)=sqrt(vars%wndspd)/wprsfac(ix,jy)
+        end do
+        end do
+!$OMP END PARALLEL DO
       end if
 
 
@@ -347,7 +349,7 @@ contains
             !   scpx(ix,jy)
             dpresx(ix,jy) = Sslp*(ran1%slp(ix,jy) - ran1%slp(ix-1,jy))/ &
                              scpx(ix,jy)
-            dpresx(ix,jy)=dpresx(ix,jy)*wprsfac
+            dpresx(ix,jy)=dpresx(ix,jy)*wprsfac(ix,jy)
          else
             dpresx(ix,jy)=0. ! should be extrapolated
          end if
@@ -361,7 +363,7 @@ contains
          !      scpy(ix,jy)
             dpresy(ix,jy) = Sslp*(ran1%slp(ix,jy) - ran1%slp(ix,jy-1))/ &
                              scpy(ix,jy)
-            dpresy(ix,jy)=dpresy(ix,jy)*wprsfac
+            dpresy(ix,jy)=dpresy(ix,jy)*wprsfac(ix,jy)
          else
          dpresy(ix,jy)=0. ! should be extrapolated
          end if
