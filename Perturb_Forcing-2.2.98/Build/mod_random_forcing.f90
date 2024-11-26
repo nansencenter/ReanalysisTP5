@@ -1,3 +1,14 @@
+
+
+
+
+
+
+
+
+
+
+
 module mod_random_forcing
 ! ----------------------------------------------------------------------------
 ! -- init_rand_update - Initializes the random module, reads infile2.in - sets
@@ -257,11 +268,7 @@ contains
       integer i,j
 
       ! Scale for slp (hPa) in TP4, otherwise equals 1.0 in TP5 (Pa)
-#if defined (TP4)
-      real, parameter :: Sslp=100.      
-#else
       real, parameter :: Sslp=1.      
-#endif
 
       yrflag=3
       if (yrflag/=3) then 
