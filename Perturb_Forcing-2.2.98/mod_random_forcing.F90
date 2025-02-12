@@ -250,7 +250,6 @@ contains
       real :: cd_new,w4,wfact,wndfac, fcor, dx
       real, dimension(1-nbdy:idm+nbdy,1-nbdy:jdm+nbdy) :: dpresx,dpresy
       real :: ucor, vcor, ueq,veq,wcor
-     ! real :: wprsfac, minscpx, maxscpx
 
       real, parameter :: radtodeg=57.2957795
       real, parameter :: wlat=15.
@@ -296,8 +295,6 @@ contains
       !ran1=sqrt(vars)*ran
       call calc_forc_update(ran1,ran,sqrt(vars))
 
-
-
       if (rf_prsflg .eq. 1 .or. rf_prsflg .eq.2 ) then
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! rf_prsflag=1 : wind perturbations calculated from slp, using coriolis
@@ -309,30 +306,11 @@ contains
 !                reducing pressure perturbations
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-
-      ! grid size min max
-      !minscpx=minval(scpx)
-      !maxscpx=maxval(scpx)
       wprsfac=1.
-      ! flag used in prsflg=2
+! flag used in prsflg=2
       if (rf_prsflg==2) then
-!
          fcor=2*sin(40./radtodeg)*2*pi/86400; ! Constant 
-
-         ! typical pressure gradient  change it from default mBar in TP4 to Pa
-         ! wprsfac=Sslp*sqrt(vars%slp)/(rh*minscpx)
-
-         ! remove the grid difference from (minscpx, scpx(idm/2,jdm/2)) at Oct 2024
-!         wprsfac=Sslp*sqrt(vars%slp)/(rf_hradius)
-
-         ! results in this typical wind magnitude
-         !wprsfac=wprsfac/fcor
-         ! debuging of missed rhoa at Oct 2024
-!         wprsfac=wprsfac/(fcor*rhoa)
-
-         ! but should give wind according to vars%wndspd
-         ! this is a correction factor for that
-!         wprsfac=sqrt(vars%wndspd)/(wprsfac*sqrt(2.0))
+    
 !$OMP PARALLEL DO PRIVATE (ix,jy)
 !$OMP&SCHEDULE(STATIC,jblk)
          do jy=1,jdm
@@ -351,10 +329,7 @@ contains
         end do
         end do
 !$OMP END PARALLEL DO
-
       end if
-
-
 
       dpresx=0.
       dpresy=0.
