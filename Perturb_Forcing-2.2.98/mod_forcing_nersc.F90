@@ -171,8 +171,8 @@ contains
       print *
       print '(a)','Usage :'
       print '(a)', '  force_perturb-2.2 rforce clmflag '
-!      print '(a)', '  forfun_nersc rforce clmflag g_switch l_switch'
-!      print '(a)','rforce is forcing option, clmflag is climate flag'
+      print '(a)', ' .or.  '
+      print '(a)', '  force_perturb-2.2 era5 era5 '
       print *
       call exit(1)
    end if
@@ -182,7 +182,7 @@ contains
    ! This only applies if synoptic forcing is used
    forc_header_syn=''
    lclim=.false.
-   if (trim(rforce)=='era-i') then
+   if (trim(rforce)=='era-i'.or. trim(rforce)=='era5') then
       forc_header_syn='with perturbation'
       lsynslp   =.true.
       lsynuwnd   =.true.
@@ -190,11 +190,10 @@ contains
       lsynvapmix=.true.
       lsynairtmp=.true.
       lsynprecip=.true.
-!   switch on at 18Jan 2019 for era-i+all
       lsyndswflx=.true.
       lsynshwflx=.true.
       lsynradflx=.true.
-      write(lp,'(a)')'Perturbing ERA-I Forcing'
+      write(lp,'(a)')'Perturbing '//trim(rforce)//' Forcing'
       rdtime=6.d0/24.d0
 
    elseif (trim(rforce)=='month') then
@@ -228,8 +227,8 @@ contains
 
    if (trim(clmflag)=='old') then
       forc_header_clm='"Old" NERSC climatology'
-   elseif (trim(clmflag)=='era40') then
-      forc_header_clm='ERA40-Based climatology'
+   elseif (trim(clmflag)=='era40'.or.trim(clmflag)=='era5') then
+      forc_header_clm=trim(clmflag)//'-Based climatology'
    elseif (trim(clmflag)=='ncepr') then
       forc_header_clm='NCEP-Based climatology'
    else
@@ -295,8 +294,6 @@ contains
    read(iunit,*)
    call zaiopf(flnmfor(1:lgth)//'forcing.'//cvar//'.a', 'old', iunit)
    end subroutine opnfrcrd
-
-
 
 
 ! ---    Write-out of forcing field to .[ab] files

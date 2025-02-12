@@ -15,3 +15,4 @@ c> May 2019 - The call method was inherited from forfun_nersc
 c> Oct 2019 - Tick off the net heatflux from ECMWF because they are not used by HYCOM_CICE
 c> May 2023 - Replace the perturabation strategies for shwflx/radflx by the same way for precipitation
 c> Nov 2024 - Modify the windfac into 2-D dependent on the grid size and remove a possible bug due to implementing into TP4 and TP5 in which the air pressuure takes different unit.
+c> 12Feb 2025 - Correct the input forcing flag to match with the ERA5 implementation.

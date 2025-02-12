@@ -24,13 +24,16 @@
 ! --- Atmosphere temp        airtmp             Celsius
 ! --- SLP                    mlsprs             Pa 
 ! --- Precipitation          precip             m/s (water equivalent)
-! --- Downwelling longwave   radflx             W/m^2     % onely era-i 
+! --- Downwelling longwave   radflx             W/m^2     % 
 ! --- Downwelling shortwave  shwflx             W/m^2     %
 ! --- vapmixing              vapmix             kg kg^-1
 ! --- ewd wind               wndewd             m/s
 ! --- nwd wind               wndnwd             m/s
-! --- net longwave           radflx             W/m^2    % era-i+all
+! --- net longwave           radflx             W/m^2    % era5+lw
 ! --- net shortwave          nswflx             W/m^2
+!
+! Update:
+! --- - Perturbation modifications for nswflx/radflx/radflx/shwflx as precip in 2023----
 ! --- -------------------------------------------------------------
 
       program force_perturb
