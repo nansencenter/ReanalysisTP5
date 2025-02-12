@@ -7,7 +7,11 @@ adds time-dependent perturbations on existing forcing files. it reads
 infile2.in to get variances  of  random forcing ++, and applies them to
 existing forcing fields. Results are put in files with names a la 
 tst.forcing.airtmp.[ab]
+
+MODEL.CPP works for choosing the implemenation in TP4/TP5 model
+
 Revision history:
 c> May 2019 - The call method was inherited from forfun_nersc
 c> Oct 2019 - Tick off the net heatflux from ECMWF because they are not used by HYCOM_CICE
 c> May 2023 - Replace the perturabation strategies for shwflx/radflx by the same way for precipitation
+c> Nov 2024 - Modify the windfac into 2-D dependent on the grid size and remove a possible bug due to implementing into TP4 and TP5 in which the air pressuure takes different unit.

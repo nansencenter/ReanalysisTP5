@@ -31,6 +31,8 @@ endif
 	cd Build/; $(CF90) -c $(INCLUDE) $(CPPFLAGS) $(FFLAGS) $(F77FLG) -o $*.o  ../$<
 
 .F90.o:
+	rm -f ./Build/$*.f90
+	cat MODEL.CPP $*.F90 | $(CPP) $(CPPFLAGS)   > ./Build/$*.f90
 	cd Build/; $(CF90) -c $(INCLUDE) $(CPPFLAGS) $(FFLAGS) $(F90FLG) -o $*.o  ../$<
 
 .f.o:
