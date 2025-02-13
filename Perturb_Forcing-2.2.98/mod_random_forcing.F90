@@ -33,6 +33,7 @@ module mod_random_forcing
 ! NB - to use this routine mod_grid must be initialized (get_grid), as well
 !      as the mod_forcing module (init_forcing_nersc). This is needed to
 !      allocate grid and forcing variables
+!    - remove the grid difference from (minscpx, scpx(idm/2,jdm/2)) at Oct 2024
 ! ----------------------------------------------------------------------------
    use mod_xc
    use mod_grid
@@ -63,10 +64,9 @@ module mod_random_forcing
       real,pointer ::  vwind  (:,:) !  v-component of wind
       real,pointer ::  tauxice(:,:) !  ice stress on water in x dir
       real,pointer ::  tauyice(:,:) !  ice stress on water in y dir
-!    added at 18Jan 2019 for era-i+all
-      real,pointer ::  dswflx(:,:) ! downwelling shortwave flux 
-      real,pointer ::  shwflx(:,:) ! net shortwave flux 
-      real,pointer ::  radflx(:,:) ! net longwave radiation 
+      real,pointer ::  dswflx(:,:)  ! downwelling shortwave flux 
+      real,pointer ::  shwflx(:,:)  ! net shortwave flux 
+      real,pointer ::  radflx(:,:)  ! net longwave radiation 
      
    end type forcing_fields
 
@@ -83,7 +83,6 @@ module mod_random_forcing
       real relhum
       real sss
       real sst
-!    added at 18Jan 2019 for era-i+all
       real shwflx
       real radflx
    end type forcing_variances
@@ -287,9 +286,6 @@ contains
       ! rv -> 0        , nsteps -> 0       , alpha -> 0 (when 1>autocorr>0)
       alpha=autocorr**(1/nsteps)
 
-      !write(lp,*) 'Rand_update -- Random forcing field update' 
-
-
       ! Add new random forcing field to the newly read
       ! fields from ecmwf or ncep (:,:,4)
       !ran1=sqrt(vars)*ran
@@ -307,7 +303,7 @@ contains
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
       wprsfac=1.
-! flag used in prsflg=2
+      ! flag used in prsflg=2
       if (rf_prsflg==2) then
          fcor=2*sin(40./radtodeg)*2*pi/86400; ! Constant 
     
@@ -317,8 +313,9 @@ contains
          do ix=1,idm
             ! typical pressure gradient  change it from default mBar in TP4 to Pa
             !!YY: grid spacing at grid point ix,jy
+            ! 0.96: tunning value that the perturbed wind speed close to the set of 2.5 m/s for example
             dx = sqrt(scpx(ix,jy)**2+scpy(ix,jy)**2)
-            wprsfac(ix,jy)=Sslp*sqrt(vars%slp)/(rh*dx)
+            wprsfac(ix,jy)=Sslp*sqrt(vars%slp)/(0.96*rh*dx)
 
             ! results in this typical wind magnitude
             wprsfac(ix,jy)=wprsfac(ix,jy)/fcor
@@ -337,16 +334,10 @@ contains
 !$OMP&SCHEDULE(STATIC,jblk)
       do jy=1,jdm
       do ix=1,idm
-         ! print *,ix,jy
-
          ! Pressure gradient. Coversion from mBar to Pa
          ! Note that this is in u-point, but is used for a v-point
          ! later 
-         ! change it from default mBar in TP4 to Pa at 19Jan 2019
          if (iu(ix,jy)==1)  then
-            !dpresx(ix,jy) = &
-            !   100.*(ran1%slp(ix,jy) - ran1%slp(ix-1,jy))/ &
-            !   scpx(ix,jy)
             dpresx(ix,jy) = Sslp*(ran1%slp(ix,jy) - ran1%slp(ix-1,jy))/ &
                              scpx(ix,jy)
             dpresx(ix,jy)=dpresx(ix,jy)*wprsfac(ix,jy)
@@ -356,11 +347,7 @@ contains
 
          ! Note that this is in v-point, but is used for a u-point
          ! later
-         ! change it from default mBar in TP4 to Pa at 19Jan 2019
          if (iv(ix,jy)==1)  then
-         !   dpresy(ix,jy) = &
-         !      100.*(ran1%slp(ix,jy) - ran1%slp(ix,jy-1))/ &
-         !      scpy(ix,jy)
             dpresy(ix,jy) = Sslp*(ran1%slp(ix,jy) - ran1%slp(ix,jy-1))/ &
                              scpy(ix,jy)
             dpresy(ix,jy)=dpresy(ix,jy)*wprsfac(ix,jy)
@@ -370,8 +357,6 @@ contains
       end do
       end do
 !$OMP END PARALLEL DO
-
-
 
 
 !$OMP PARALLEL DO PRIVATE (ix,jy,fcor,ucor,vcor, & 
@@ -436,9 +421,6 @@ contains
       end do
 !$OMP END PARALLEL DO
 
-
-
-
          ! Drag
 !$OMP PARALLEL DO PRIVATE (ix,jy,wndfac,cd_new,w4,wfact) 
 !$OMP&SCHEDULE(STATIC,jblk)
@@ -499,7 +481,6 @@ contains
          synrelhum(ix,jy) = min(max(synrelhum(ix,jy),0.0),1.0)
          synwndspd(ix,jy) = max(synwndspd(ix,jy),0.0)
 
-!    added at 18Jan 2019 for era-i+all
          syndswflx(ix,jy) = syndswflx(ix,jy)*(1 + sign(  &
                      min(1.,abs(ran1%shwflx(ix,jy)))*sqrt(vars%shwflx), &
                        ran1%shwflx(ix,jy)))
