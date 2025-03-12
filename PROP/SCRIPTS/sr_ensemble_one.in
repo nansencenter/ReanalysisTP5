@@ -82,17 +82,6 @@ echo "NMPI =$NMPI (Number of MPI tasks needed for running job) "
 ulimit -s 2000000
 
 
-Pervars=""
-PervarsTest=""
-iPert=0
-if [ ${iPert} -eq 1]; then
-   #Pervars="airtmp mslprs precip wndewd wndnwd nswrad radflx shwflx"
-   Pervars="airtmp mslprs precip wndewd wndnwd radflx shwflx"
-elif [ ${iPert} -gt 1 ]; then
-   Pervars="airtmp precip radflx shwflx"
-   PervarsTest="mslprs wndewd wndnwd"
-fi
-
 # submit job
 for imem in `seq $mem1 $mem2`; do
    cd $SLURM_SUBMIT_DIR       ||  { echo "Could not go to dir $SLURM_SUBMIT_DIR  "; exit 1; }
@@ -114,36 +103,36 @@ for imem in `seq $mem1 $mem2`; do
          [ -r ovrtn_out ] && rm ovrtn_out
          [ -r KEEP ] && rm KEEP 
          [ -r summary_out ] && rm summary_out 
-         if [ ${iPert} -gt 1 ]; then
-            for ifile in ${Pervars}; do
-               rm forcing.${ifile}.[ab]
-               ln ../../SCRATCH/forcing.${ifile}.a .
-               ln ../../SCRATCH/forcing.${ifile}.b .
-            done
-            ./force_perturb-2.2 era-i era40
-            echo " imem=${imem} replaced ${Pervars} ... "
-            for ifile in ${Pervars}; do
-               if [ -r tst.forcing.${ifile}.a -a -r tst.forcing.${ifile}.b ]; then
-                  rm forcing.${ifile}.[ab]
-                  ln -sf tst.forcing.${ifile}.a forcing.${ifile}.a
-                  ln -sf tst.forcing.${ifile}.b forcing.${ifile}.b
-               fi
-            done
-            # Perturbation test
-            Fdirup='../../SCRATCH/'
-            for ifile in ${PervarsTest}; do
-               rm forcing.${ifile}.[ab]
-               Fraw=${ifile}_${Exdir}
-               if [ -r ${Fdirup}${Fraw}.a -a -r ${Fdirup}${Fraw}.b ]; then
-                  ln -sf ${Fdirup}${Fraw}.a forcing.${ifile}.a
-                  ln -sf ${Fdirup}${Fraw}.b forcing.${ifile}.b
-               else
-                  echo "Missing the test foring files"
-                  exit 0
-               fi
-            done
-          
-         fi
+         #if [ ${iPert} -gt 1 ]; then
+         #   for ifile in ${Pervars}; do
+         #      rm forcing.${ifile}.[ab]
+         #      ln ../../SCRATCH/forcing.${ifile}.a .
+         #      ln ../../SCRATCH/forcing.${ifile}.b .
+         #   done
+         #   ./force_perturb-2.2 era-i era40
+         #   echo " imem=${imem} replaced ${Pervars} ... "
+         #   for ifile in ${Pervars}; do
+         #      if [ -r tst.forcing.${ifile}.a -a -r tst.forcing.${ifile}.b ]; then
+         #         rm forcing.${ifile}.[ab]
+         #         ln -sf tst.forcing.${ifile}.a forcing.${ifile}.a
+         #         ln -sf tst.forcing.${ifile}.b forcing.${ifile}.b
+         #      fi
+         #   done
+         #   # Perturbation test
+         #   Fdirup='../../SCRATCH/'
+         #   for ifile in ${PervarsTest}; do
+         #      rm forcing.${ifile}.[ab]
+         #      Fraw=${ifile}_${Exdir}
+         #      if [ -r ${Fdirup}${Fraw}.a -a -r ${Fdirup}${Fraw}.b ]; then
+         #         ln -sf ${Fdirup}${Fraw}.a forcing.${ifile}.a
+         #         ln -sf ${Fdirup}${Fraw}.b forcing.${ifile}.b
+         #      else
+         #         echo "Missing the test foring files"
+         #         exit 0
+         #      fi
+         #   done
+         # 
+         #fi
          srun --mpi=pmi2 -N $Ncor -n $NMPI ./hycom_cice  
       fi
       READYRT=`find ./ -maxdepth 1 -name restart.${Moddate2}_00_0000.a | wc -l`

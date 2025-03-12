@@ -1,0 +1,123 @@
+
+Mdir=/cluster/home/xiejp/REANALYSIS_TP4b/FILES
+
+ln -sf ${Mdir}/blkdat.input
+ln -sf ${Mdir}/regional.* .
+ln -sf ${Mdir}/grid.info .
+ln -sf ${Mdir}/depths*.uf .
+ln -sf ${Mdir}/newpos.uf .
+
+# linking the performed program and infile
+Idir=/cluster/home/xiejp/TP4_Reanalysis/preobs_scripts/Infile/   # on Fram
+Idir=/cluster/home/xiejp/REANALYSIS_TP4b/preobs/Infile/
+
+if [ ! -s ./prep_obs_profile ]; then
+  ln -sf /cluster/home/xiejp/enkf/EnKF-MPI-TOPAZ/Prep_Fram/prep_obs prep_obs_profile 
+fi
+
+Odir0=/cluster/work/users/xiejp/DATA/data0/profile
+Odir2=/cluster/work/users/xiejp/ARC_MFC/downobs_nrt
+Odir=/cluster/work/users/xiejp/work_2024/Data_TP4b/TSprofile
+if [ ! -s ${Odir} ]; then
+  mkdir ${Odir}
+fi
+for ity in SAL TEM ; do
+  if [ ! -s ${Odir}/${ity} ]; then
+    mkdir ${Odir}/${ity}
+  fi
+done
+
+Tblist=0         # output the profile sources
+
+Tmix=1          # try to find the combined profiles
+
+ulimit -s 2000000
+
+Jdy0=Jdate1
+Jdy1=Jdate2
+
+for Jdy in `seq ${Jdy0} ${Jdy1}`; do
+  Fobs=${Odir}/TEM/obs_TEM_${Jdy}.nc
+  echo ${Fobs}
+  if [ ! -s ${Fobs} -o ! -s ${Odir}/SAL/obs_SAL_${Jdy}.nc ]; then
+    rm P*.nc T*.nc infile.data0 infiles.txt
+    i0=0
+    for idy in `seq 0 6`; do
+      let Ndy=Jdy-idy
+      if [ ${Tmix} -eq 1 ]; then
+        Ndate=$(jultodate ${Ndy} 1950 1 1);
+        # divided into two branchs:
+        # firtly check the delayed model profiles:
+        Fnam=${Odir0}/${Ndate:0:4}/CO_DMQCGL01_${Ndate}_*.nc
+        aa=`ls ${Fnam} | sed -n '$='`
+        if [[ ${aa} -gt 0 ]]; then
+           for ifile in $(ls ${Fnam}); do
+              jfile=${ifile#${Odir0}/${Ndate:0:4}/CO_DMQCGL01_${Ndate}_}
+              let i0=i0+1
+              Fnew=${jfile:0:1}`echo 00${i0}|tail -4c`.nc
+              ln -sf ${ifile} ${Fnew} 
+              if [ ${i0} -eq 1 ]; then
+                 Sline=${Fnew}
+              else
+                 Sline=$(echo ${Sline} ${Fnew})
+              fi
+           done
+        # extending by nrt profiles 
+        else  
+           Fnam2=${Odir2}/nrt_${Ndate:0:4}/CO_NRT_${Ndate}_*.nc
+           bb=`ls ${Fnam2} | sed -n '$='`
+           if [[ ${bb} -gt 0 ]]; then
+              for ifile in $(ls ${Fnam2}); do
+                 jfile=${ifile#${Odir2}/nrt_${Ndate:0:4}/CO_NRT_${Ndate}_}
+                 let i0=i0+1
+                 Fnew2=${jfile:0:1}`echo 00${i0}|tail -4c`.nc
+                 ln -sf ${ifile} ${Fnew2} 
+                 if [ ${i0} -eq 1 ]; then
+                    Sline=${Fnew2}
+                 else
+                    Sline=$(echo ${Sline} ${Fnew2})
+                 fi
+              done
+           fi
+        fi
+      fi
+    done
+    echo "i0=" $i0
+    # preprare the infile.data0 saved as toto
+    if [ ${i0} -gt 0 ]; then
+       echo ${Jdy}
+       echo ${Sline}
+       sed "s/JDATE_coriolis.nc/${Sline}/" ${Idir}/infile.data_coriolis > infile.data0
+
+       # deal with SAL and TEM respectively 
+       for otype in SAL TEM ; do
+          if [ ! -s ${Odir}/${otype}/obs_${otype}_${Jdy}.nc ]; then
+             if [ ${otype}x = "SAL"x ]; then
+                var=0.02
+             elif [ ${otype}x = "TEM"x ]; then
+                var=0.5
+             fi
+             sed "s/OTY/${otype}/" infile.data0 | sed "s/OVAR/${var}/" > infile.data 
+
+             ./prep_obs_profile
+             if [ -s observations-${otype}.nc -a observations.uf ]; then
+                mv observations-${otype}.nc ${Odir}/${otype}/obs_${otype}_${Jdy}.nc
+                mv observations.uf ${Odir}/${otype}/obs_${otype}_${Jdy}.uf
+             fi 
+             if [ ${Tblist} -eq 1 ]; then
+                for bfile in Blacklist_Prof_QC observations_info AfterQC-${otype} ; do
+                   if [ -s ${bfile}.nc ]; then
+                      mv ${bfile}.nc ${Odir}/${otype}/${bfile}-${Jdy}.nc  
+                   elif [ -s ${bfile}.uf ]; then
+                      mv ${bfile}.uf ${Odir}/${otype}/${bfile}-${Jdy}.uf  
+                   elif [ -s ${bfile}.txt ]; then
+                      mv ${bfile}.txt ${Odir}/${otype}/${bfile}-${Jdy}.txt  
+                   fi
+                done
+             fi
+          fi
+       done
+    fi
+    rm T*.nc P*.nc
+  fi
+done

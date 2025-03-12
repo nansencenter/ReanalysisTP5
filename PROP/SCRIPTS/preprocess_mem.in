@@ -26,6 +26,7 @@ if [ $# -eq 3 ]; then
       # Generate atmospheric forcing :
       #atmo_synoptic.sh erai+all $START $END 
       atmo_synoptic.sh era5+lw $START $END 
+
       # Transfer data files to scratch - must be in "expt_XXX" dir for this script
       expt_preprocess.sh $START $END $INITFLG        ||  { echo "Preprocess had fatal errors "; exit 1; }
    fi
@@ -37,12 +38,13 @@ Idir=$(pwd)
 
 echo "Idir=${Idir} $SLURM_SUBMIT_DIR"
 
-iPert=1
-Pervars="airtmp mslprs precip wndewd wndnwd nswrad radflx shwflx"
-
-if [ ! -s ./force_perturb-2.2 ]; then
+iPert=${IPERT}
+echo "iPert=${IPERT}"
+if [ ! -s ./force_perturb-2.2 -a ${iPert} -eq 1 ]; then
    ln -sf BINDIR/force_perturb-2.2 .
 fi
+
+
 
 if [ "$1" -gt "-1" -a "$2" -gt "-1" ]; then
   mem1=$1
@@ -94,6 +96,8 @@ filenameice="iced.${start_year}-${start_month}-${start_day}-${start_dsec}"
 echo ${filename}
 echo ${filenameice}
 
+Scpfiles="hycom_cice ice_in limits"
+
 echo "Cloning the ensemble subdirectory with perturbed forcing'"
 for imem in `seq $mem1 $mem2`; do
    cd ${Idir}       ||  { echo "Could not go to dir $SLURM_SUBMIT_DIR  "; exit 1; }
@@ -107,27 +111,26 @@ for imem in `seq $mem1 $mem2`; do
    # link the neccesary model file
    cd ${Exdir}/SCRATCH
    [ ! -r ./cice ] && mkdir cice 
-   [ -r hycom_cice ] && hycom_cice 
-   #ln -sf ${S}/* .
-   ln ${S}/* .
-   if [ -r hycom_cice ]; then
-      rm hycom_cice 
-      cp ${S}/hycom_cice .
-   fi
-
-   #ln -sf ${S}/cice/* ./cice/.
-   ln ${S}/cice/* ./cice/.
+   [ ! -r ./KEEP ] && mkdir KEEP
+   [ ! -r ./old ] && mkdir old 
+   ln ${S}/*.* .
+   ln ${S}/nest .
+   for f in ${Scpfiles} ; do
+      cp ${S}/${f} .
+   done
 
    [ -r summary_out ] && rm summary_out
    [ -r ./cice/ice.restart_file ] && rm ./cice/ice.restart_file
    rm restart.*.?
+
+   # NB: the filename format should keep consistecy with the folloing string lenth (33/31)
    for f in ${S}/${filename}_${Exdir}.? ; do
      Nf=${#f}
      ((Nf0 = Nf - 33 ))
 #     echo $f $Nf ${f:Nf0:24}${f:Nf-2:2} 
      ln -sf $f ${f:Nf0:24}${f:Nf-2:2} 
    done
-   rm ./cice/iced.*.nc
+   #rm ./cice/iced.*.nc
    for f in ${S}/cice/${filenameice}_${Exdir}.nc ; do
       Nf=${#f}
       ((Nf0 = Nf -31 ))
@@ -136,13 +139,15 @@ for imem in `seq $mem1 $mem2`; do
       echo "./cice/${f:Nf0:21}.nc" > ./cice/ice.restart_file
    done
 
-  # create the perturbeted forcing
-  if [ ! -s ./force_perturb-2.2 ]; then
-     ln -sf ${Idir}/force_perturb-2.2 .
-  fi
-  cp FileDir/infile2.in_May infile2.in
   if [ ${iPert} -eq 1 ]; then
-     ./force_perturb-2.2 era-i era40
+     Pervars="airtmp mslprs precip wndewd wndnwd nswrad radflx shwflx"
+     echo " Random perturbation for ERA5 forcing"
+     # create the perturbeted forcing
+     cp FileDir/infile2.in_V1 infile2.in
+     if [ ! -s ./force_perturb-2.2 ]; then
+        ln -sf ${Idir}/force_perturb-2.2 .
+     fi
+     ./force_perturb-2.2 era5 era5
      echo " imem=${imem}"
      echo "replace ${Pervars} ... "
      for ifile in ${Pervars}; do
@@ -152,5 +157,7 @@ for imem in `seq $mem1 $mem2`; do
          ln -sf tst.forcing.${ifile}.b forcing.${ifile}.b
        fi
      done
+  else
+     echo " Deterministic forcing ..."
   fi
 done
