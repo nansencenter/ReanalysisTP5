@@ -28,7 +28,7 @@ Fdd=7
 #
 echo "1. Reading specifications:"
 . ./propagation_specs.sh
-#export MODELDIR BINDIR ENSSIZE
+export MODELDIR BINDIR ENSSIZE IPERT
 
 echo ${BINDIR} ${ENSSIZE} ${Fdd}
 
@@ -92,6 +92,7 @@ then
        echo "   "`date`
        echo "Generating forcing and prepare the integration under the main directory:"
 
+       [ -r ${MODELDIR}/preprocess_mem_new.sh ] && rm ${MODELDIR}/preprocess_mem_new.sh 
        cat ${CWD}/SCRIPTS/preprocess_mem.in |\
          sed "s/YDATE1/${strdate1}/" | sed "s/YDATE2/${strdate2}/" |\
          sed "s#FileDir#${CWD}/FILES#" |\
@@ -202,13 +203,13 @@ then
            if (( ${nbad} == 0 )); then
 	      echo ""
            fi
-           cat ${CWD}/SCRIPTS/preprocess_mem.in |\
-              sed "s/YDATE1/${strdate1}/" | sed "s/YDATE2/${strdate2}/" |\
-              sed "s#FileDir#${CWD}/FILES#" |\
-              sed "s#BINDIR#${BINDIR}#g" > ${MODELDIR}/preprocess_mem_new.sh
-              cd ${MODELDIR}
-              chmod +x preprocess_mem_new.sh
-              ./preprocess_mem_new.sh ${e} ${e} > log/forcing_one_${e}.log
+        #   cat ${CWD}/SCRIPTS/preprocess_mem.in |\
+        #      sed "s/YDATE1/${strdate1}/" | sed "s/YDATE2/${strdate2}/" |\
+        #      sed "s#FileDir#${CWD}/FILES#" |\
+        #      sed "s#BINDIR#${BINDIR}#g" > ${MODELDIR}/preprocess_mem_new.sh
+        #      cd ${MODELDIR}
+        #      chmod +x preprocess_mem_new.sh
+        #      ./preprocess_mem_new.sh ${e} ${e} > log/forcing_one_${e}.log
 
            cat ${CWD}/SCRIPTS/sr_ensemble_one.in |\
              sed "s/MEM1/${e}/" |\
