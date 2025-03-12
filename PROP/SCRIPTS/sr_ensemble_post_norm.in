@@ -85,10 +85,9 @@ if [ -s ${Flist1} ]; then
          fi
       done
       wait
-      ml load  NCO/5.1.9-iomkl-2022a
+      source ${IdxDir}/BIN/Betzymodule
       ncrcat ICEDRIFT.${Fpre2}_mem*.nc -O ../data/cice/iceh.${Fpre2}_ens.nc
       rm ICEDRIFT.${Fpre2}_mem???.nc 
-      source ${IdxDir}/BIN/Betzymodule
    done
 fi
 

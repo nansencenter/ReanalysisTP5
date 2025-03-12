@@ -203,14 +203,6 @@ then
            if (( ${nbad} == 0 )); then
 	      echo ""
            fi
-        #   cat ${CWD}/SCRIPTS/preprocess_mem.in |\
-        #      sed "s/YDATE1/${strdate1}/" | sed "s/YDATE2/${strdate2}/" |\
-        #      sed "s#FileDir#${CWD}/FILES#" |\
-        #      sed "s#BINDIR#${BINDIR}#g" > ${MODELDIR}/preprocess_mem_new.sh
-        #      cd ${MODELDIR}
-        #      chmod +x preprocess_mem_new.sh
-        #      ./preprocess_mem_new.sh ${e} ${e} > log/forcing_one_${e}.log
-
            cat ${CWD}/SCRIPTS/sr_ensemble_one.in |\
              sed "s/MEM1/${e}/" |\
              sed "s/MEM2/${e}/" |\
@@ -289,7 +281,6 @@ cat ${CWD}/SCRIPTS/sr_ensemble_post.in |\
     sed "s/JNAME/${year2}_${day_2}/" |\
     sed "s#PROPDIR#${CWD}#g" \
     > sr_hycave_daily.sh
-
 
 
 jobid_ave=`sbatch sr_hycave_daily.sh 1 ${ENSSIZE} | awk '{print $4}'`

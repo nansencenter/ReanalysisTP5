@@ -1,4 +1,4 @@
-JULDAY=26174
+JULDAY=26300
 #!/bin/bash
 
 # parameters common to both propagation and assimilation
@@ -9,11 +9,12 @@ TAPEDIR="/cluster/work/users/xiejp/TP5_Reanalysis"
 BACKUPBUFDIR="${ROOTDIR}/TOBACKUP"
 RESULTSDIR="${ROOTDIR}/RESULTS"
 ANALYSISDIR="${ROOTDIR}/ANALYSIS"
-MODELDIR="/cluster/work/users/xiejp/TOPAZ/TP5a0.06/expt_04.0"
+MODELDIR="/cluster/work/users/xiejp/TP5_test/TP5a0.06/expt_02.0"
 OUTPUTDIR="${ROOTDIR}/OUTPUT"
 NESTINGDIR="${ROOTDIR}/NESTING"
 HYCOMPREFIX="TP5"
 ENSSIZE=100
+IPERT=1
 # assimilation specific parameters
 #
 OBSTYPES=""
@@ -71,5 +72,5 @@ fi
 # IDRFT - ice drift
 # GSAL - in-situ salinity in "glider" format
 # GTEM - in-situ temperature in "glider" format
-JULDAYSTART=26174
+JULDAYSTART=26293
 CWD=/cluster/home/xiejp/REANALYSIS_TP5_spinup/ReanalysisTP5/ASSIM
