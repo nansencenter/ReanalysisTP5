@@ -25,7 +25,7 @@ set -p # nothing is inherited from the shell
 
 JULDAYSTART=`cat JULDAY.txt`
 #((JULDAYEND = 26600)) 
-((JULDAYEND = 26298)) 
+((JULDAYEND = 26307)) 
 
 echo "  JULDAYSTART = ${JULDAYSTART}"
 echo "  JULDAYEND = ${JULDAYEND}"

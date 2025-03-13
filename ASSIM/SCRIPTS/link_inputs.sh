@@ -79,7 +79,7 @@ modeldaily_prefix="${FORECASTDIR}/archm."
 
 for ((i = 0; i <= 6; i++))
 do
-    (( juldaynow = $JULDAY - $i - 1))
+    (( juldaynow = $JULDAY - $i ))
     yearnow=`jultodate $juldaynow 1950 1 1 | cut -c1-4`
    
     Jday=`datetojul $yearnow 1 1 1950 1 1`
@@ -107,6 +107,7 @@ do
     fi
 
     # link the ice snapshot including ice drift
+    (( juldaynow = juldaynow - 1 ))
     Datenow=$(jultodate ${juldaynow} 1950 1 1)
     #Ficesnap=${FORECASTDIR}/cice/ICEDRIFT.${Datenow:0:4}-${Datenow:4:2}-${Datenow:6:2}.nc 
     Ficesnap=${FORECASTDIR}/cice/iceh.${Datenow:0:4}-${Datenow:4:2}-${Datenow:6:2}_ens.nc 

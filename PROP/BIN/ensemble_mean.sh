@@ -91,7 +91,8 @@ N0=$(sed -n '$=' ${Ftemp})
 
 #module load NCO/5.0.3-intel-2021b
 # changed at 7th April
-module load NCO/4.9.7-iomkl-2020a
+#module load NCO/4.9.7-iomkl-2020a
+
 Fmean=out_${Dorder}.nc
 if [ $N0 -gt 1 ]; then
   Fice=$(cat ${Ftemp})

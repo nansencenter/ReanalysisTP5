@@ -7,20 +7,15 @@
 
 #SBATCH -N 5   # number of nodes
 ##SBATCH -n 30   # number of cores in each node 
-## Each compute node has 24 cores (See more details in section Hardware on Sisu User Guide).
 
 ## System message output file
 #SBATCH -o log/HYCICE.JNAME.out
-
 ## System error message file
 #SBATCH -e log/HYCICE.JNAME.err
 
 ## How long job takes, wallclock time hh:mm:ss
-#SBATCH -t 06:00:00
-#SBATCH --exclusive 
-
-#SBATCH  --mail-type=END
-##SBATCH --mail-user=jiping.xie@nersc.no
+#SBATCH -t 01:00:00
+##SBATCH --exclusive 
 
 #set -x
 
@@ -55,19 +50,24 @@ echo "SLURM_SUBMIT_DIR= $SLURM_SUBMIT_DIR "
 # Enter directory from where the job was submitted
 cd $SLURM_SUBMIT_DIR       ||  { echo "Could not go to dir $SLURM_O_WORKDIR  "; exit 1; }
 
-if [ "$1" -gt "-1" -a "$2" -gt "-1" ]; then
-  echo 'mems: ' $1 '~' $2
+
+if [ $# == 3 ]; then
+  mem1=$1
+  mem2=$2
+  Moddate2=$3
+elif [ $# == 2 ]; then
+  mem1=$1
+  mem2=$1
+  Moddate2=$2
+elif [ $# == 1 ]; then
   mem1=MEM1
   mem2=MEM2
-  (( Nens=mem2-mem1+1 ))
-  if [ $# == 3 ]; then
-     echo 'mems: ' $1 '~' $2 ': ' ${Nens} $3
-  else
-     echo 'mems: ' $1 '~' $2 ': ' ${Nens}
-  fi
+  Moddate2=$1
 else
-  exit $? 
+  exit $?
 fi
+(( Nens=mem2-mem1+1 ))
+echo 'mems: ' ${mem1} '~' ${mem2} ': ' ${Nens} ${Moddate2}
 
 
 # the third parameter define the model date2 yyyy_ddd
@@ -89,10 +89,7 @@ for imem in `seq $mem1 $mem2`; do
    echo "Running one member of $?: " $imem
    if [ ${imem} -gt 0 -a -s ${Exdir}/SCRATCH ]; then
       cd ${Exdir}/SCRATCH
-      if [ $# == 3 ]; then
-         Moddate2=$3
-         READYRT=`find ./ -maxdepth 1 -name restart.${Moddate2}_00_0000.a | wc -l`
-      fi
+      READYRT=`find ./ -maxdepth 1 -name restart.${Moddate2}_00_0000.a | wc -l`
       if [ ${READYRT} == 0 ]; then 
          for ii in $(ls PET*LogFile) ; do
             rm $ii
@@ -101,43 +98,11 @@ for imem in `seq $mem1 $mem2`; do
             rm $ii
          done
          [ -r ovrtn_out ] && rm ovrtn_out
-         [ -r KEEP ] && rm KEEP 
          [ -r summary_out ] && rm summary_out 
-         #if [ ${iPert} -gt 1 ]; then
-         #   for ifile in ${Pervars}; do
-         #      rm forcing.${ifile}.[ab]
-         #      ln ../../SCRATCH/forcing.${ifile}.a .
-         #      ln ../../SCRATCH/forcing.${ifile}.b .
-         #   done
-         #   ./force_perturb-2.2 era-i era40
-         #   echo " imem=${imem} replaced ${Pervars} ... "
-         #   for ifile in ${Pervars}; do
-         #      if [ -r tst.forcing.${ifile}.a -a -r tst.forcing.${ifile}.b ]; then
-         #         rm forcing.${ifile}.[ab]
-         #         ln -sf tst.forcing.${ifile}.a forcing.${ifile}.a
-         #         ln -sf tst.forcing.${ifile}.b forcing.${ifile}.b
-         #      fi
-         #   done
-         #   # Perturbation test
-         #   Fdirup='../../SCRATCH/'
-         #   for ifile in ${PervarsTest}; do
-         #      rm forcing.${ifile}.[ab]
-         #      Fraw=${ifile}_${Exdir}
-         #      if [ -r ${Fdirup}${Fraw}.a -a -r ${Fdirup}${Fraw}.b ]; then
-         #         ln -sf ${Fdirup}${Fraw}.a forcing.${ifile}.a
-         #         ln -sf ${Fdirup}${Fraw}.b forcing.${ifile}.b
-         #      else
-         #         echo "Missing the test foring files"
-         #         exit 0
-         #      fi
-         #   done
-         # 
-         #fi
          srun --mpi=pmi2 -N $Ncor -n $NMPI ./hycom_cice  
       fi
       READYRT=`find ./ -maxdepth 1 -name restart.${Moddate2}_00_0000.a | wc -l`
       if [ ${READYRT} != 0 ]; then 
-
          # Must be done under mem???/SCRATCH to run this script
          [ ! -r ../data ] && mkdir ../data
          [ ! -r ../data/cice ] && mkdir ../data/cice

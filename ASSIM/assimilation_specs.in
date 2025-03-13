@@ -49,6 +49,7 @@ fi
 #
 # TSLA - track SLA
 # SST - SST
+# SSS - grid SSS from satellite
 # SAL - in-situ salinity from ARGO
 # TEM - in-situ temperature from ARGO
 # ICEC - ice concentration
