@@ -16,7 +16,7 @@ fi
 ficeh=$1
 Emem=$2
 
-module load NCO/4.9.7-iomkl-2020a
+#module load NCO/4.9.7-iomkl-2020a
 
 if [ ! -s ${ficeh} ]; then
    echo "Missing the input file:" ${ficeh}
