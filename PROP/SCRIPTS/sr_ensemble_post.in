@@ -64,14 +64,40 @@ idaily=1       # calcuate the daily mean from the ensemble
 irestart=1     # rename the restart and iced files in the ensemble
 iclean=1      # rename the restart and iced files in the ensemble switch on/off for debuging
 
-## Step 1: 
+
+cd ${S}
+# check the initial model output
+## Step 0: 
+Flist0=listdaily.hycom
+Flist1=listdaily.cice
+find ../mem???/data/ -maxdepth 1 -name 'archm.????_???_12.a' > ${Flist0}
+find ../mem???/data/cice/ -maxdepth 1 -name 'iceh.????-??-??.nc' > ${Flist1}
+
+# check the initial model output
+Nfore=7
+(( N0 = Nfore * Nens ))
+echo $N0
+N1=$(sed -n "$=" ${Flist0})
+N2=$(sed -n "$=" ${Flist1})
+if [ $N1 -eq $N2 -a $N1 -eq $N0 ]; then
+   echo "All files are available !"
+else
+   [ $N1 -lt $N0 ] && echo "Missing in ${Flist0}"
+   [ $N2 -lt $N0 ] && echo "Missing in ${Flist1}"
+   echo "Please to check all the memble runs!"
+   exit 0
+fi
+
 # initial daily 
+## Step 1: 
 cmem0=mem`echo 00${mem1}|tail -4c`
 cd ${S}
 Flist0=listdaily.hycom
 Flist1=listdaily.cice
-find ../${cmem0}/data/ -maxdepth 1 -name 'archm.*.a' > ${Flist0}
-find ../${cmem0}/data/cice/ -maxdepth 1 -name 'iceh.*-*-*.nc' > ${Flist1}
+find ../${cmem0}/data/ -maxdepth 1 -name 'archm.????_???_12.a' > ${Flist0}
+find ../${cmem0}/data/cice/ -maxdepth 1 -name 'iceh.????-??-??.nc' > ${Flist1}
+
+
 if [ -s ${Flist1} ]; then
    Nl1=$(sed -n '$=' ${Flist1})
    for ii in `seq 1 ${Nl1}`; do
