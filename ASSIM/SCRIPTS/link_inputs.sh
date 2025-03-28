@@ -24,21 +24,12 @@ echo "     day = $day"
 echo "     juldayprev = $juldayprev"
 yearprev=`jultodate $juldayprev 1950 1 1 | cut -c1-4`
 
-#echo "     previous year = $yearprev"
-# it brings some potential issue if dayprev==0
-#(( dayprev = ${juldayprev} - `datetojul $yearprev 1 1 1950 1 1` ))
-#dayprev=`printf "%03d" $dayprev`
-#echo "     previous day = $dayprev"
-
 (( iday = ${JULDAY} ))
 Sdate=$(jultodate ${iday} 1950 1 1)
 Strdate=${Sdate:0:4}-${Sdate:4:2}-${Sdate:6:2}
 
-#forecast_prefix="${FORECASTDIR}/${HYCOMPREFIX}restart${year}_${day}_00"
-#modeldaily_prefix="${FORECASTDIR}/${HYCOMPREFIX}DAILY_${yearprev}_${dayprev}"
 forecast_prefix="${FORECASTDIR}/restart.${year}_${day}_00_0000"
 
-#modeldaily_prefix="${FORECASTDIR}/archm.${yearprev}_${dayprev}"
 # modified in TP5: (the previous date are indicated before 7 days)
 modeldaily_prefix="${FORECASTDIR}/archm."   
 
@@ -84,24 +75,20 @@ do
    
     Jday=`datetojul $yearnow 1 1 1950 1 1`
     if [ ${juldaynow} -eq ${Jday} ]; then
-      daynow=0
+       daynow=`datetojul ${yearnow} 1 1 ${yearprev} 1 1 | tail -4c`
+       (( yearnow = yearnow - 1 ))
     else
-      let daynow=${juldaynow}-${Jday} 
+       let daynow=${juldaynow}-${Jday} 
     fi
-    #(( daynow = ${juldaynow} - `datetojul $yearnow 1 1 1950 1 1` ))
     daynow=`printf "%03d" $daynow`
     if (( `expr match "${OBSTYPES}" TSLA` > 0 ))
     then
         echo 'TSLA or SSH: ' $i
 	Fdaily=${modeldaily_prefix}${yearnow}_${daynow}_12
-        echo ${Fdaily}
-	Fnew=forecast_daily_`echo 0$i|tail -3c`
-	if [ -r ${Fdaily}.a -a -r ${Fdaily}.b ]; then
-           ln  -sf ${Fdaily}.a ${Fnew}.a 
-           ln  -sf ${Fdaily}.b ${Fnew}.b 
-        fi
+        echo ${Fdaily} ${juldaynow} ${Jday}
         # link the concerned daily SSH
 	if [ -r ${Fdaily}_SSH.uf ]; then
+           echo "ln  -sf ${Fdaily}_SSH.uf model_TSSH_`echo 0$i|tail -3c`.uf"
            ln  -sf ${Fdaily}_SSH.uf model_TSSH_`echo 0$i|tail -3c`.uf 
         fi
     fi

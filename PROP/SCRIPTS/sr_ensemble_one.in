@@ -86,7 +86,7 @@ ulimit -s 2000000
 for imem in `seq $mem1 $mem2`; do
    cd $SLURM_SUBMIT_DIR       ||  { echo "Could not go to dir $SLURM_SUBMIT_DIR  "; exit 1; }
    Exdir=mem`echo 00${imem} | tail -4c`
-   echo "Running one member of $?: " $imem
+   echo "Running at ${Exdir}: " $imem
    if [ ${imem} -gt 0 -a -s ${Exdir}/SCRATCH ]; then
       cd ${Exdir}/SCRATCH
       READYRT=`find ./ -maxdepth 1 -name restart.${Moddate2}_00_0000.a | wc -l`

@@ -1,9 +1,9 @@
 #!/bin/bash
 #
 # Project:
-#!SBATCH --account=nn2993k --qos=short
 ##SBATCH --account=nn2993k --qos=devel
-#SBATCH --account=nn2993k --qos=preproc
+##SBATCH --account=nn2993k --qos=preproc
+#SBATCH --account=nn9481k --qos=preproc
 #
 # Job name:
 #SBATCH -J "Nenkf"
