@@ -26,8 +26,8 @@ set -u # exit on unset variables
 Inidir='/cluster/home/xiejp/REANALYSIS_TP5_spinup/ReanalysisTP5/preobs_scripts/Infile2'
 Rundir='/cluster/work/users/xiejp/TP5_Reanalysis/preobs/profile'
 
-Fmal=${Inidir}/do_MYO_profile2024.mal
-Fmal2=${Inidir}/do_MYO_profile.mal
+Fmal=${Inidir}/MYO_profile2024.mal
+Fmal2=${Inidir}/MYO_listprofile.mal
 
 
 cd ${Rundir}
@@ -36,8 +36,8 @@ Jdy2=22000
 Jdy1=20000
 
 
-Jdy1=25500
-Jdy2=27030
+Jdy1=17271
+Jdy2=20000
 
 
 Ncore=12
@@ -111,7 +111,7 @@ for icore in `seq ${Ncore}`; do
       cat ${Fmal2} | sed "s/Jline1/${J1}/" | sed "s#LOGFILE#${Flist}#" | \
           sed "s/Jline2/${J2}/g" > do_${icore}.sh
           chmod +x do_${icore}.sh
-	  ./do_${icore}.sh $(Flist) > out${icore}.log & 
+	  ./do_${icore}.sh ${Flist} > out${icore}.log & 
 
    fi
 

@@ -311,7 +311,8 @@ then
            exit
 	fi
     done
-    status=`cat ${ANALYSISDIR}/enkf_0.out | grep EnKF: | grep -c Finished`
+    #status=`cat ${ANALYSISDIR}/enkf_0.out | grep EnKF: | grep -c Finished`
+    status=`cat ${ANALYSISDIR}/enkf_0.out | grep -a "EnKF: Finished" | sed -n '$='`
     if (( ${status} != ${NPROC} ))
     then
 	echo
