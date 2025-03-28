@@ -1,4 +1,4 @@
-JULDAY=26328
+JULDAY=26755
 #!/bin/bash
 
 # parameters common to both propagation and assimilation
@@ -73,5 +73,5 @@ fi
 # IDRFT - ice drift
 # GSAL - in-situ salinity in "glider" format
 # GTEM - in-situ temperature in "glider" format
-JULDAYSTART=26300
+JULDAYSTART=26755
 CWD=/cluster/home/xiejp/REANALYSIS_TP5_spinup/ReanalysisTP5/ASSIM
