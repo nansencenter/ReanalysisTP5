@@ -2,14 +2,12 @@ import copernicusmarine
 import numpy as np
 
 #copernicusmarine.login()
-# correct the acount information to download data from Copernicus marine data store
+# Correct the acount information to download data from Copernicus marine data store
 USER="XXX";
-UWORD="XXXXX";
-#---------------
-#---------------
+UWORD="XXXXXXXX";
+#=========================
 
-
-YY=2024
+YY=2023
 
 VARs={'SIC':'conc','SST':'sst','SLA':'tsla','PROF':'profile'}
 
@@ -57,7 +55,8 @@ for ivar in VARs.keys():
          Ltname="ice_conc_nh_ease2-250_icdr-v3p0_"+str(YY)+"????1200.nc"
    else:
       # keep it for SLA
-      dataidN="cmems_obs-sl_glo_phy-ssh_nrt_al-l3-duacs_PT1S"  # dt  TSLA
+      dataidN="cmems_obs-sl_glo_phy-ssh_nrt_??-l3-duacs_PT1S"  # nrt-TSLA id varied with satellite as well
+      dataidN="cmems_obs-sl_glo_phy-ssh_my_??-l3-duacs_PT1S"  # dt-TSLA id varied with satellite as well
                                                                # subproductid needed and satellite-based
 
    OUTDIR="./"+VARs[ivar]+"/"+str(YY)
@@ -72,11 +71,12 @@ for ivar in VARs.keys():
       for kk,yrs in datasat.items():
          #print(kk,yrs)
          if YY>=yrs[0] and YY<=yrs[1]+2:
+            dataidN="cmems_obs-sl_glo_phy-ssh_my_"+kk+"-l3-duacs_PT1S"  # dt  TSLA
             print("trying for "+kk+" ...")
             Fsur="dt_global_"+kk+"_phy_l3_"
             Ltname=Fsur+str(YY)+"*_*.nc"
             print(Ltname)
-            get_Yrdata = copernicusmarine.get(dataset_id=datasidN,
+            get_Yrdata = copernicusmarine.get(dataset_id=dataidN,
                 output_directory=OUTDIR, filter=Ltname,force_download=True,
                 no_directories=True,username=USER,password=UWORD)
          else:
