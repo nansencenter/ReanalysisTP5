@@ -2,10 +2,9 @@ import copernicusmarine
 import numpy as np
 
 #copernicusmarine.login()
-# Correct the acount information to download data from Copernicus marine data store
-USER="XXX";
-UWORD="XXXXXXXX";
-#=========================
+# Using the acount information to download data from Copernicus marine data store
+USER="XXXX";
+UWORD="XXXXXXX";
 
 YY=2023
 
@@ -19,8 +18,8 @@ Allsat={"al":[2013,2015], "alg":[2015,2023], "c2":[2010,2020], "c2n":[2020,2023]
         "j2n":[2016,2017], "j3":[2015,2022], "j3n":[2021,2023], "s3a":[2016,2023], "s3b":[2018,2023],
         "s6a":[2021,2023], "tp":[1992,2002], "tpn":[2002,2005]}
 
-Recsat={"alg":[2015,2023], "c2n":[2020,2023], "h2b":[2019,2023],"j3":[2015,2022], 
-         "j3n":[2021,2023], "s3a":[2016,2023], "s3b":[2018,2023]} 
+Recsat={"alg":[2015,2023], "c2n":[2020,2023], "h2b":[2019,2023],"j3":[2015,2022],"j3n":[2021,2023],
+        "s3a":[2016,2023], "s3b":[2018,2023],"swon":[2023,2024],"swonc",[2023,2024],"s6a-lr":[2021,2024]} 
 
 Ltname=""
 for ivar in VARs.keys():
@@ -72,8 +71,10 @@ for ivar in VARs.keys():
          #print(kk,yrs)
          if YY>=yrs[0] and YY<=yrs[1]+2:
             dataidN="cmems_obs-sl_glo_phy-ssh_my_"+kk+"-l3-duacs_PT1S"  # dt  TSLA
-            print("trying for "+kk+" ...")
-            Fsur="dt_global_"+kk+"_phy_l3_"
+            if kk=="s6a-lr":
+               Fsur="dt_global_s6a_lr_phy_l3_1hz_"
+            else:
+               Fsur="dt_global_"+kk+"_phy_l3_1hz_"
             Ltname=Fsur+str(YY)+"*_*.nc"
             print(Ltname)
             get_Yrdata = copernicusmarine.get(dataset_id=dataidN,
