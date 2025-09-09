@@ -78,7 +78,7 @@ for ivar in VARs.keys():
             Ltname=Fsur+str(YY)+"*_*.nc"
             print(Ltname)
             get_Yrdata = copernicusmarine.get(dataset_id=dataidN,
-                output_directory=OUTDIR, filter=Ltname,force_download=True,
+                output_directory=OUTDIR, filter=Ltname,overwrite=True,
                 no_directories=True,username=USER,password=UWORD)
          else:
             print("skipping "+kk+" ...")
@@ -89,7 +89,7 @@ for ivar in VARs.keys():
       print(Ltname)
       print(" ")
       get_Yrdata = copernicusmarine.get(dataset_id=dataidN,
-              output_directory=OUTDIR, filter=Ltname,force_download=True,
+              output_directory=OUTDIR, filter=Ltname,overwrite=True,
               no_directories=True,username=USER,password=UWORD)
 
 
