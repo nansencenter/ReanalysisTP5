@@ -6,9 +6,9 @@ for iy in `seq 2023 2023`; do
 #for iy in `seq 2010 2021`; do
    for im in ${mms}; do
       ymm=${iy}${im}
-      echo "wget -np -L 1 --cut-dirs=100 ${Fstr0}${iy}/${im}/${Fstr2}*${ymm}*_${Fstr3}"
+      echo "wget -np -L 1 --cut-dirs=100 ${Fstr0}${iy}/${im}/${Fstr2}*${ymm}*${Fstr3}"
       #wget -np -L 1 --cut-dirs=100 ${Fstr0}${iy}/${im}/${Fstr2}*${ymm}*_${Fstr3}
-      wget ${Fstr0}${iy}/${im}/${Fstr2}*${ymm}*_${Fstr3}
+      wget ${Fstr0}${iy}/${im}/${Fstr2}*${ymm}*${Fstr3}
       
 
 
