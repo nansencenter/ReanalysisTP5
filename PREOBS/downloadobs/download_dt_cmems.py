@@ -17,7 +17,6 @@ Allsat={"al":[2013,2015], "alg":[2015,2023], "c2":[2010,2020], "c2n":[2020,2023]
         "j1":[2002,2008], "j1g":[2012,2013], "j1n":[2009,2012], "j2":[2008,2016], "j2g":[2017,2017],
         "j2n":[2016,2017], "j3":[2015,2022], "j3n":[2021,2023], "s3a":[2016,2023], "s3b":[2018,2023],
         "s6a":[2021,2023], "tp":[1992,2002], "tpn":[2002,2005]}
-
 Recsat={"alg":[2015,2023], "c2n":[2020,2023], "h2b":[2019,2023],"j3":[2015,2022],"j3n":[2021,2023],
         "s3a":[2016,2023], "s3b":[2018,2023],"swon":[2023,2024],"swonc":[2023,2024],"s6a-lr":[2021,2024]} 
 
@@ -32,16 +31,21 @@ for ivar in VARs.keys():
    elif ivar=='SST':
       dataidN="METOFFICE-GLO-SST-L4-NRT-OBS-SST-V2"            # dt SST
                                                                # subproductid needed and yearly-based
-      if YY>2022:
+      if YY>2024:
          dataidN = "METOFFICE-GLO-SST-L4-NRT-OBS-SST-V2" 
          Fsur    = "????120000-UKMO-L4_GHRSST-SSTfnd-OSTIA-GLOB-v02.0-fv02.0.nc"
       elif YY>2016:
          dataidN = "C3S-GLO-SST-L4-REP-OBS-SST"  
-         Fsur    = "????120000-C3S-L4_GHRSST-SSTdepth-OSTIA-GLOB_ICDR2.1-v02.0-fv01.0.nc"
+         #Fsur    = "????120000-C3S-L4_GHRSST-SSTdepth-OSTIA-GLOB_ICDR2.1-v02.0-fv01.0.nc"
+         if YY>2021:
+            Fsur    = "????120000-C3S2-L4_GHRSST-SSTdepth-ISTskin-DMIOI-GLOB_ICDR1.0-v02.0-fv01.0.nc"
+         else:
+            Fsur    = "????120000-C3S2-L4_GHRSST-SSTdepth-ISTskin-DMIOI-GLOB_CDR1.0-v02.0-fv01.0.nc"
       else:
          dataidN = "ESACCI-GLO-SST-L4-REP-OBS-SST"  
          Fsur    = "????120000-ESACCI-L4_GHRSST-SSTdepth-OSTIA-GLOB_CDR2.1-v02.0-fv01.0.nc"
       Ltname  = str(YY)+Fsur
+
 
    elif ivar=='SIC':
       dataidN="SEAICE_GLO_SEAICE_L4_REP_OBSERVATIONS_011_009"  # dt SIC
@@ -60,7 +64,7 @@ for ivar in VARs.keys():
 
    OUTDIR="./"+VARs[ivar]+"/"+str(YY)
    print("")
-# Call the get function to save data
+   # Call the get function to save data
    if ivar=='SLA':
       if YY>2022:
          datasat=Recsat
