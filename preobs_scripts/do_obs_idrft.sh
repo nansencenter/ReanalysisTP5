@@ -11,17 +11,17 @@ ln -sf ${Mdir}/re_sla.nc .
 Idir=/cluster/home/xiejp/REANALYSIS_TP5/preobs_scripts/Infile/
 
 Odir0=/cluster/work/users/xiejp/DATA/data0/idrft
-Odir=/cluster/work/users/xiejp/work_2023/Data_TP5/IDRFT
-if [ ! -s ${Odir} ]; then
-  mkdir ${Odir}
+Outdir=/cluster/work/users/xiejp/work_2024/Data_TP5/IDRFT
+if [ ! -s ${Outdir} ]; then
+  mkdir ${Outdir}
 fi
 
 if [ ! -s ./prep_obs ]; then
   ln -sf /cluster/home/xiejp/enkf/EnKF-MPI-TOPAZ/Prep_Fram/prep_obs .
 fi
 
-Jdy0=25700
-Jdy1=26700
+Jdy0=15630
+Jdy1=27570
 
 
 for Jdy in `seq ${Jdy0} ${Jdy1}`; do
@@ -32,28 +32,35 @@ for Jdy in `seq ${Jdy0} ${Jdy1}`; do
 
   for ii in `seq 1 5`; do
     let j_dy2=Jdy-ii
-    let j_dy1=j_dy2-2
     sday1=$(jultodate ${j_dy1} 1950 1 1)
-    sday2=$(jultodate ${j_dy2} 1950 1 1)
-    #Fnc=ice_drift_nh_polstere-625_multi-oi_${sday1}1200-${sday2}1200.nc
-    Fnc=ice_drift_nh_polstere-625_multi-oi_${sday2}1200.nc
+    [ -s idrft_osisaf.hdr ] && rm idrft_osisaf.hdr
+    if [ $Ny -gt 2009 ]; then
+       let j_dy1=j_dy2-2  # 2 days drift observation:
+       sday2=$(jultodate ${j_dy2} 1950 1 1)
+       Fnc=${sday2:0:4}/ice_drift_nh_polstere-625_multi-oi_${sday2}1200.nc
+       ln -sf ${Idir}/idrft_osisaf.hdr .
+    else                  # 24h drift observation:
+       let j_dy1=j_dy2-1
+       sday2=$(jultodate ${j_dy2} 1950 1 1)
+       Fnc=${sday2:0:4}/ice_drift_nh_ease2-750_cdr-v1p0_24h-${sday2}1200.nc
+       ln -sf ${Idir}/idrft_osisaf_24h.hdr idrft_osisaf.hdr 
+    fi
 
     if [ -s ${Odir0}/${Fnc} ]; then
       sed "s/JULDDATE/${Jdy}/" ${Idir}/infile.data_idrft_osisaf | sed "s/idrfS/idrf${ii}/" > infile.data
-      ln -sf ${Idir}/idrft_osisaf.hdr .
       ln -sf ${Odir0}/${Fnc} ${Jdy}_idrft.nc
       Ffix=${ii}_${Jdy}
       echo ${Fnc} ${Ffix}
-      if [ ! -s ${Odir}/obs_IDRFT${Ffix}.uf ]; then
+      if [ ! -s ${Outdir}/obs_IDRFT${Ffix}.uf ]; then
         ./prep_obs
         if [ -s observations.uf ]; then
-          mv observations.uf ${Odir}/obs_IDRFT${Ffix}.uf
-          mv observations-DX${ii}.nc ${Odir}/obs_DX${Ffix}.nc
-          mv observations-DY${ii}.nc ${Odir}/obs_DY${Ffix}.nc
+          mv observations.uf ${Outdir}/obs_IDRFT${Ffix}.uf
+          mv observations-DX${ii}.nc ${Outdir}/obs_DX${Ffix}.nc
+          mv observations-DY${ii}.nc ${Outdir}/obs_DY${Ffix}.nc
         fi 
      fi
 
-      rm ${Jdy}_idrft.nc
+    #  rm ${Jdy}_idrft.nc
     fi
   done  # end cycle in one date
 done

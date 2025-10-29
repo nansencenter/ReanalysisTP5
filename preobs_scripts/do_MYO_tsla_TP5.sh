@@ -12,39 +12,38 @@ if [ ! -s ./prep_obs ]; then
   ln -sf /cluster/home/xiejp/enkf/EnKF-MPI-TOPAZ/Prep_Fram/prep_obs .
 else
   rm ./prep_obs
-  ln -sf /cluster/home/xiejp/enkf/EnKF-MPI-TOPAZ/Prep_Fram/prep_obs_Rio prep_obs
+  ln -sf /cluster/home/xiejp/enkf/EnKF-MPI-TOPAZ/Prep_Fram/prep_obs prep_obs
 fi
 
 Idir=/cluster/home/xiejp/REANALYSIS_TP5/preobs_scripts/Infile/
 
-Odir0=./weekly
-Odir2=./nrt_weekly
+Odir_dt=./weekly
+Odir_nrt=./nrt_weekly
 
-Pobsdir=/cluster/work/users/xiejp/work_2023/Data_TP5/TSLA
+Pobsdir=/cluster/work/users/xiejp/work_2024/Data_TP5/TSLA
 if [ ! -s ${Pobsdir} ]; then
   mkdir ${Pobsdir}
 fi
 
 
-Jdy0=25700
-Jdy1=25720
-Jdy1=26700
+Jdy0=15650
+Jdy1=27331
 
-
-# reprocess for the satellites in 2022:
-Satsall2022="al alg c2 c2n e1 e1g e2 en enn g2 h2a h2ag h2b j1 j1g j1n j2 j2g j2n j3 s3a s3b tp tpn"
 
 #Satn="al alg c2 c2n e2 en enn g2 h2a h2ag h2b j2 j2g j2n j3 s3a s3b"
 Satn="al alg c2 c2n h2 h2b h2c h2g h2ag j2 j2g j2n j3 j3n s3a s3b s6b"
+
+# Full tsla data
+Satn="al alg c2 c2n e1 e1g e2 en enn g2 h2 h2a h2b h2c h2g h2ag j1 j1g j1n j2 j2g j2n j3 j3n s3a s3b s6a swon swonc s6a tp tpn"
 
 
 for jday in `seq ${Jdy0} ${Jdy1}`; do
   rm observations*
   rm observations*
-  if [ ${jday} -gt 26478 ]; then
-     Odir=${Odir2} 
+  if [ ${jday} -gt 27360 ]; then
+     Odir=${Odir_nrt} 
   else
-     Odir=${Odir0} 
+     Odir=${Odir_dt} 
   fi
   if [ ! -s ${Pobsdir}/obs_TSLA_${jday}.nc -o ! -s ${Pobsdir}/obs_TSLA_${jday}.uf ]; then
      ifile=0

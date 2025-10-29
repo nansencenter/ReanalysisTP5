@@ -10,22 +10,23 @@ ln -sf ${Mdir}/newpos.uf .
 # linking the performed program and infile
 Idir=/cluster/home/xiejp/REANALYSIS_TP5_spinup/ReanalysisTP5/preobs_scripts/Infile/
 
+check_prg=${Idir}/check_ncfile.py
 
 if [ ! -s ./prep_obs_profile ]; then
   ln -sf /cluster/home/xiejp/enkf/EnKF-MPI-TOPAZ/Prep_Fram/prep_obs prep_obs_profile 
 fi
 
-Odir0=/cluster/work/users/xiejp/DATA/data0/profile
-Odir2=/cluster/work/users/xiejp/ARC_MFC/downobs_nrt
-Odir=/cluster/work/users/xiejp/work_2024/Data_TP5/TSprofile
+Odir_dt=/cluster/work/users/xiejp/DATA/data0/profile
+Odir_dt2=/cluster/work/users/xiejp/DATA/data0/profile/Arc
+Odir_nrt=/cluster/work/users/xiejp/ARC_MFC/downobs_nrt
+Outdir=/cluster/work/users/xiejp/work_2024/Data_TP5/TSprofile
 
-
-if [ ! -s ${Odir} ]; then
-  mkdir ${Odir}
+if [ ! -s ${Outdir} ]; then
+  mkdir ${Outdir}
 fi
 for ity in SAL TEM ; do
-  if [ ! -s ${Odir}/${ity} ]; then
-    mkdir ${Odir}/${ity}
+  if [ ! -s ${Outdir}/${ity} ]; then
+    mkdir ${Outdir}/${ity}
   fi
 done
 
@@ -35,13 +36,19 @@ Tmix=1          # try to find the combined profiles
 
 ulimit -s 2000000
 
-Jdy0=Jdate1
-Jdy1=Jdate2
+Flist="LOGFILE"
+if [ ! -s ${Flist} ] ; then
+   echo "Missing the list file ${Flist}"
+   exit 0
+fi
+Jdy0=Jline1
+Jdy1=Jline2
 
-for Jdy in `seq ${Jdy0} ${Jdy1}`; do
-  Fobs=${Odir}/TEM/obs_TEM_${Jdy}.nc
+for Jline in `seq ${Jdy0} ${Jdy1}`; do
+  Jdy=$(sed -n "${Jline}p" ${Flist})
+  Fobs=${Outdir}/TEM/obs_TEM_${Jdy}.nc
   echo ${Fobs}
-  if [ ! -s ${Fobs} -o ! -s ${Odir}/SAL/obs_SAL_${Jdy}.nc ]; then
+  if [ ! -s ${Fobs} -o ! -s ${Outdir}/SAL/obs_SAL_${Jdy}.nc ]; then
     rm P*.nc T*.nc infile.data0 infiles.txt
     i0=0
     for idy in `seq 0 6`; do
@@ -50,37 +57,46 @@ for Jdy in `seq ${Jdy0} ${Jdy1}`; do
         Ndate=$(jultodate ${Ndy} 1950 1 1);
         # divided into two branchs:
         # firtly check the delayed model profiles:
-        Fnam=${Odir0}/${Ndate:0:4}/CO_DMQCGL01_${Ndate}_*.nc
+        Fnam=${Odir_dt}/${Ndate:0:4}/CO_DMQCGL01_${Ndate}_*.nc
         aa=`ls ${Fnam} | sed -n '$='`
+
+        #Fnam2=${Odir_nrt}/nrt_${Ndate:0:4}/CO_NRT_${Ndate}_*.nc
+        Fnam2=${Odir_dt2}/${Ndate:0:4}/CO_DMQCGL01_${Ndate}_*.nc
+        bb=`ls ${Fnam2} | sed -n '$='`
+
         if [[ ${aa} -gt 0 ]]; then
            for ifile in $(ls ${Fnam}); do
-              jfile=${ifile#${Odir0}/${Ndate:0:4}/CO_DMQCGL01_${Ndate}_}
-              let i0=i0+1
-              Fnew=${jfile:0:1}`echo 00${i0}|tail -4c`.nc
-              ln -sf ${ifile} ${Fnew} 
-              if [ ${i0} -eq 1 ]; then
-                 Sline=${Fnew}
-              else
-                 Sline=$(echo ${Sline} ${Fnew})
+              jj=$(python ${check_prg} ${ifile} 2>&1) 
+              if [ $jj -eq 1 ]; then
+                 jfile=${ifile#${Odir_dt}/${Ndate:0:4}/CO_DMQCGL01_${Ndate}_}
+                 let i0=i0+1
+                 Fnew=${jfile:0:1}`echo 00${i0}|tail -4c`.nc
+                 ln -sf ${ifile} ${Fnew} 
+                 if [ ${i0} -eq 1 ]; then
+                    Sline=${Fnew}
+                 else
+                    Sline=$(echo ${Sline} ${Fnew})
+                 fi
               fi
            done
+        fi
         # extending by nrt profiles 
-        else  
-           Fnam2=${Odir2}/nrt_${Ndate:0:4}/CO_NRT_${Ndate}_*.nc
-           bb=`ls ${Fnam2} | sed -n '$='`
-           if [[ ${bb} -gt 0 ]]; then
-              for ifile in $(ls ${Fnam2}); do
-                 jfile=${ifile#${Odir2}/nrt_${Ndate:0:4}/CO_NRT_${Ndate}_}
-                 let i0=i0+1
+        if [[ ${bb} -gt 0 ]]; then
+           for ifile in $(ls ${Fnam2}); do
+              jj=$(python ${check_prg} ${ifile} 2>&1) 
+              if [ $jj -eq 1 ]; then
+                 #jfile=${ifile#${Odir_nrt}/nrt_${Ndate:0:4}/CO_NRT_${Ndate}_}
+                 jfile=${ifile#${Odir_dt2}/${Ndate:0:4}/CO_DMQCGL01_${Ndate}_}
                  Fnew2=${jfile:0:1}`echo 00${i0}|tail -4c`.nc
                  ln -sf ${ifile} ${Fnew2} 
+                 let i0=i0+1
                  if [ ${i0} -eq 1 ]; then
                     Sline=${Fnew2}
                  else
                     Sline=$(echo ${Sline} ${Fnew2})
                  fi
-              done
-           fi
+              fi
+           done
         fi
       fi
     done
@@ -93,7 +109,7 @@ for Jdy in `seq ${Jdy0} ${Jdy1}`; do
 
        # deal with SAL and TEM respectively 
        for otype in SAL TEM ; do
-          if [ ! -s ${Odir}/${otype}/obs_${otype}_${Jdy}.nc ]; then
+          if [ ! -s ${Outdir}/${otype}/obs_${otype}_${Jdy}.nc ]; then
              if [ ${otype}x = "SAL"x ]; then
                 var=0.02
              elif [ ${otype}x = "TEM"x ]; then
@@ -103,17 +119,17 @@ for Jdy in `seq ${Jdy0} ${Jdy1}`; do
 
              ./prep_obs_profile
              if [ -s observations-${otype}.nc -a observations.uf ]; then
-                mv observations-${otype}.nc ${Odir}/${otype}/obs_${otype}_${Jdy}.nc
-                mv observations.uf ${Odir}/${otype}/obs_${otype}_${Jdy}.uf
+                mv observations-${otype}.nc ${Outdir}/${otype}/obs_${otype}_${Jdy}.nc
+                mv observations.uf ${Outdir}/${otype}/obs_${otype}_${Jdy}.uf
              fi 
              if [ ${Tblist} -eq 1 ]; then
                 for bfile in Blacklist_Prof_QC observations_info AfterQC-${otype} ; do
                    if [ -s ${bfile}.nc ]; then
-                      mv ${bfile}.nc ${Odir}/${otype}/${bfile}-${Jdy}.nc  
+                      mv ${bfile}.nc ${Outdir}/${otype}/${bfile}-${Jdy}.nc  
                    elif [ -s ${bfile}.uf ]; then
-                      mv ${bfile}.uf ${Odir}/${otype}/${bfile}-${Jdy}.uf  
+                      mv ${bfile}.uf ${Outdir}/${otype}/${bfile}-${Jdy}.uf  
                    elif [ -s ${bfile}.txt ]; then
-                      mv ${bfile}.txt ${Odir}/${otype}/${bfile}-${Jdy}.txt  
+                      mv ${bfile}.txt ${Outdir}/${otype}/${bfile}-${Jdy}.txt  
                    fi
                 done
              fi

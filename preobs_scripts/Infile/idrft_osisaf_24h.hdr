@@ -1,0 +1,5 @@
+idrft               ! Ice drift -- OSISAF 
+irr                 ! reg | irr (regular grid or irregular data points?)
+(3f9.3)             ! Data file format (lat lon data)
+999.9  1.00 25.0   ! undef, scale, error variance (testing medium values)
+41472               ! irregular 2*nx*ny for two vector components

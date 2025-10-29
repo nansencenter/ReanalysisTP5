@@ -4,11 +4,12 @@
 #
 ##SBATCH -A nn2993k --qos=devel 
 #SBATCH -A nn2993k --qos=preproc 
+##SBATCH -A nn9481k --qos=preproc 
 #
-#SBATCH -J profweekly
+#SBATCH -J pfweekly
 #SBATCH --exclusive
-#SBATCH --ntasks=12 --cpus-per-task=1
-#SBATCH --mem-per-cpu=6000M
+#SBATCH --ntasks=13 --cpus-per-task=1
+#SBATCH --mem-per-cpu=5000M
 
 #SBATCH -o /cluster/work/users/xiejp/TP5_Reanalysis/preobs/profile/ARC_%J.out   #Standard output and error log
 #SBATCH -e /cluster/work/users/xiejp/TP5_Reanalysis/preobs/profile/ARC_%J.err
@@ -26,21 +27,19 @@ set -u # exit on unset variables
 Inidir='/cluster/home/xiejp/REANALYSIS_TP5_spinup/ReanalysisTP5/preobs_scripts/Infile2'
 Rundir='/cluster/work/users/xiejp/TP5_Reanalysis/preobs/profile'
 
-Fmal=${Inidir}/MYO_profile2024.mal
-Fmal2=${Inidir}/MYO_listprofile.mal
+Fmal=${Inidir}/MYO_prof.mod1
+Fmal2=${Inidir}/MYO_prof.mod2
 
 
 cd ${Rundir}
 
-Jdy2=22000
-Jdy1=20000
 
+Jdy1=15650
+Jdy2=24000
+Jdy1=27000
+Jdy2=27300
 
-Jdy1=17271
-Jdy2=20000
-
-
-Ncore=12
+Ncore=13
 (( Delt = ${Jdy2} - ${Jdy1} ))
 if [ ${Delt} -lt ${Ncore} ]; then
    Ncore=${Delt}
@@ -49,7 +48,7 @@ fi
 if [ $# -gt 0 ]; then
    # dynamic search the job list
    # check the accessibility under the final direcotry which used in *.mal
-   Foutdir=$(sed -n 's/Odir=//p' ${Fmal})
+   Foutdir=$(sed -n 's/Outdir=//p' ${Fmal})
    echo ${Foutdir}
 
    Flist="list.log"
@@ -82,7 +81,7 @@ echo $Ncore '~' $Nmem
 
 for icore in `seq ${Ncore}`; do
    cd ${Rundir}
-   Fsub=Prof_${icore}
+   Fsub=P${Jdy1}_${icore}
    [ -r ${Fsub} ] && rm -rf ${Fsub}
    mkdir ${Fsub}
    if [ ${Nfile} -eq 0 ]; then
