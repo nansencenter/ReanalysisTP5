@@ -185,8 +185,8 @@
 &icefields_nml
     f_tmask        = .false.
   , f_blkmask      = .false.
-  , f_tarea        = .false.
-  , f_uarea        = .false.
+  , f_tarea        = .true.
+  , f_uarea        = .true.
   , f_dxt          = .false.
   , f_dyt          = .false.
   , f_dxu          = .false.
@@ -229,9 +229,9 @@
   , f_alidr        = 'x'
   , f_alvdf        = 'x'
   , f_alidf        = 'x'
-  , f_albice       = 'x'
-  , f_albsno       = 'x'
-  , f_albpnd       = 'x'
+  , f_albice       = 'd'
+  , f_albsno       = 'd'
+  , f_albpnd       = 'd'
   , f_coszen       = 'x'
   , f_flat         = 'x' 
   , f_flat_ai      = 'x' 
@@ -289,11 +289,11 @@
   , f_hisnap       = 'd'
   , f_aisnap       = 'd'
   , f_trsig        = 'x'
-  , f_icepresent   = 'x'
-  , f_iage         = 'd'
-  , f_FY           = 'd'
-  , f_aicen        = 'd'
-  , f_vicen        = 'd'
+  , f_icepresent   = 'd'
+  , f_iage         = 'x'
+  , f_FY           = 'x'
+  , f_aicen        = 'x'
+  , f_vicen        = 'x'
   , f_vsnon        = 'x'
   , f_keffn_top    = 'x'
   , f_Tinz         = 'x'
@@ -332,14 +332,14 @@
     f_apondn       = 'x'
   , f_apeffn       = 'x'
   , f_hpondn       = 'x'
-  , f_apond        = 'x'
-  , f_hpond        = 'x'
-  , f_ipond        = 'x'
-  , f_apeff        = 'x'
-  , f_apond_ai     = 'x'
-  , f_hpond_ai     = 'x'
-  , f_ipond_ai     = 'x'
-  , f_apeff_ai     = 'x'
+  , f_apond        = 'm'
+  , f_hpond        = 'm'
+  , f_ipond        = 'm'
+  , f_apeff        = 'm'
+  , f_apond_ai     = 'm'
+  , f_hpond_ai     = 'm'
+  , f_ipond_ai     = 'm'
+  , f_apeff_ai     = 'm'
 /
 
 &icefields_bgc_nml
@@ -369,8 +369,8 @@
   , f_bgc_DMSP_ml  = 'x'
   , f_bTin         = 'x'
   , f_bphi         = 'x' 
-  , f_fbri         = 'x'    
-  , f_hbri         = 'x'
+  , f_fbri         = 'm'    
+  , f_hbri         = 'm'
   , f_grownet      = 'x'
   , f_PPnet        = 'x'
 /
@@ -385,3 +385,5 @@
     cice_para      = .false. 
     para_file      = './cice/para_init.nc'
 /
+
+

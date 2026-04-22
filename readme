@@ -1,3 +1,14 @@
 This repository contains the source code necessary to run the assimilation system including the model runing job and the EnKF assimilation to correcte the model initial conditions.
+
+
 It should be supported by other additional routines like the coupled HYCOM-CICE model developed at NERSC and the enkf code.
+
+# Modifications
+
+# 1)  introduce four ice parameters with random perturbation used in the TP5 reanalysis
+# 2)  including the ML-based SIT observations in winter month before 2010.
+# 3)  Increased the localization radisu from 200 km to 250 km after April 2000 in the TP5 reanalysis.
+#     updated in spring of 2026 by JX on 22th April.
+
+
 

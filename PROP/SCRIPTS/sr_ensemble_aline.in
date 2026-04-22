@@ -1,11 +1,11 @@
 #!/bin/bash -l
 
-##SBATCH --account=nn9481k 
-#SBATCH --account=nn2993k 
+#SBATCH --account=nn9481k 
+##SBATCH --account=nn2993k 
 
 #SBATCH -J  T04BJNAME
 
-#SBATCH -N 5   # number of nodes
+#SBATCH -N 4   # number of nodes
 ##SBATCH -n 30   # number of cores in each node 
 ## Each compute node has 24 cores (See more details in section Hardware on Sisu User Guide).
 
@@ -17,7 +17,8 @@
 
 ## How long job takes, wallclock time hh:mm:ss
 #SBATCH -t 4:00:00
-#SBATCH --exclusive 
+##SBATCH --mem-per-cpu=3G
+##SBATCH --exclusive 
 
 #SBATCH  --mail-type=END
 ##SBATCH --mail-user=jiping.xie@nersc.no
@@ -33,6 +34,9 @@ export NMPI=319
 ## On Betzy:
 export Ncor=5
 export NMPI=636
+
+export Ncor=4
+export NMPI=511
 
 export SLURM_SUBMIT_DIR=$(pwd)
 

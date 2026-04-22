@@ -1,13 +1,16 @@
 #!/bin/bash -l
 #
 # Project:
-#SBATCH --account=nn2993k --qos=devel
+#SBATCH --account=nn2993k --qos=preproc
 #
 # Job name:
 #SBATCH -J "en_post"
 #
 #SBATCH -N 1 
-#SBATCH --exclusive
+##SBATCH --exclusive
+#SBATCH --ntasks=100 --cpus-per-task=1
+#SBATCH --mem-per-cpu=3G
+#
 # Wall clock limit:
 #SBATCH -t 01:00:00
 #
@@ -59,7 +62,7 @@ fi
 
 istep=0
 if [ ${istep} -eq 0 ]; then
-   Nbin=50
+   Nbin=100
    (( NN = ($ENSSIZE - 1 ) / $Nbin + 1 ))
    for icycl in `seq 1 ${NN}`; do
       for ipre in `seq 1 ${Nbin}`; do
@@ -70,7 +73,7 @@ if [ ${istep} -eq 0 ]; then
             #
             if [ ! -f "analysis${mem}.a" ]
             then
-               echo "ERROR: EnKF_assemble.sh failed for member ${e}"
+               echo "ERROR: EnKF_assemble.sh failed for member ${mem}"
                exit 1;
             else
                echo "fixhycom analysis${mem}.a ${imem} forecast${mem}.nc ice_forecast${mem}.nc ${Modday} ${Hflag}"
@@ -123,7 +126,7 @@ for icycl in `seq 1 ${NN}`; do
          mem=`printf "%03d\n" $imem`
          if [ ! -f "fixanalysis${mem}.a" ]
          then
-            echo "ERROR: fixhycom failed for member ${e}"
+            echo "ERROR: fixhycom failed for member ${mem}"
             exit 1;
          else
             if [ -s tmp${mem}.b ]; then
@@ -143,6 +146,8 @@ for icycl in `seq 1 ${NN}`; do
    wait
    sleep 1
 done
+wait
+sleep 1
 
 # double check all the member files are ready
 istep=1
@@ -179,19 +184,11 @@ sleep 1
 if [ -s fixanalysis.nc ]; then
    mv fixanalysis001.nc ${RESULTSDIR}/${JULDAY}/ANALYSIS/analysis001.nc 
    mv fixanalysis.nc ${RESULTSDIR}/${JULDAY}/ANALYSIS/analysis.nc 
-   [-s bfix_forecast001.nc ] && mv bfix_forecast001.nc ${RESULTSDIR}/${JULDAY}/ANALYSIS/.
+   [ -s bfix_forecast001.nc ] && mv bfix_forecast001.nc ${RESULTSDIR}/${JULDAY}/ANALYSIS/.
 fi
 if [ -s fix_ice_forecast.nc ]; then
    cp fix_ice_forecast001.nc ${RESULTSDIR}/${JULDAY}/ANALYSIS/ice_analysis001.nc 
    mv fix_ice_forecast.nc ${RESULTSDIR}/${JULDAY}/ANALYSIS/ice_analysis.nc 
 fi
-
-
-
-
-
-
-
-
 
 echo "FINISHED (postprocess)" 

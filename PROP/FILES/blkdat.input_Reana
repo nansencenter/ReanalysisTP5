@@ -3,7 +3,7 @@ Sigma0; GDEM3 init; KPP mixed layer; SeaWiFS mon KPAR; nested in ATLd0.08 2.6;
 S-Z(15-11): dp00/f/x/i=3m/1.125/12m/1m; ds=1m/1.125/4m; src_2.2.12;
 12345678901234567890123456789012345678901234567890123456789012345678901234567890
   22	  'iversn' = hycom version number x10
- 040	  'iexpt ' = experiment number x10
+ 020	  'iexpt ' = experiment number x10
  800	  'idm   ' = longitudinal array size
  760	  'jdm   ' = latitudinal  array size
  -1	  'itest ' = grid point where detailed diagnostics are desired
@@ -88,7 +88,7 @@ S-Z(15-11): dp00/f/x/i=3m/1.125/12m/1m; ds=1m/1.125/4m; src_2.2.12;
   -1.0	  'bnstfq' = number of days between baro nesting archive input
   -1.0	  'nestfq' = number of days between 3-d  nesting archive input
   -24     'cplifq' = number of days (or time steps) between sea ice coupling
-600.0	  'baclin' = baroclinic time step (seconds), int. divisor of 86400
+300.0	  'baclin' = baroclinic time step (seconds), int. divisor of 86400
  15.0	  'batrop' = barotropic time step (seconds), int. div. of baclin/2
    0	  'incflg' = incremental update flag (0=no, 1=yes, 2=full-velocity)
  100	  'incstp' = no. timesteps for full update (1=direct insertion)
@@ -155,12 +155,12 @@ S-Z(15-11): dp00/f/x/i=3m/1.125/12m/1m; ds=1m/1.125/4m; src_2.2.12;
 1200.0	  'bldmax' = K-PROF:  maximum surface boundary layer thickness (m)
    0.7	  'cekman' = KPP/KT:  scale factor for Ekman depth
    1.0	  'cmonob' = KPP:     scale factor for Monin-Obukov depth
-   0	  'bblkpp' = KPP:     activate bottom boundary layer    (0=F,1=T)
+   1	  'bblkpp' = KPP:     activate bottom boundary layer    (0=F,1=T)
    1	  'shinst' = KPP:     activate shear instability mixing (0=F,1=T)
    1	  'dbdiff' = KPP:     activate double diffusion  mixing (0=F,1=T)
    1	  'nonloc' = KPP:     activate nonlocal b. layer mixing (0=F,1=T)
    0	  'botdiw' = K-PROF:  activate bot.enhan.int.wav mixing (0=F,1=T)
-   1	  'difout' = K-PROF:  output visc/diff coffs in archive (0=F,1=T)
+   0	  'difout' = K-PROF:  output visc/diff coffs in archive (0=F,1=T)
    0	  'difsmo' = K-PROF:  number of layers with horiz smooth diff coeffs
   50.e-4  'difm0 ' = KPP:     max viscosity   due to shear instability (m**2/s)
   50.e-4  'difs0 ' = KPP:     max diffusivity due to shear instability (m**2/s)
@@ -212,7 +212,7 @@ S-Z(15-11): dp00/f/x/i=3m/1.125/12m/1m; ds=1m/1.125/4m; src_2.2.12;
    0      'flxsmo' = smooth surface fluxes                (0=F,1=T)
    0	  'relax ' = activate lateral boundary nudging    (0=F,1=T)
    0	  'trcrlx' = activate lat. bound. tracer nudging  (0=F,1=T)
-   1	  'priver' = rivers as a precipitation bogas      (0=F,1=T)
+   0	  'priver' = rivers as a precipitation bogas      (0=F,1=T)
    0      'epmass' = treat evap-precip as a mass exchange (0=F,1=T)
    0      'nmrsti' = 'restart'  Restart filename. Dot and date appended. Empty: use old hycom name.
    0      'nmrsto' = 'restart'  Restart filename. Dot and date appended. Empty: use old hycom name.

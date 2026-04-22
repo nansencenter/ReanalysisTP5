@@ -5,14 +5,15 @@ if (( $JULDAY >= 23019 )); then
     OBSTYPES="TSLA SST TEM SAL ICEC IDRFT HICE SSS"
 #    OBSTYPES="ICEC SST"
 #    OBSTYPES="TSLA SST TEM SAL ICEC"
-elif (( $JULDAY >= 22239 )); then
-    OBSTYPES="TSLA SST TEM SAL ICEC HICE"
-#    OBSTYPES="TSLA SST TEM SAL ICEC IDRFT HICE"
+#elif (( $JULDAY >= 22239 )); then
+else
+    OBSTYPES="TSLA SST TEM SAL ICEC IDRFT HICE"
 #    OBSTYPES="TSLA SST TEM SAL ICEC IDRFT HICE SKIM"
     #OBSTYPES="TSLA SST TEM GTEM SAL GSAL ICEC IDRFT"
 fi
 
 NPROC=72    # number of processors engaged in the EnKF analysis
+NPROC=50   # number of processors engaged in the EnKF analysis
 
 # do not edit below unless you have to
 #
@@ -29,7 +30,7 @@ Obslink=/cluster/work/users/xiejp/work_2018/Data
 if [ ${OBSREADY} == 1 ]; then
  Tdir=$(pwd)
  cd ${OBSDIR}
- Obslink=/cluster/work/users/xiejp/TP2_Reanalysis/DATA
+ Obslink=/cluster/work/users/xiejp/work_2024/Data_TP5
  o=0
  for obsty in ${OBSTYPES} ; do
    if [ -r ${obsty} ]; then

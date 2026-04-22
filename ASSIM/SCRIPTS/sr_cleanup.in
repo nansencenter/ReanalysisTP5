@@ -7,7 +7,7 @@
 #SBATCH -J "en_cln"
 #
 #SBATCH -N 1 
-#SBATCH --exclusive
+##SBATCH --exclusive
 #
 # Wall clock limit
 #SBATCH -t 00:30:00
@@ -73,13 +73,24 @@ then
           cp ${target} ${BACKUPBUFDIR}/ANALYSIS
        fi
 
-
        # second step: in CICE
        target=`readlink -e ${ANALYSISDIR}/ice_forecast${mem}.nc`
        mv ${target} -t ${BACKUPBUFDIR}/${JULDAY}/FORECAST
        if [ -s fix_ice_forecast${mem}.nc ]; then
           mv fix_ice_forecast${mem}.nc ${target}
           cp ${target} -t ${BACKUPBUFDIR}/ANALYSIS
+       fi
+
+       # ice parameter file
+       tmp0_target=${target%iced.*}
+       tmp_target=${target%-00000_*}
+       tmp1_str=${tmp_target#*iced.}
+       tmp2_str=${target#*-00000_}
+       para_target=${tmp0_target}icep.${tmp1_str}_${tmp2_str}
+       echo "para_target=${para_target}"
+       if [ -s ${para_target} ]; then
+	  #cp ${para_target} -t ${BACKUPBUFDIR}/ANALYSIS
+	  mv ${para_target} -t ${BACKUPBUFDIR}/${JULDAY}/FORECAST
        fi
 
     done
@@ -143,7 +154,11 @@ fi
 #ln -f ${FORECASTDIR}/cice/iceh/iceh.*.nc -t ${OUTPUTDIR}/${JULDAY}
 if stat -t  ${FORECASTDIR}/cice/iceh.*.nc > /dev/null 2>&1
 then
+    # 
+    #  including the ensemble output of iceh
     ln  -f ${FORECASTDIR}/cice/iceh.*.nc -t ${OUTPUTDIR}/${JULDAY}
+    #  Skipping the ensemble ouput for sea ice
+    #ln  -f ${FORECASTDIR}/cice/iceh.????-??-??.nc -t ${OUTPUTDIR}/${JULDAY}
     mv  ${FORECASTDIR}/cice/iceh.*.nc -t ${BACKUPBUFDIR}/${JULDAY}/FORECAST
 fi
 #mv ${FORECASTDIR}/cice/iceh/iceh.*.nc -t ${BACKUPBUFDIR}/${JULDAY}/FORECAST

@@ -6,7 +6,7 @@
 /
 &localisation
 	locfuntag = "Gaspari-Cohn"
-	locrad = 200.0
+	locrad = 250.0
 /
 &moderation
 	infl = 1.01

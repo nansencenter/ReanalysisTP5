@@ -5,8 +5,8 @@
 #
 #SBATCH -J  TP5_ave
 #SBATCH -N 1
-#SBATCH --exclusive 
-#SBATCH --ntasks=100 --cpus-per-task=1
+##SBATCH --exclusive 
+#SBATCH --ntasks=20 --cpus-per-task=1
 #SBATCH --mem-per-cpu=2G
 
 ### System message output file
@@ -16,7 +16,7 @@
 #SBATCH -e log/hycompost.JNAME.err
 #
 ### How long job takes, wallclock time hh:mm:ss
-#SBATCH -t 06:00:00
+#SBATCH -t 02:00:00
 #
 ### Usage  ------------
 ### Firstly: Calculate the daily averages according to the defined elements in the ensemble directory
@@ -55,6 +55,7 @@ fi
 # IdxDir
 #IdxDir=~/NERSC-HYCOM-CICE/hycom/hycom_ALL/hycom_2.2.72_ALL/meanstd/src
 IdxDir=PROPDIR
+icepDir=BACKDIR
 
 # Enter directory from where the job was submitted
 cd $SLURM_SUBMIT_DIR       ||  { echo "Could not go to dir $SLURM_O_WORKDIR  "; exit 1; }
@@ -62,7 +63,10 @@ echo $SLURM_SUBMIT_DIR
 
 idaily=1       # calcuate the daily mean from the ensemble
 irestart=1     # rename the restart and iced files in the ensemble
-iclean=1      # rename the restart and iced files in the ensemble switch on/off for debuging
+iclean=1       # rename the restart and iced files in the ensemble switch on/off for debuging
+# additional property:
+ipara=1        # rename the icep files in the ensemble
+     
 
 
 cd ${S}
@@ -140,6 +144,10 @@ Flist0=list.restart
 Flist1=list.iced
 find ../${cmem0}/data/ -maxdepth 1 -name 'restart.*.a' > ${Flist0}
 find ../${cmem0}/data/cice/ -maxdepth 1 -name 'iced.*-*-00000.nc' > ${Flist1}
+if [ ${ipara} -eq 1 ]; then
+   Flist2=list.icep
+   find ../data/cice/ -maxdepth 1 -name 'icep.*-*.nc' > ${Flist2}
+fi
 
 if [ -r ${Flist0} -a -r ${Flist1} -a ${irestart} -eq 1 ]; then
    echo "Prepare the initial condition for each member ..."
@@ -182,6 +190,18 @@ if [ -r ${Flist0} -a -r ${Flist1} -a ${irestart} -eq 1 ]; then
    [ -s ../data/cice/ice.restart_file ] && rm ../data/cice/ice.restart_file
    echo "./cice/"${icebase}".nc" > ../data/cice/ice.restart_file 
    rm ${Flist0} ${Flist1}
+   
+   if [ ${ipara} -eq 1 ]; then
+      Nl2=$(sed -n '$=' ${Flist2})
+      for ii in `seq 1 ${Nl2}`; do
+         Fline0=$(sed -n "${ii}p" ${Flist2})
+         icebase=icep.$(echo ${Fline0} | sed "s/.*icep.//")
+         #icebase=icep.$(echo ${Fline0} | sed "s/.*icep.//" | sed "s/.nc//")
+         echo ${icebase}
+	 [ -r ../icep ] && { mv ${Fline0} ${icepDir}/.; }
+      done
+      rm ${Flist2}
+   fi
 fi
 
 ## Step 3: 
@@ -205,6 +225,9 @@ if [ ${iclean} -eq 1 ]; then
          find ${S} -maxdepth 1 -name 'restart.*.?' > ${Flist}
       elif [ ${irec} -eq 2 ]; then
          find ${S}/cice -maxdepth 1 -name 'iced.*.nc' > ${Flist}
+	 if [ ${ipara} -eq 1 ]; then
+            find ${S}/cice -maxdepth 1 -name 'icep.*.nc' >> ${Flist}
+	 fi
       fi
       Nl1=$(sed -n '$=' ${Flist})
       if [ ! -z "$Nl1" ]; then
@@ -218,8 +241,16 @@ if [ ${iclean} -eq 1 ]; then
          fi
       fi
    done
-   #[ -s ${Flist} ] && rm ${Flist}
-   #find ${S} -maxdepth 1 -name 'restart.*.?' > ${Flist}
+
+   # clean the rivers
+   echo " clean the riverh.a[b]"
+   Rn=$(find ${S}/../../force/rivers -maxdepth 2 -name 'riverh.?' | sed -n '$=')
+   if [ $Rn -gt 0 ]; then
+      for ii in $(find ${S}/../../force/rivers -maxdepth 2 -name 'riverh.?'); do
+	 echo $ii
+         [ -s ${ii} ] && rm ${ii}
+      done
+   fi
 
 elif [ ${iclean} -eq 0 ]; then
    exit

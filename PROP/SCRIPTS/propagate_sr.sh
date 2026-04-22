@@ -17,9 +17,9 @@ set -u # exit on unset variables
 set -p # nothing is inherited from the shell
 #set -x    # debuging
 
-MONITORINTERVAL=15 # time interval for periodic checks on job status
-MONITORINTERVAL2=30
-LAUNCHINTERVAL=5 # time interval for launching parallel jobs
+MONITORINTERVAL=10 # time interval for periodic checks on job status
+MONITORINTERVAL2=300
+LAUNCHINTERVAL=3 # time interval for launching parallel jobs
 
 nre=0 # number of members repropagated
 Fdd=7
@@ -28,22 +28,58 @@ Fdd=7
 #
 echo "1. Reading specifications:"
 . ./propagation_specs.sh
-export MODELDIR BINDIR ENSSIZE IPERT
+export MODELDIR BINDIR ENSSIZE IPERT PPERT BACKUPBUFDIR 
 
-echo ${BINDIR} ${ENSSIZE} ${Fdd}
+echo ${BINDIR} " ens.size = " ${ENSSIZE}" fore.days = "${Fdd}
 
 year1=`jultodate $JULDAY 1950 1 1 | cut -c1-4`
-day0=`datetojul ${year1} 1 1 1950 1 1`
-day1=`expr ${JULDAY} - ${day0} + 1` 
+day0=`datetojul ${year1} 1 0 1950 1 1`
+day1=`expr ${JULDAY} - ${day0}` 
+if [ ${day1} -lt 1 ]; then
+   echo "Model date is wrong for hycom_cice"
+   stop
+fi
 
 (( day2 = ${day1} + ${Fdd} ))
-year2=`jultodate $day2 $year1 1 1 | cut -c1-4`
-if [ $year2 -gt $year1 ]; then
-  day_0=`datetojul ${year2} 1 1 1950 1 1`
-  (( day2 = ${day2} + ${day0} -${day_0} )) 
+year2=`jultodate $day2 $year1 1 0 | cut -c1-4`
+if [ ${year2} -gt ${year1} ]; then
+   tmp1=$(datetojul $year1 12 31 $year1 1 0 | tail -4c)
+   (( day2 = $day2 - $tmp1 ))
 fi
+
+#(( tmp1 = ${JULDAY} + ${Fdd} ))
+#tmp2=$(datetojul $year2 1 1 1950 1 1)
+#if [ $tmp1 -eq $tmp2 ]; then
+#  day2=0
+#else
+  # existing a dug if day2 equal 0
+#(( day2 = ${JULDAY} + ${Fdd} - `datetojul $year2 1 1 1950 1 1` ))
+#fi
+
+#day1=`expr ${JULDAY} - ${day0} + 1` 
+#
+#echo $day0 $day1
+#
+#(( day2 = ${day1} + ${Fdd} ))
+#year2=`jultodate $day2 $year1 1 1 | cut -c1-4`
+#
+#
+#echo $year1 $year2
+#
+#if [ $year2 -gt $year1 ]; then
+#  day_0=`datetojul ${year2} 1 1 1950 1 1`
+#  echo $day_0 $day0 $day2
+#  #(( day2 = ${day2} + ${day0} -${day_0} )) 
+#  day2 =$(( ${day2} + ${day0} -${day_0} )) 
+#  if [ "$day2" -eq 0 ]; then
+#     echo "date:000"
+#  fi
+#   echo $day2
+#fi
+
 day_1=`echo 00$day1 | tail -4c`
 day_2=`echo 00$day2 | tail -4c`
+
 echo "   Going to propagate ensemble from day ${day_1} of ${year1} to day ${day_2} of ${year2}"
 
 # PS 17042012 - introduced RESTART to make it easier ... to restart
@@ -92,12 +128,58 @@ then
        echo "   "`date`
        echo "Generating forcing and prepare the integration under the main directory:"
 
+       # setting files for main SCRATCH
+       # ice_in & blkdat.input
+       [ -s ${MODELDIR}/ice_in ] && rm ${MODELDIR}/ice_in  
+       [ -s ${MODELDIR}/hycom_opt ] && rm ${MODELDIR}/hycom_opt
+       [ -s ${MODELDIR}/blkdat.input ] && rm ${MODELDIR}/blkdat.input
+
+       cp ./FILES/hycom_opt_Reana ${MODELDIR}/hycom_opt
+
+       [ -s ./FILES/ice_in ] && rm ./FILES/ice_in
+       echo "debuging ..."
+       echo $(pwd)
+       if [ $PPERT -lt 1 ]; then
+          ln -sf ./ice_in_V22 ./FILES/ice_in
+          cp ./FILES/ice_in ${MODELDIR}/ice_in
+       else
+          ln -sf ./ice_in_Reana ./FILES/ice_in
+          cp ./FILES/ice_in ${MODELDIR}/ice_in
+
+          echo " create the perturbed ice parameters ... "
+	  echo ${strdate1}
+
+	  cd ${MODELDIR}/SCRATCH
+          Iceprg=${BINDIR}/Reana_icepara.sh
+          echo " ${Iceprg} ${ENSSIZE} ${strdate1} ${BINDIR} ${MODELDIR}/SCRATCH"
+          ${Iceprg} ${ENSSIZE} ${strdate1} ${BINDIR} ${MODELDIR}/SCRATCH
+          mv ${MODELDIR}/SCRATCH/icep.${strdate1}_mem*.nc ${MODELDIR}/data/cice/.
+          cd -
+       fi
+
+       [ -s ./FILES/blkdat.input ] && rm ./FILES/blkdat.input
+       if [ -s ./FILES/blkdat.input_Reana ]; then
+          ln -sf ./blkdat.input_Reana ./FILES/blkdat.input
+       else
+          ln -sf ./blkdat.input_V22 ./FILES/blkdat.input
+       fi
+       cp ./FILES/blkdat.input ${MODELDIR}/.
+
        [ -r ${MODELDIR}/preprocess_mem_new.sh ] && rm ${MODELDIR}/preprocess_mem_new.sh 
        cat ${CWD}/SCRIPTS/preprocess_mem.in |\
          sed "s/YDATE1/${strdate1}/" | sed "s/YDATE2/${strdate2}/" |\
          sed "s#FileDir#${CWD}/FILES#" |\
          sed "s#BINDIR#${BINDIR}#g" > ${MODELDIR}/preprocess_mem_new.sh
+
+       # insert two lines for IPERT/PPERT 
+       mapfile -t Aline < <(tail -n 2 ../common_specs.sh)
        cd ${MODELDIR}
+       awk -v n=6 -v s=${Aline[0]} 'NR == n {print s} {print}' preprocess_mem_new.sh > 6.out
+       awk -v n=7 -v s=${Aline[1]} 'NR == n {print s} {print}' 6.out > 7.out
+       if [ -s 7.out ]; then
+          mv 7.out preprocess_mem_new.sh
+	  rm 6.out
+       fi
        rm -rf log/*
        chmod +x preprocess_mem_new.sh
        ./preprocess_mem_new.sh 1 ${ENSSIZE} 0 > log/forcing_ini_${JULDAY}.log
@@ -112,7 +194,9 @@ then
        echo "3. Launching the batch jobs:"
        echo "   "`date`
        cd ${MODELDIR}
-       NN=10     # how many members in one batch 
+       NN=7   # how many members in one batch 
+       NN=6   # how many members in one batch 
+       NN=5   # how many members in one batch 
        #NN=13      # how many members in one batch 
        (( NHYCOM = ($ENSSIZE - 1) / $NN + 1 ))
        for (( proc = 0; proc < $NHYCOM; ++proc ))
@@ -141,6 +225,7 @@ then
       # 3.1. Wait until all jobs finished
       #
       echo -n "   now waiting for all HYCOM batch-jobs to finish:"
+      imontor=0
       finished=0
       while (( ! finished ))
         do
@@ -152,7 +237,13 @@ then
               continue
             fi
             answer=`squeue --job ${jobid[$proc]} 2>/dev/null | tail -1 | awk '{print $5}'`
-            sleep ${MONITORINTERVAL}
+	    #(( imontor = imontor + 1 ))
+	    ((imontor+=1))
+	    if [ ${imontor} -lt 4 ]; then
+               sleep ${MONITORINTERVAL2}
+	    else
+               sleep ${MONITORINTERVAL}
+	    fi
             echo ${jobid[$proc]}
             if [ -z "${answer}" -o "${answer}" == "ST" ] ; then
                if [ "${answer}" == "CG" ]; then
@@ -165,7 +256,11 @@ then
             else
                echo -n "."
                finished=0
-               sleep ${MONITORINTERVAL}
+	       if [ ${imontor} -lt 3 ]; then
+                  sleep ${MONITORINTERVAL2}
+	       else
+                  sleep ${MONITORINTERVAL}
+	       fi
             fi
           done
       done
@@ -222,7 +317,7 @@ then
        echo " OK"
     else
        echo -n "   now waiting for all HYCOM jobs to finish:"
-
+       imontor=0
        finished=0
        while (( ! finished ))
          do
@@ -231,11 +326,20 @@ then
 	     do
 	       [ -z "${jobid[$proc]}" ] && continue
                answer=`squeue --job ${jobid[$proc]} 2>/dev/null | tail -1 | awk '{print $5}'`
-               sleep ${MONITORINTERVAL}
+	       ((imontor+=1))
+	       if [ ${imontor} -lt 2 ]; then
+                  sleep ${MONITORINTERVAL2}
+	       else
+                  sleep ${MONITORINTERVAL}
+	       fi
                echo ${jobid[$proc]}
                while [ -n "${answer}" -a "${answer}" != "ST" ]; do
                  echo -n "." 
-                 sleep ${MONITORINTERVAL2}
+	         if [ ${imontor} -lt 2 ]; then
+                    sleep ${MONITORINTERVAL2}
+	         else
+                    sleep ${MONITORINTERVAL}
+	         fi
                  answer=`squeue --job ${jobid[$proc]} 2>/dev/null | tail -1 | awk '{print $5}'`
                  if [ -r break.out ]; then
                     answer="ST"     
@@ -277,19 +381,26 @@ if [ ${RESTART2} != ${ENSSIZE} ]; then
 echo -n "5. now preparing daily averages"
 cd ${MODELDIR}
 
+icepdrt=${BACKUPBUFDIR}/${JULDAY}/FORECAST
 cat ${CWD}/SCRIPTS/sr_ensemble_post.in |\
     sed "s/JNAME/${year2}_${day_2}/" |\
+    sed "s#BACKDIR#${icepdrt}#" |\
     sed "s#PROPDIR#${CWD}#g" \
     > sr_hycave_daily.sh
 
 
 jobid_ave=`sbatch sr_hycave_daily.sh 1 ${ENSSIZE} | awk '{print $4}'`
-sleep ${MONITORINTERVAL}
+sleep ${LAUNCHINTERVAL}
 answer=`squeue --job ${jobid_ave} 2>/dev/null | tail -1 | awk '{print $5}'`
 echo ${jobid_ave}
+imontor=0
 while [ -n "${answer}" -a "${answer}" != "ST" ]; do
-   echo -n "." 
-   sleep ${MONITORINTERVAL}
+   ((imontor+=1))
+   if [ ${imontor} -lt 2 ]; then
+      sleep ${MONITORINTERVAL2}
+   else
+      sleep ${MONITORINTERVAL}
+   fi
    answer=`squeue --job ${jobid_ave} 2>/dev/null | tail -1 | awk '{print $5}'`
    echo -n "."
    if [ -r break.out ]; then

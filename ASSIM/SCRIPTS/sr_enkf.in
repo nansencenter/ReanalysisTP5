@@ -2,20 +2,19 @@
 #
 # Project:
 ##SBATCH --account=nn2993k --qos=devel
-##SBATCH --account=nn2993k --qos=preproc
-#SBATCH --account=nn9481k --qos=preproc
+#SBATCH --account=nn2993k --qos=preproc
+##SBATCH --account=nn9481k --qos=preproc
 #
 # Job name:
 #SBATCH -J "Nenkf"
 #
 #SBATCH -N 1 
-#SBATCH --exclusive
+##SBATCH --exclusive
 #
-#SBATCH --ntasks=100 --cpus-per-task=1
+#SBATCH --ntasks=60 --cpus-per-task=1
 #SBATCH --mem-per-cpu=4GB
 # Wall clock limit
-#SBATCH -t 01:00:00
-##SBATCH -t 02:00:00
+#SBATCH -t 02:00:00
 #
 #SBATCH -o enkf_0.out
 #SBATCH -e enkf_0.err
@@ -57,7 +56,7 @@ do
 
     # assemble
     #
-    if [ ! -f "analysis${mem}.a" ]
+    if [ ! -f "analysis${mem}.a" -o ! -f "analysis${mem}.b" ]
     then
         echo "${BINDIR}/EnKF_assemble.sh forecast${mem}.a forecastICE.uf ${e} ${NPROC}"
         ${BINDIR}/EnKF_assemble.sh forecast${mem}.a forecastICE.uf ${e} ${NPROC} &

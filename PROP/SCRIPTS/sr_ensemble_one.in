@@ -5,7 +5,7 @@
 
 #SBATCH -J  T04BJNAME
 
-#SBATCH -N 5   # number of nodes
+#SBATCH -N 4   # number of nodes
 ##SBATCH -n 30   # number of cores in each node 
 
 ## System message output file
@@ -14,7 +14,7 @@
 #SBATCH -e log/HYCICE.JNAME.err
 
 ## How long job takes, wallclock time hh:mm:ss
-#SBATCH -t 01:00:00
+#SBATCH -t 00:30:00
 ##SBATCH --exclusive 
 
 #set -x
@@ -30,8 +30,8 @@ export NMPI=319
 export Ncor=5
 export NMPI=636
 
-#export Ncor=4
-#export NMPI=511
+export Ncor=4
+export NMPI=511
 
 export SLURM_SUBMIT_DIR=$(pwd)
 

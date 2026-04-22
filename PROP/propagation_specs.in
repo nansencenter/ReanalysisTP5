@@ -1,10 +1,10 @@
 # propagation specific parameters
 #
+EXPT=expt_02.0
+EXPT_short=${EXPT#expt_}
 
 # do not edit below
 #
-EXPT=expt_04.1
-EXPT_short=${EXPT#expt_}
 CWD=`pwd`
 INFILEDIR="${CWD}/INFILE"
 BINDIR="${CWD}/BIN"

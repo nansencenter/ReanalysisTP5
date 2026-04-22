@@ -1,15 +1,15 @@
 #!/bin/bash -l
 #
 # Project:
-##SBATCH --account=nn9481k --qos=devel
-#SBATCH --account=nn2993k --qos=preproc 
+#SBATCH --account=nn9481k --qos=preproc
+##SBATCH --account=nn2993k --qos=preproc 
 #
 # Job name:
 #SBATCH -J "en_pre"
 #
 #SBATCH -N 1 
-#SBATCH --exclusive
-#SBATCH --ntasks=100 --cpus-per-task=1
+##SBATCH --exclusive
+#SBATCH --ntasks=50 --cpus-per-task=1
 #SBATCH --mem-per-cpu=6G
 #
 # Wall clock limit:
@@ -35,7 +35,7 @@ cd "${ANALYSISDIR}"
 # Step 0: full converting lines:
 istep=0
 if [ ${istep} -eq 0 ]; then
-   Nbin=100
+   Nbin=50
    (( NN = ($ENSSIZE - 1 ) / $Nbin + 1 ))
    for icycl in `seq 1 ${NN}`; do
       for ipre in `seq 1 ${Nbin}`; do

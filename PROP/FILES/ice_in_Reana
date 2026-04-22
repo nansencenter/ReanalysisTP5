@@ -382,6 +382,6 @@
 /
 
 &para_nml
-    cice_para      = .false. 
+    cice_para      = .true. 
     para_file      = './cice/para_init.nc'
 /

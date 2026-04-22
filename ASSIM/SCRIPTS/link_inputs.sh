@@ -62,9 +62,6 @@ do
     
 done
 
-# cancal to link the ice.uf file
-#ln -sf "${forecast_prefix}ICE.uf" forecastICE.uf
-
 # link the daily files
 modeldaily_prefix="${FORECASTDIR}/archm."
 
@@ -130,7 +127,11 @@ if [ -s "${PREPOBSDIR}/observations.uf.IDRFT" ]; then
        Ficesnap=iceh.${Ddate:0:4}-${Ddate:4:2}-${Ddate:6:2}_ens.nc 
        Ficedrift=iceh.${Ddate:0:4}-${Ddate:4:2}-${Ddate:6:2}_ens.uf 
        echo ${ii} ${Ficedrift} ${Ddate}
-       ${BINDIR}/pre_icedrift.sh ${Ficesnap} model_ICEDRIFT_OSISAF${ii}.uf 
+       if [ ${JULDAY} -gt 21915 ]; then
+          ${BINDIR}/pre_icedrift.sh ${Ficesnap} model_ICEDRIFT_OSISAF${ii}.uf 
+       else
+          ${BINDIR}/pre_icedrift.sh ${Ficesnap} model_ICEDRIFT_OSISAF${ii}.uf 1 
+       fi
    done
    exit
 fi

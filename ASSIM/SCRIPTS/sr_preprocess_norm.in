@@ -1,14 +1,14 @@
 #!/bin/bash -l
 #
 # Project:
-##SBATCH --account=nn9481k --qos=devel
-#SBATCH --account=nn2993k 
+#SBATCH --account=nn9481k 
+##SBATCH --account=nn2993k 
 #
 # Job name:
 #SBATCH -J "en_pre"
 #
 #SBATCH -N 4 
-#SBATCH --exclusive
+##SBATCH --exclusive
 #SBATCH --ntasks=100 --cpus-per-task=1
 #
 # Wall clock limit:

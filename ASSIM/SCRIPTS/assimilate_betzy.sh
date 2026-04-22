@@ -311,16 +311,22 @@ then
            exit
 	fi
     done
+
     #status=`cat ${ANALYSISDIR}/enkf_0.out | grep EnKF: | grep -c Finished`
     status=`cat ${ANALYSISDIR}/enkf_0.out | grep -a "EnKF: Finished" | sed -n '$='`
-    if (( ${status} != ${NPROC} ))
-    then
+    if [ -z ${status} ]; then   # unset or empty
 	echo
 	echo "ERROR: EnKF has not finished"
 	echo
-	exit 1
+	exit  
     else
-	echo "   EnKF finished"
+        if [ ${status} -eq ${NPROC} ]; then
+	   echo " EnKF finished"
+        else
+	   echo "ERROR: EnKF has not finished"
+	   echo
+	   exit 1 
+	fi
     fi
 
 #
@@ -330,7 +336,7 @@ then
     echo "   (assembles, checks, fixes and converts to NetCDF)"
     echo "   "`date`
     cd ${ANALYSISDIR}
-    #NN=6 # batch size
+    NN=100 # fixed batch size equal to ENSSIZE
     (( NPOST = ($ENSSIZE - 1) / $NN + 1 ))
     for (( proc = 0; proc < ${NPOST}; ++proc ))
     do
