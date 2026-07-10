@@ -47,43 +47,12 @@ if [ ${year2} -gt ${year1} ]; then
    (( day2 = $day2 - $tmp1 ))
 fi
 
-#(( tmp1 = ${JULDAY} + ${Fdd} ))
-#tmp2=$(datetojul $year2 1 1 1950 1 1)
-#if [ $tmp1 -eq $tmp2 ]; then
-#  day2=0
-#else
-  # existing a dug if day2 equal 0
-#(( day2 = ${JULDAY} + ${Fdd} - `datetojul $year2 1 1 1950 1 1` ))
-#fi
-
-#day1=`expr ${JULDAY} - ${day0} + 1` 
-#
-#echo $day0 $day1
-#
-#(( day2 = ${day1} + ${Fdd} ))
-#year2=`jultodate $day2 $year1 1 1 | cut -c1-4`
-#
-#
-#echo $year1 $year2
-#
-#if [ $year2 -gt $year1 ]; then
-#  day_0=`datetojul ${year2} 1 1 1950 1 1`
-#  echo $day_0 $day0 $day2
-#  #(( day2 = ${day2} + ${day0} -${day_0} )) 
-#  day2 =$(( ${day2} + ${day0} -${day_0} )) 
-#  if [ "$day2" -eq 0 ]; then
-#     echo "date:000"
-#  fi
-#   echo $day2
-#fi
-
 day_1=`echo 00$day1 | tail -4c`
 day_2=`echo 00$day2 | tail -4c`
 
 echo "   Going to propagate ensemble from day ${day_1} of ${year1} to day ${day_2} of ${year2}"
 
 # PS 17042012 - introduced RESTART to make it easier ... to restart
-#RESTART=`find ${MODELDIR}/SCRATCH -name ${HYCOMPREFIX}restart${year2}_${day2}_00_mem???.a | wc -l`
 RESTART=`find ${MODELDIR}/SCRATCH -maxdepth 1 -name restart.${year2}_${day_2}_00_0000_mem???.a | wc -l`
 RESTART2=`find ${MODELDIR}/data -maxdepth 1 -name restart.${year2}_${day_2}_00_0000_mem???.a | wc -l`
 RESTART3=`find ${MODELDIR}/mem???/data -maxdepth 1 -name restart.${year2}_${day_2}_00_0000.a | wc -l`
@@ -108,7 +77,7 @@ strdate2="${tmpstr:0:4}-${tmpstr:4:2}-${tmpstr:6:2}"
 echo "      " ${strdate1}  ' ~ ' ${strdate2}
 echo "      " ${year1}_${day_1}  ' ~ ' ${year2}_${day_2}
 
-if [ ${RESTART} == 0 -a ${RESTART2} == 0 ]
+if [ ${RESTART} == 0 -a ${RESTART2} == 0 -a ${RESTART3} != ${ENSSIZE} ]
 then
 
     ./SCRIPTS/check_directories.sh
@@ -195,8 +164,7 @@ then
        echo "   "`date`
        cd ${MODELDIR}
        NN=7   # how many members in one batch 
-       NN=6   # how many members in one batch 
-       NN=5   # how many members in one batch 
+       #NN=5   # how many members in one batch 
        #NN=13      # how many members in one batch 
        (( NHYCOM = ($ENSSIZE - 1) / $NN + 1 ))
        for (( proc = 0; proc < $NHYCOM; ++proc ))
@@ -215,6 +183,7 @@ then
 	   sed "s/JNAME/${proc}/g" \
            > sr_hycombatch${proc}.sh 
 
+         #jobid[$proc]=`sbatch sr_hycombatch${proc}.sh ${ESTART} ${EEND}  | awk '{print $4}'`
          jobid[$proc]=`sbatch sr_hycombatch${proc}.sh ${ESTART} ${EEND} ${year2}_${day_2} | awk '{print $4}'`
          echo "   ${proc}: ${jobid[$proc]}: propagate members ${ESTART} - ${EEND}"
          sleep ${LAUNCHINTERVAL}
@@ -274,12 +243,12 @@ then
     for  (( e = 1; e <= ${ENSSIZE}; ++e ))
       do
         mem=`printf "%03d\n" ${e}`
-        echo " member " ${mem}
+        #echo " member " ${mem}
         if [ ! -s ${MODELDIR}/mem${mem}/data ]; then
           RESTARTmem=0
           if [ -s ${MODELDIR}/mem${mem}/SCRATCH ]; then
              RESTARTmem=`find ${MODELDIR}/mem${mem}/SCRATCH -name restart.${year2}_${day_2}_00_0000.a | wc -l`
-             echo ${RESTARTmem}
+             #echo ${RESTARTmem}
              if (( ${RESTARTmem} != 0 )); then
                 mkdir ${MODELDIR}/mem${mem}/data
                 mkdir ${MODELDIR}/mem${mem}/data/cice
@@ -304,7 +273,9 @@ then
              sed "s/BJNAME/_H${nbad}/" |\
              sed "s/JNAME/H${nbad}/g" \
              > sr_hycom_${nbad}.sh 
+           echo "sr_hycom_${nbad}.sh ${e} ${e} ${year2}_${day_2}" 
            jobid[$nbad]=`sbatch sr_hycom_${nbad}.sh ${e} ${e} ${year2}_${day_2} | awk '{print $4}'`
+
            echo "   ${nbad}: ${jobid[$nbad]}: re-propagate member ${e}"
            (( nbad += 1 ))
            (( nre += 1 ))
@@ -446,22 +417,6 @@ fi
 
 cd ${MODELDIR}
 rm -f sr_hycom*.sh
-#rm -f sr_hycave_daily.sh
-#rm -f ${FORECASTDIR}/restart.${year1}_${day1}*
-#rm -f ${FORECASTDIR}/cice/iced.${strdate1}-*_mem*.nc
-
-#rm ${MODELDIR}/SCRATCH/arch*.?
-#rm ${MODELDIR}/SCRATCH/restart.*.[ab]
-#rm ${MODELDIR}/SCRATCH/forcing.*.[ab]
-#rm ${MODELDIR}/SCRATCH/*
-#rm ${MODELDIR}/SCRATCH/cice/*
-#rm ${MODELDIR}/SCRATCH/KEEP/*
-
-#set +e
-#mv ${MODELDIR}/SCRATCH/${HYCOMPREFIX}AVE* -t ${FORECASTDIR}
-#set -e
-#mv ${MODELDIR}/SCRATCH/${HYCOMPREFIX}DAILY* -t ${FORECASTDIR}
-#mv ${MODELDIR}/SCRATCH/${HYCOMPREFIX}restart${year2}_${day2}* -t ${FORECASTDIR}
 mv ${MODELDIR}/log/* -t ${RESULTSDIR}/${JULDAY}/LOG
 echo
 echo "PROPAGATION FINISHED for day ${JULDAY}, time = "`date`", nre = ${nre}"

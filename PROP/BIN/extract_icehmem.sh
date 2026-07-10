@@ -35,8 +35,10 @@ else
 fi
 Fout0=ICEtemp.${Fjuly}_mem`echo 00${Emem}|tail -4c`.nc
 
-#icevars="hisnap_d,aisnap_d,vvel_d,uvel_d,ice_present_d"
 icevars="hisnap_d,aisnap_d,vvel_d,uvel_d,aice_d"
+
+# inflating the variables at 20th May 2026
+icevars="hisnap_d,aisnap_d,vvel_d,uvel_d,aice_d,sst_d,sss_d,iage_d,FYarea_d"
 ncks -v ${icevars} ${ficeh} ${Fout0}
 if [ -s ${Fout0} ]; then
    ncks -C -h -O -x -v time_bounds ${Fout0} ${Fout}

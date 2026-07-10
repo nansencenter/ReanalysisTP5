@@ -1,0 +1,143 @@
+#!/bin/bash -l
+
+#SBATCH --account=nn9481k 
+##SBATCH --account=nn2993k 
+
+#SBATCH -J  T04BJNAME
+
+#SBATCH -N 4     # number of nodes
+#SBATCH -n 511   # number of cores in all node 
+## Each compute node has 24 cores (See more details in section Hardware on Sisu User Guide).
+
+## System message output file
+#SBATCH -o log/HYCICE.JNAME.out
+
+## System error message file
+#SBATCH -e log/HYCICE.JNAME.err
+
+## How long job takes, wallclock time hh:mm:ss
+#SBATCH -t 4:00:00
+
+set -e                # Exit on errors
+set -u                # Disallow unset variables
+
+## On Betzy:
+export Ncor=5
+export NMPI=636
+
+export Ncor=4
+export NMPI=511
+
+export SLURM_SUBMIT_DIR=$(pwd)
+
+MONITORINTERVAL=10 # time interval for periodic checks on job status
+
+
+# Enter directory from where the job was submitted
+cd $SLURM_SUBMIT_DIR       ||  { echo "Could not go to dir $SLURM_SUBMIT_DIR  "; exit 1; }
+
+# ------------------- Fetch Environment ------------------------------
+# -------- these are needed in preprocess scripts---------------------
+echo "SLURM_JOBID    = $SLURM_JOBID     "
+echo "SLURM_SUBMIT_DIR= $SLURM_SUBMIT_DIR "
+#[ -z "$NOMP" ] && NOMP=0
+
+# Enter directory from where the job was submitted
+cd $SLURM_SUBMIT_DIR       ||  { echo "Could not go to dir $SLURM_O_WORKDIR  "; exit 1; }
+
+if [ "$1" -gt "-1" -a "$2" -gt "-1" ]; then
+  echo 'mems: ' $1 '~' $2
+  mem1=MEM1
+  mem2=MEM2
+  (( Nens=mem2-mem1+1 ))
+  if [ $# == 3 ]; then
+     echo 'mems: ' $1 '~' $2 ': ' ${Nens} $3
+  else
+     echo 'mems: ' $1 '~' $2 ': ' ${Nens}
+  fi
+else
+  exit $? 
+fi
+
+# the third parameter define the model date2 yyyy_ddd
+READYRT=0
+
+# Initialize environment (sets Scratch dir ($S), Data dir $D ++ )
+source ../REGION.src  || { echo "Could not source ../REGION.src "; exit 1; }
+source ./EXPT.src  || { echo "Could not source EXPT.src"; exit 1; }
+echo "NMPI =$NMPI (Number of MPI tasks needed for running job) "
+
+#ulimit -s unlimited
+ulimit -s 2000000
+
+
+# submit job
+for imem in `seq $mem1 $mem2`; do
+   cd $SLURM_SUBMIT_DIR       ||  { echo "Could not go to dir $SLURM_SUBMIT_DIR  "; exit 1; }
+   Exdir=mem`echo 00${imem} | tail -4c`
+   echo "Running one member of $?: " $imem
+   if [ ${imem} -gt 0 -a -s ${Exdir}/SCRATCH ]; then
+      cd ${Exdir}/SCRATCH
+      if [ $# == 3 ]; then
+         Moddate2=$3
+         READYRT=`find ./ -name restart.${Moddate2}_00_0000.a | wc -l`
+         if [ ${READYRT} == 0 -a -r ../data ]; then 
+            READYRT=`find ../data -name restart.${Moddate2}_00_0000.a | wc -l`
+            if [ ${READYRT} != 0 ]; then 
+               [ ! -s ../hycom.stop ] && rm ../hycom.stop
+               echo "GOODRUN" > ../hycom.stop
+            fi
+         fi
+      fi
+      if [ ${READYRT} == 0 ]; then 
+         srun --mpi=pmi2 -N $Ncor -n $NMPI ./hycom_cice  
+      fi
+   fi
+done
+
+# postprocess before to averge in the ensemble 
+for imem in `seq $mem1 $mem2`; do
+  cd $SLURM_SUBMIT_DIR       ||  { echo "Could not go to dir $SLURM_SUBMIT_DIR  "; exit 1; }
+  Exdir=mem`echo 00${imem} | tail -4c`
+  cd ${Exdir}/SCRATCH
+  if [ ! -s ../hycom.stop ]; then
+     # Must be done under mem???/SCRATCH to run this script
+     [ ! -r ../data ] && mkdir ../data
+     [ ! -r ../data/cice ] && mkdir ../data/cice
+     READYRT=`find ./ -name restart.${Moddate2}_00_0000.a | wc -l`
+     if [ ${READYRT} != 0 ]; then 
+       # restart. and archm
+       Fhycom="restart. archm. archv."
+       for ifile in ${Fhycom} ; do
+       for i in $(ls -- ${ifile}*.[ab]) ; do
+          if [ -L "${i}" ]; then
+             rm $i
+          else
+             mv $i ../data/.
+          fi
+       done
+       done
+
+       # sea ice fields
+       Fcice="iced. iceh."
+       for ifile in ${Fcice}; do
+       for i in $(ls -- cice/${ifile}*.nc); do
+         if [ -L "${i}" ]; then
+            rm $i
+         else
+            mv $i ../data/cice/.
+         fi
+      done
+      done
+      [ -s ./cice/ice.restart_file -a -r ../data/cice ] && cp ./cice/ice.restart_file ../data/cice/.
+
+      # Copy some files useful for analysis
+      for i in $(ls regional.grid.* regional.depth.* blkdat.input ice_in cice_*.nc) ; do
+         cp $i ../data/.
+      done
+      echo "GOODRUN" > ../hycom.stop
+    fi
+  fi
+done
+
+exit $?
