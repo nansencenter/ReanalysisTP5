@@ -17,6 +17,7 @@ prg=${Inidrt}/Para_v1.py
                      exit 0; }
 
 vars="Pstar dragio astar floediam"
+vars="Pstar dragio astar floediam iceruf emissi"
 N0=${#vars}
 tmpvar=$(echo "$vars" | tr -d ' ')
 N1=${#tmpvar}

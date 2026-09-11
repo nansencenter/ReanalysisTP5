@@ -1,0 +1,3639 @@
+Checking principal directories:
+  ROOTDIR = /cluster/work/users/xiejp/TP5_SICAP
+  BACKUPBUFDIR = /cluster/work/users/xiejp/TP5_SICAP/TOBACKUP
+  RESULTSDIR = /cluster/work/users/xiejp/TP5_SICAP/RESULTS
+  OUTPUTDIR = /cluster/work/users/xiejp/TP5_SICAP/OUTPUT
+  MODELDIR = /cluster/work/users/xiejp/TP5_test/TP5a0.06/expt_02.0
+  (directories OK)
+  JULDAYSTART = 26293
+  JULDAYEND = 26664
+
+Starting propagation for day 26293 since 1 Jan 1950
+
+1. Reading specifications:
+/cluster/home/xiejp/SICAP/ReanalysisTP5/PROP/BIN  ens.size =  100 fore.days = 7
+   Going to propagate ensemble from day 361 of 2021 to day 003 of 2022
+   Fri Jul 10 03:45:10 PM CEST 2026
+2. define the start and end date for the model run: 
+3
+       2021-12-27  ~  2022-01-03
+       2021_361  ~  2022_003
+   (directories OK)
+   Fri Jul 10 03:45:10 PM CEST 2026
+Generating forcing and prepare the integration under the main directory:
+debuging ...
+/cluster/home/xiejp/SICAP/ReanalysisTP5/PROP
+ Check the parameter ensemble ... 
+2021-12-27
+100 2022-01-03 /cluster/home/xiejp/SICAP/ReanalysisTP5/PROP/BIN /cluster/work/users/xiejp/TP5_test/TP5a0.06/expt_02.0/SCRATCH
+The icep files are ready.
+/cluster/work/users/xiejp/TP5_test/TP5a0.06/expt_02.0
+3. Launching the batch jobs:
+   Fri Jul 10 04:20:36 PM CEST 2026
+   0: 1569499: propagate members 1 - 7
+   1: 1569500: propagate members 8 - 14
+   2: 1569501: propagate members 15 - 21
+   3: 1569502: propagate members 22 - 28
+   4: 1569503: propagate members 29 - 35
+   5: 1569504: propagate members 36 - 42
+   6: 1569505: propagate members 43 - 49
+   7: 1569506: propagate members 50 - 56
+   8: 1569507: propagate members 57 - 63
+   9: 1569508: propagate members 64 - 70
+   10: 1569509: propagate members 71 - 77
+   11: 1569510: propagate members 78 - 84
+   12: 1569511: propagate members 85 - 91
+   13: 1569512: propagate members 92 - 98
+   14: 1569513: propagate members 99 - 100
+   (launched)
+   now waiting for all HYCOM batch-jobs to finish:1569499
+.1569500
+.1569501
+.1569502
+.1569503
+.1569504
+.1569505
+.1569506
+.1569507
+.1569508
+.1569509
+.1569510
+.1569511
+.1569512
+.1569513
+.141569499
+.1569500
+.1569501
+.1569502
+.1569503
+.1569504
+.1569505
+.1569506
+.1569507
+.1569508
+.1569509
+.1569510
+.1569511
+.1569512
+.1569499
+.1569500
+.1569501
+.1569502
+.1569503
+.1569504
+.1569505
+.1569506
+.1569507
+.1569508
+.1569509
+.1569510
+.1569511
+.1569512
+.1569499
+.1569500
+.1569501
+.1569502
+.1569503
+.1569504
+.1569505
+.1569506
+.1569507
+.1569508
+.1569509
+.1569510
+.1569511
+.1569512
+.1569499
+.1569500
+.1569501
+.1569502
+.1569503
+.1569504
+.1569505
+.1569506
+.1569507
+.1569508
+.1569509
+.1569510
+.1569511
+.1569512
+.1569499
+.1569500
+.1569501
+.1569502
+.1569503
+.1569504
+.1569505
+.1569506
+.1569507
+.1569508
+.1569509
+.1569510
+.1569511
+.1569512
+.1569499
+.1569500
+.1569501
+.1569502
+.1569503
+.1569504
+.1569505
+.1569506
+.1569507
+.1569508
+.1569509
+.1569510
+.1569511
+.1569512
+.1569499
+.1569500
+.1569501
+.1569502
+.1569503
+.1569504
+.1569505
+.1569506
+.1569507
+.1569508
+.1569509
+.1569510
+.1569511
+.1569512
+.1569499
+.1569500
+.1569501
+.1569502
+.1569503
+.1569504
+.1569505
+.1569506
+.1569507
+.1569508
+.1569509
+.1569510
+.1569511
+.1569512
+.1569499
+.1569500
+.1569501
+.1569502
+.1569503
+.1569504
+.1569505
+.1569506
+.1569507
+.1569508
+.1569509
+.1569510
+.1569511
+.1569512
+.1569499
+.1569500
+.1569501
+.1569502
+.1569503
+.1569504
+.1569505
+.1569506
+.1569507
+.1569508
+.1569509
+.1569510
+.1569511
+.1569512
+.1569499
+.1569500
+.1569501
+.1569502
+.1569503
+.1569504
+.1569505
+.1569506
+.1569507
+.1569508
+.1569509
+.1569510
+.1569511
+.1569512
+.1569499
+.1569500
+.1569501
+.1569502
+.1569503
+.1569504
+.1569505
+.1569506
+.1569507
+.1569508
+.1569509
+.1569510
+.1569511
+.1569512
+.1569499
+.1569500
+.1569501
+.1569502
+.1569503
+.1569504
+.1569505
+.1569506
+.1569507
+.1569508
+.1569509
+.1569510
+.1569511
+.1569512
+.1569499
+.1569500
+.1569501
+.1569502
+.1569503
+.1569504
+.1569505
+.1569506
+.1569507
+.1569508
+.91569509
+.101569510
+.1569511
+.121569512
+.131569499
+.01569500
+.11569501
+.21569502
+.31569503
+.41569504
+.51569505
+.61569506
+.71569507
+.81569510
+.11   Fri Jul 10 05:57:19 PM CEST 2026
+   4. checking that all members are ready, if not submitting jobs one by one: member  001
+ member  002
+ member  003
+ member  004
+ member  005
+ member  006
+ member  007
+ member  008
+ member  009
+ member  010
+ member  011
+ member  012
+ member  013
+ member  014
+ member  015
+ member  016
+ member  017
+ member  018
+ member  019
+ member  020
+ member  021
+ member  022
+ member  023
+ member  024
+ member  025
+ member  026
+ member  027
+ member  028
+ member  029
+ member  030
+ member  031
+ member  032
+ member  033
+ member  034
+ member  035
+ member  036
+ member  037
+ member  038
+ member  039
+ member  040
+ member  041
+ member  042
+ member  043
+ member  044
+ member  045
+ member  046
+ member  047
+ member  048
+ member  049
+ member  050
+ member  051
+ member  052
+ member  053
+ member  054
+ member  055
+ member  056
+ member  057
+ member  058
+ member  059
+ member  060
+ member  061
+ member  062
+ member  063
+ member  064
+ member  065
+ member  066
+ member  067
+ member  068
+ member  069
+ member  070
+ member  071
+ member  072
+ member  073
+ member  074
+ member  075
+ member  076
+ member  077
+ member  078
+ member  079
+ member  080
+ member  081
+ member  082
+ member  083
+ member  084
+ member  085
+ member  086
+ member  087
+ member  088
+ member  089
+ member  090
+ member  091
+ member  092
+ member  093
+ member  094
+ member  095
+ member  096
+ member  097
+ member  098
+ member  099
+ member  100
+ OK
+5. now preparing daily averages1569585
+................................................. done hycave!
+6.  check that creating archives (marched with assimilate.sh) has finished:7. Cleaning up:
+   Fri Jul 10 06:10:27 PM CEST 2026
+
+PROPAGATION FINISHED for day 26293, time = Fri Jul 10 06:10:28 PM CEST 2026, nre = 0
+
+Starting assimilation for day 26300 since 1 Jan 1950
+
+1. Reading specifications and checking configuration:
+   JULDAY = 26300
+   Data types:
+     TSLA
+     SST
+     TEM
+     SAL
+     ICEC
+     IDRFT
+     HICE
+     SSS
+   Directories:
+     BINDIR = /cluster/home/xiejp/SICAP/ReanalysisTP5/ASSIM/BIN
+     PREPOBSDIR = /cluster/work/users/xiejp/TP5_SICAP/PREPOBS
+     ANALYSISDIR = /cluster/work/users/xiejp/TP5_SICAP/ANALYSIS
+     OBSDIR = /cluster/work/users/xiejp/TP5_SICAP/OBS
+     FORECASTDIR = /cluster/work/users/xiejp/TP5_SICAP/FORECAST
+     (directories OK)
+   EnKF parameters:
+     &method
+     	methodtag = "DEnKF"
+     /
+     &ensemble
+     	enssize = 100
+     /
+     &localisation
+     	locfuntag = "Gaspari-Cohn"
+     	locrad = 250.0
+     /
+     &moderation
+     	infl = 1.01
+     	rfactor1 = 1
+     	rfactor2 = 2.0
+     	kfactor = 2.0
+     /
+     &files
+     	jmapfname = "jmap.txt"
+     	pointfname = "point2nc.txt"
+     	meansshfname = "meanssh.uf"
+     /
+     &prmest
+     	prmestname = "", ""
+     	prminfl = 1.0, 1.0
+     /
+   Checking for necessary configuration files...OK
+   Checking for necessary executables...OK
+2. Preparing observations:
+   Fri Jul 10 06:10:29 PM CEST 2026
+   TSLA:
+/cluster/work/users/xiejp/TP5_SICAP/PREPOBS/observations.uf.TSLA
+OBSDIR=/cluster/work/users/xiejp/TP5_SICAP/OBS
+/cluster/work/users/xiejp/TP5_SICAP/OBS/TSLA/obs_TSLA_26299
+   SST:
+/cluster/work/users/xiejp/TP5_SICAP/PREPOBS/observations.uf.SST
+OBSDIR=/cluster/work/users/xiejp/TP5_SICAP/OBS
+/cluster/work/users/xiejp/TP5_SICAP/OBS/SST/obs_SST_26299
+   TEM:
+/cluster/work/users/xiejp/TP5_SICAP/PREPOBS/observations.uf.TEM
+OBSDIR=/cluster/work/users/xiejp/TP5_SICAP/OBS
+/cluster/work/users/xiejp/TP5_SICAP/OBS/TEM/obs_TEM_26299
+   SAL:
+/cluster/work/users/xiejp/TP5_SICAP/PREPOBS/observations.uf.SAL
+OBSDIR=/cluster/work/users/xiejp/TP5_SICAP/OBS
+/cluster/work/users/xiejp/TP5_SICAP/OBS/SAL/obs_SAL_26299
+   ICEC:
+/cluster/work/users/xiejp/TP5_SICAP/PREPOBS/observations.uf.ICEC
+OBSDIR=/cluster/work/users/xiejp/TP5_SICAP/OBS
+/cluster/work/users/xiejp/TP5_SICAP/OBS/ICEC/obs_ICEC_26299
+   IDRFT:
+/cluster/work/users/xiejp/TP5_SICAP/PREPOBS/observations.uf.IDRFT
+OBSDIR=/cluster/work/users/xiejp/TP5_SICAP/OBS
+   HICE:
+/cluster/work/users/xiejp/TP5_SICAP/PREPOBS/observations.uf.HICE
+OBSDIR=/cluster/work/users/xiejp/TP5_SICAP/OBS
+/cluster/work/users/xiejp/TP5_SICAP/OBS/HICE/obs_HICE_26299
+   SSS:
+/cluster/work/users/xiejp/TP5_SICAP/PREPOBS/observations.uf.SSS
+OBSDIR=/cluster/work/users/xiejp/TP5_SICAP/OBS
+/cluster/work/users/xiejp/TP5_SICAP/OBS/SSS/obs_SSS_26299
+/cluster/work/users/xiejp/TP5_SICAP/OBS/SSS/obs_SSS_26298
+/cluster/work/users/xiejp/TP5_SICAP/OBS/SSS/obs_SSS_26297
+     NO OBS from  SSS
+CWD= /cluster/home/xiejp/SICAP/ReanalysisTP5/ASSIM
+3. Linking the forecast and observations to the analysis directory:
+   Date:
+     JULDAY = 26300
+     year = 2022
+     day = 003
+     juldayprev = 26293
+forecast_prefix=/cluster/work/users/xiejp/TP5_SICAP/FORECAST/restart.2022_003_00_0000
+ANALYSISDIR=/cluster/work/users/xiejp/TP5_SICAP/ANALYSIS
+TSLA or SSH:  0
+/cluster/work/users/xiejp/TP5_SICAP/FORECAST/archm.2022_002_12 26300 26298
+ln  -sf /cluster/work/users/xiejp/TP5_SICAP/FORECAST/archm.2022_002_12_SSH.uf model_TSSH_00.uf
+IDRFT:  0
+/cluster/work/users/xiejp/TP5_SICAP/ANALYSIS
+TSLA or SSH:  1
+/cluster/work/users/xiejp/TP5_SICAP/FORECAST/archm.2022_001_12 26299 26298
+ln  -sf /cluster/work/users/xiejp/TP5_SICAP/FORECAST/archm.2022_001_12_SSH.uf model_TSSH_01.uf
+IDRFT:  1
+/cluster/work/users/xiejp/TP5_SICAP/ANALYSIS
+TSLA or SSH:  2
+/cluster/work/users/xiejp/TP5_SICAP/FORECAST/archm.2021_365_12 26298 26298
+ln  -sf /cluster/work/users/xiejp/TP5_SICAP/FORECAST/archm.2021_365_12_SSH.uf model_TSSH_02.uf
+IDRFT:  2
+/cluster/work/users/xiejp/TP5_SICAP/ANALYSIS
+TSLA or SSH:  3
+/cluster/work/users/xiejp/TP5_SICAP/FORECAST/archm.2021_364_12 26297 25933
+ln  -sf /cluster/work/users/xiejp/TP5_SICAP/FORECAST/archm.2021_364_12_SSH.uf model_TSSH_03.uf
+IDRFT:  3
+/cluster/work/users/xiejp/TP5_SICAP/ANALYSIS
+TSLA or SSH:  4
+/cluster/work/users/xiejp/TP5_SICAP/FORECAST/archm.2021_363_12 26296 25933
+ln  -sf /cluster/work/users/xiejp/TP5_SICAP/FORECAST/archm.2021_363_12_SSH.uf model_TSSH_04.uf
+IDRFT:  4
+/cluster/work/users/xiejp/TP5_SICAP/ANALYSIS
+TSLA or SSH:  5
+/cluster/work/users/xiejp/TP5_SICAP/FORECAST/archm.2021_362_12 26295 25933
+ln  -sf /cluster/work/users/xiejp/TP5_SICAP/FORECAST/archm.2021_362_12_SSH.uf model_TSSH_05.uf
+IDRFT:  5
+/cluster/work/users/xiejp/TP5_SICAP/ANALYSIS
+TSLA or SSH:  6
+/cluster/work/users/xiejp/TP5_SICAP/FORECAST/archm.2021_361_12 26294 25933
+ln  -sf /cluster/work/users/xiejp/TP5_SICAP/FORECAST/archm.2021_361_12_SSH.uf model_TSSH_06.uf
+IDRFT:  6
+/cluster/work/users/xiejp/TP5_SICAP/ANALYSIS
+1 iceh.2022-01-02_ens.uf 20220102
+ dailyfile=iceh.2022-01-02_ens.nc
+                                                                                
+  
+ Last year, month, day
+        2022           1           2
+ First year, month, day       26299
+        2022           1           1         
+                                                                                
+  ice_drift_nh_polstere-625_multi-oi_202201021200.nc
+ Obs. Drift: ice_drift_nh_polstere-625_multi-oi_202201021200.nc
+xcspmd: idm,jdm =  800  760
+ Load grid positions from file: regional.grid.a
+ Load depths from file: regional.depth.a
+ finished Load depths from file: regional.depth.a
+ finished Loading grid/depth from file: regional.depth/grid.a
+ initconfmap: not lold
+ ice_drift_nh_polstere-625_multi-oi_202201021200.nc
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   108.296848368340     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   108.802375693844     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   124.000521143678     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   115.147039197271     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   147.593485943608     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   136.619313382426     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   88.3271429550911     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   110.492186720790     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   103.943635207411     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   103.127243246677     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   101.753053449939     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   93.5316650057432     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   96.1686473910506     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   103.160268663341     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   105.404173059241     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   144.704336654630     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   89.7130473301744     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   117.518490327904     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   107.178066580633     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   142.171545927111     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   85.9507658576103     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   136.693414141211     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   97.7981738181579     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   117.615152382708     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   115.590507155035     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   118.446632354053     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   100.121928666491     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   120.901488246363     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   109.847382211037     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   130.501956722792     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   94.8933521891544     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   128.837544281614     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   100.738866944716     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   106.654626280131     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   120.238204423804     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   111.419408775205     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   108.544193501888     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   102.883606459098     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   115.790044213965     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   114.793143863331     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   103.010619447712     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   90.0101772330020     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   118.820295008790     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   83.8803182604856     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   95.8392106147470     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   109.435153094611     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   98.5123693976579     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   117.667144539201     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   107.194856819136     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   93.9487232439021     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   109.320808383218     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   96.9881331044592     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   129.358236910786     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   105.685583145705     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   108.513494844177     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   114.265641185169     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   126.369724190076     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   105.552989349744     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   83.3066504695628     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   120.325035562175     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   121.427272490069     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   141.023468369331     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   106.244349102166     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   124.566752788118     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   100.957476210763     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   110.972798590097     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   96.9904101626549     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   94.1571827874690     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   120.282999865227     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   89.9518993886324     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   113.718504388010     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   111.905743892803     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   112.795743535088     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   82.2786205219594     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   89.2369764866962     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   115.146150626064     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   129.158121161229     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   95.1248123550173     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   135.258188915919     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   119.552651588700     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   93.7700424918941     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   117.604351571705     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   143.636831561979     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   129.549488453243     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   82.6636942324968     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   98.3238731295667     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   118.101726481821     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   115.974414986702     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   134.294246220428     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   126.324881187040     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   93.4574900941942     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   110.514943136256     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   134.215281418835     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   122.484650958019     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   143.312986690275     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   105.824016299965     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   100.578241988782     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   123.671660714765     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   93.2079821648217     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+       26298
+ reading iceh.2022-01-01_ens.nc           1
+ reading iceh.2022-01-02_ens.nc           2
+ Displacement max in km:
+   125.325654405114     
+ Output the ensemble file: iceh.2022-01-02_ens.uf
+2 iceh.2022-01-01_ens.uf 20220101
+ dailyfile=iceh.2022-01-01_ens.nc
+                                                                                
+  
+ Last year, month, day
+        2022           1           1
+ First year, month, day       26298
+        2021          12          31         
+                                                                                
+  ice_drift_nh_polstere-625_multi-oi_202201011200.nc
+ Obs. Drift: ice_drift_nh_polstere-625_multi-oi_202201011200.nc
+xcspmd: idm,jdm =  800  760
+ Load grid positions from file: regional.grid.a
+ Load depths from file: regional.depth.a
+ finished Load depths from file: regional.depth.a
+ finished Loading grid/depth from file: regional.depth/grid.a
+ initconfmap: not lold
+ ice_drift_nh_polstere-625_multi-oi_202201011200.nc
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   123.386550083740     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   107.202453615453     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   95.8434584145168     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   131.795632292772     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   145.324185260348     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   124.739187038605     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   98.3011742295084     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   117.388076504263     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   103.523958097807     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   110.293721989541     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   79.0835096761140     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   91.5091878663211     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   99.0731110437892     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   95.9347282753516     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   110.797474726202     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   134.624283947514     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   91.4558443762348     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   103.152723078134     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   110.716846032156     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   104.802409180568     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   102.088698785008     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   112.781133902830     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   105.755137872193     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   117.822541945012     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   114.910696527153     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   133.463918098632     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   95.2283559692694     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   125.956659374623     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   87.9885808788513     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   134.408012041850     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   99.4318901600468     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   133.780684072123     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   93.2325931007706     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   110.073489846241     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   104.833167245316     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   96.2846566281612     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   101.815705319172     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   87.5098029191522     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   109.390224655128     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   127.201512392916     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   99.9305149285019     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   88.6275988778215     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   112.022104453337     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   91.8584189580778     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   104.946807307090     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   107.366715754460     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   87.8815879313091     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   106.450469905443     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   115.922886429600     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   100.813227408774     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   108.585973588577     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   91.4532489222354     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   93.8493920959870     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   104.434245203249     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   116.378799142032     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   109.660714339748     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   126.584863352511     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   113.259876632224     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   99.3244786148321     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   115.700847365437     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   100.457194849381     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   126.391288907361     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   97.7116460847840     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   109.914185959779     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   93.9174048414109     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   89.7484858433172     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   110.520347498782     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   94.5392524619024     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   110.340683729743     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   97.0528246010816     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   116.816927461718     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   119.596303531764     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   90.0635503240381     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   93.3783550072544     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   91.2720331156441     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   118.098147421183     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   113.554978967317     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   92.6437807793960     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   118.742701749078     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   110.307376379648     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   109.391103361849     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   96.3851320040372     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   99.0234057096778     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   123.418914626874     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   89.5838746079240     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   102.958160025240     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   109.067431990786     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   98.4633664220577     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   119.330632934352     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   102.324166294801     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   98.7339968360404     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   103.494370300870     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   108.584418743885     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   104.224785005340     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   134.333184340741     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   104.283814969124     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   99.1565570013005     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   101.040354282904     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   124.954803996832     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+       26297
+ reading iceh.2021-12-31_ens.nc           1
+ reading iceh.2022-01-01_ens.nc           2
+ Displacement max in km:
+   110.345510850289     
+ Output the ensemble file: iceh.2022-01-01_ens.uf
+3 iceh.2021-12-31_ens.uf 20211231
+ dailyfile=iceh.2021-12-31_ens.nc
+                                                                                
+  
+ Last year, month, day
+        2021          12          31
+ First year, month, day       26297
+        2021          12          30         
+                                                                                
+  ice_drift_nh_polstere-625_multi-oi_202112311200.nc
+ Obs. Drift: ice_drift_nh_polstere-625_multi-oi_202112311200.nc
+xcspmd: idm,jdm =  800  760
+ Load grid positions from file: regional.grid.a
+ Load depths from file: regional.depth.a
+ finished Load depths from file: regional.depth.a
+ finished Loading grid/depth from file: regional.depth/grid.a
+ initconfmap: not lold
+ ice_drift_nh_polstere-625_multi-oi_202112311200.nc
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   90.7470369237733     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   98.8460187449984     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   95.1978152677117     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   112.175693473401     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   122.398007131091     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   108.936781231494     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   90.9183327660853     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   90.7139413762925     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   89.5973344552919     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   97.8085022192938     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   83.9100802210282     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   94.5538674155075     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   92.5199047675215     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   94.8068041753228     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   98.1421322115217     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   112.211449442156     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   94.4862542110606     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   93.5332697879508     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   109.162830412827     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   101.732672229335     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   87.1278756550562     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   93.4400632551554     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   114.488919513490     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   102.067076572373     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   80.9678673813115     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   105.984343620089     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   91.7124033683381     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   108.236403088009     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   91.0458479385872     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   103.838200443715     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   96.1068887829264     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   104.706163566603     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   96.9827783887733     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   91.4484591093494     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   90.0428069964291     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   88.9265176766806     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   99.5842235871134     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   88.3095761057488     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   90.1391318985415     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   98.8421002445675     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   96.4358583736592     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   89.3547671186461     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   96.6768997883803     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   90.1515136648664     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   95.2594855485401     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   108.127756901714     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   85.1049259930106     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   88.3766713998066     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   87.9946559398164     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   103.878124143807     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   105.213553432617     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   84.5717265112951     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   99.8714675205782     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   97.8037000905434     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   104.745954778095     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   92.7097882919795     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   99.4064448593040     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   95.6218430140254     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   88.7091211352145     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   106.692206013261     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   87.8079855741841     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   110.411708655218     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   87.2014754147166     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   103.798680625902     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   90.4551990380150     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   101.389051109902     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   104.959217123231     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   85.9509097694164     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   105.529471981190     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   101.231989935996     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   106.378832731829     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   99.1640091997593     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   88.0277361117989     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   86.9071511683682     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   95.2136492068287     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   101.874290508900     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   98.9466937580568     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   93.8709963338713     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   138.496667521074     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   92.5327737780359     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   110.724050085156     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   95.1048910280838     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   96.5981497572565     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   97.0716357274451     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   88.7947393766398     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   97.6531905853248     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   91.4229927738094     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   92.4997458162093     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   96.4434914615274     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   88.9674709804206     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   97.7945874421883     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   92.8403917956558     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   94.5317480395473     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   89.5093264343294     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   116.562275862797     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   86.8735044671540     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   94.1160921398788     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   95.6274662929040     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   102.633410463773     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+       26296
+ reading iceh.2021-12-30_ens.nc           1
+ reading iceh.2021-12-31_ens.nc           2
+ Displacement max in km:
+   90.2343765234985     
+ Output the ensemble file: iceh.2021-12-31_ens.uf
+4 iceh.2021-12-30_ens.uf 20211230
+ dailyfile=iceh.2021-12-30_ens.nc
+                                                                                
+  
+ Last year, month, day
+        2021          12          30
+ First year, month, day       26296
+        2021          12          29         
+                                                                                
+  ice_drift_nh_polstere-625_multi-oi_202112301200.nc
+ Obs. Drift: ice_drift_nh_polstere-625_multi-oi_202112301200.nc
+xcspmd: idm,jdm =  800  760
+ Load grid positions from file: regional.grid.a
+ Load depths from file: regional.depth.a
+ finished Load depths from file: regional.depth.a
+ finished Loading grid/depth from file: regional.depth/grid.a
+ initconfmap: not lold
+ ice_drift_nh_polstere-625_multi-oi_202112301200.nc
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   82.5694972997430     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   87.9626982644105     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   84.7957706841225     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   96.6537207697360     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   93.4920685260772     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   81.3285723239161     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   84.4089536441511     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   106.496600328551     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   97.3772004209188     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   78.9015395598371     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   81.7261241248804     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   91.0258805958908     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   83.2235430840364     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   92.6119423004111     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   89.6609610529057     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   85.0850832531245     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   90.6275913292882     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   83.8658722522615     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   110.749136651816     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   94.6326703382250     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   89.2510805802631     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   96.1421728615238     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   96.5008767552587     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   89.9063734788157     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   92.1152554835338     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   91.6427516154659     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   80.3851023315353     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   104.243073235598     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   86.0246613540021     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   91.9968635918674     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   93.0507515838085     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   87.9480015578601     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   96.0398560788176     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   97.6883884747399     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   99.1930379152738     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   94.3142969154826     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   93.7010758193090     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   84.5874876948779     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   92.5790052668548     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   91.9974999934982     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   92.7785199528598     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   82.4722693311636     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   90.6179202749286     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   83.4208682503183     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   81.1875675062684     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   85.7631531311412     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   84.6014919284806     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   92.3575458358540     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   94.9422184050751     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   110.716223686968     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   92.7602356377909     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   84.8392013899318     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   90.8477632170844     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   85.9058755944823     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   90.9126649328738     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   86.4190260941419     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   86.4853079900167     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   86.1508418672256     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   82.5459719535578     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   97.0614196605806     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   89.5872270253513     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   102.457418697964     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   91.1018861436155     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   99.0373480353456     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   114.881998672227     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   89.2779990036880     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   119.148346127661     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   91.5004101062400     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   95.3926914348883     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   99.7889203718588     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   89.2837502204448     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   84.4630244065497     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   83.0827106246060     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   90.2723618881067     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   91.7317207246051     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   86.6899974967757     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   90.3836248838840     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   89.9401654337826     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   112.154995848357     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   77.5735297601945     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   89.6186732920857     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   83.4997293273800     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   91.1552987529589     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   85.3081566146026     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   86.1776188387169     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   91.1840985208068     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   82.8212718419213     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   83.6035851183619     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   82.3428070022470     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   87.6168591580290     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   97.0797638295471     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   78.7627929004375     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   84.3140427476069     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   84.4487604496476     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   102.365391719161     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   80.3388623481817     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   83.4719396782348     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   82.7552666703882     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   86.9026210809688     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+       26295
+ reading iceh.2021-12-29_ens.nc           1
+ reading iceh.2021-12-30_ens.nc           2
+ Displacement max in km:
+   80.9720178123474     
+ Output the ensemble file: iceh.2021-12-30_ens.uf
+5 iceh.2021-12-29_ens.uf 20211229
+ dailyfile=iceh.2021-12-29_ens.nc
+                                                                                
+  
+ Last year, month, day
+        2021          12          29
+ First year, month, day       26295
+        2021          12          28         
+                                                                                
+  ice_drift_nh_polstere-625_multi-oi_202112291200.nc
+ Obs. Drift: ice_drift_nh_polstere-625_multi-oi_202112291200.nc
+xcspmd: idm,jdm =  800  760
+ Load grid positions from file: regional.grid.a
+ Load depths from file: regional.depth.a
+ finished Load depths from file: regional.depth.a
+ finished Loading grid/depth from file: regional.depth/grid.a
+ initconfmap: not lold
+ ice_drift_nh_polstere-625_multi-oi_202112291200.nc
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   86.4685179647417     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   91.5912981377878     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   92.5217679047108     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   95.2516035701462     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   93.6908287260259     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   89.7858031972155     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   118.474981711299     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   107.591082974234     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   112.918249140041     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   95.9464986565822     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   86.1389930651476     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   140.124912418702     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   93.2080350254346     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   96.2438661833181     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   95.7739331585693     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   84.7934010339613     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   94.9844209614530     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   86.7996157255976     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   106.359268789498     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   93.4114595008382     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   89.9373542080119     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   92.2382645321739     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   86.9751449641899     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   98.0525312668356     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   106.221024221780     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   111.762583411332     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   86.4772013075150     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   101.737918353548     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   90.7940523130695     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   120.960420948781     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   94.3841771207234     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   94.3205535864540     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   110.868332586390     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   95.4487641091427     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   107.344394818354     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   95.7983749190683     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   103.684641758489     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   90.2440990561148     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   92.5687356350968     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   94.7516862407686     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   94.0507059572576     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   102.072424748803     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   93.1139075482209     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   82.7969485244385     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   110.077492932502     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   104.732906712011     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   88.4151120243273     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   105.233576120624     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   98.5660648601559     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   111.446125934926     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   101.768434466635     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   96.5750932418553     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   124.436339668986     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   86.5132911757196     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   95.0981398068171     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   97.0069386766941     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   98.9795433907588     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   100.154400128120     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   99.0118359744679     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   103.258881562688     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   91.8247583340104     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   97.4419988594694     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   89.4797786688760     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   128.147480946475     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   94.7654841469079     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   84.9911258360274     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   110.436414758424     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   90.0929974829495     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   108.085532520846     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   103.826624388503     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   98.7908150872417     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   84.0602589610175     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   97.4721216998260     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   93.0313677269477     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   90.4088032652956     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   99.9777388514739     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   118.073487321867     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   103.062375116927     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   110.557426222756     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   99.7335362919018     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   122.361750090649     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   85.6918345002785     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   95.4779824931528     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   116.936453755188     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   90.1722193893993     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   100.120922416446     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   103.732072439431     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   101.688731585340     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   80.5556839246666     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   86.3583443588486     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   95.0899843016075     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   105.763233753865     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   92.7921745850137     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   85.9906591790768     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   92.7843883093969     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   92.7424549346981     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   85.7633904544260     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   88.3308687524683     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   92.5876591026430     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+       26294
+ reading iceh.2021-12-28_ens.nc           1
+ reading iceh.2021-12-29_ens.nc           2
+ Displacement max in km:
+   113.176417490326     
+ Output the ensemble file: iceh.2021-12-29_ens.uf
+4. Launching sr_preprocess.sh
+   (converts the forecast enemble to NetCDF and calculates forecast ensemble mean)
+   Fri Jul 10 06:11:25 PM CEST 2026
+   0: Submitted batch job 1569589: preprocess members 1 - 100
+   now waiting for all preprocessing jobs to finish:............................0 done:  Fri Jul 10 06:20:42 PM CEST 2026
+5. Running EnKF:
+   Fri Jul 10 06:20:47 PM CEST 2026
+/cluster/work/users/xiejp/TP5_SICAP/ANALYSIS
+submit  1569590
+...................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................... EnKF finished
+6. Postprocess:
+   (assembles, checks, fixes and converts to NetCDF)
+   Fri Jul 10 08:21:25 PM CEST 2026
+   0: Submitted batch job 1569772: postprocess members 1 - 100
+   now waiting for postprocessing jobs to finish:... post .. 0 postprocess done
+   postprocessing finished OK
+7. Cleaning up:
+   Fri Jul 10 08:21:56 PM CEST 2026
+   copying/moving forecast and analysis...
+   1569773
+   waiting until 1569773 finish:.. cleanup .... cleanup .. /cluster/home/xiejp/SICAP/ReanalysisTP5/ASSIM/../STOP 
+[ -s /cluster/home/xiejp/SICAP/ReanalysisTP5/ASSIM/../STOP ]
+   Fri Jul 10 08:22:26 PM CEST 2026
+   launching some background backup jobs:
+Starting propagation for day 26300 since 1 Jan 1950
+
+1. Reading specifications:
+/cluster/home/xiejp/SICAP/ReanalysisTP5/PROP/BIN  ens.size =  100 fore.days = 7
+   Going to propagate ensemble from day 003 of 2022 to day 010 of 2022
+   Fri Jul 10 08:22:34 PM CEST 2026
+2. define the start and end date for the model run: 
+10
+       2022-01-03  ~  2022-01-10
+       2022_003  ~  2022_010
+   (directories OK)
+   Fri Jul 10 08:22:35 PM CEST 2026
+Generating forcing and prepare the integration under the main directory:
+debuging ...
+/cluster/home/xiejp/SICAP/ReanalysisTP5/PROP
+ Check the parameter ensemble ... 
+2022-01-03
+100 2022-01-10 /cluster/home/xiejp/SICAP/ReanalysisTP5/PROP/BIN /cluster/work/users/xiejp/TP5_test/TP5a0.06/expt_02.0/SCRATCH
+The icep files are ready.

@@ -4,7 +4,7 @@
 #SBATCH --account=nn2993k --qos=preproc
 #
 # Job name:
-#SBATCH -J "en_post"
+#SBATCH -J "SIC_post"
 #
 #SBATCH -N 1 
 ##SBATCH --exclusive
@@ -175,8 +175,17 @@ done
 echo "fixanalysis???.nc done!"
 
 # calculating the mean states after reanalsysis
-for ifile in fixanalysis fix_ice_forecast ; do
-   ncea ${ifile}???.nc ${ifile}.nc &
+if [ -s icep_analysis001.nc ]; then
+   MeanNcs="icep_forecast icep_analysis fixanalysis fix_ice_forecast"
+   Meanicep=1
+else
+   MeanNcs="fixanalysis fix_ice_forecast"
+   Meanicep=0
+fi
+for ifile in ${MeanNcs} ; do
+   if [ ! -s ${ifile}.nc ]; then 
+      ncea ${ifile}???.nc ${ifile}.nc &
+   fi
 done
 wait
 sleep 1
@@ -189,6 +198,32 @@ fi
 if [ -s fix_ice_forecast.nc ]; then
    cp fix_ice_forecast001.nc ${RESULTSDIR}/${JULDAY}/ANALYSIS/ice_analysis001.nc 
    mv fix_ice_forecast.nc ${RESULTSDIR}/${JULDAY}/ANALYSIS/ice_analysis.nc 
+fi
+if [ ${Meanicep} -eq 1 ]; then
+   if [ -s icep_analysis.nc ]; then
+      cp icep_analysis001.nc ${RESULTSDIR}/${JULDAY}/ANALYSIS/.
+      mv icep_analysis.nc ${RESULTSDIR}/${JULDAY}/ANALYSIS/.
+   fi
+   if [ -s icep_forecast.nc ]; then
+      cp icep_forecast001.nc ${RESULTSDIR}/${JULDAY}/FORECAST/.
+      mv icep_forecast.nc ${RESULTSDIR}/${JULDAY}/FORECAST/.
+   fi
+
+   echo "saving the analyzed icep for next forecast" 
+   . ${BINDIR}/../assimilation_specs.sh
+   export PPERT FORECASTDIR
+   echo " PPERT FORECASTDIR: ${PPERT} ${FORECASTDIR}"
+   if [ ${PPERT} -eq 2 ]; then
+      Sdate=$(jultodate ${JULDAY} 1950 1 1)
+      Strdate=${Sdate:0:4}-${Sdate:4:2}-${Sdate:6:2}
+      for e in `seq 1 ${ENSSIZE}`; do
+         cmem=`echo 00${e}|tail -4c`
+         Ficep=icep_analysis${cmem}.nc
+         Fnew=icep.${Strdate}_mem${cmem}.nc
+         [ -s ${Ficep} ] && { mv ${Ficep} ${FORECASTDIR}/cice/${Fnew}; [ $e -eq 1 ] && echo "mv icep for ${cmem}"; } 
+      done
+   fi
+
 fi
 
 echo "FINISHED (postprocess)" 

@@ -23,6 +23,8 @@ echo "     day = $day"
 (( juldayprev = ${JULDAY} - 7 ))
 echo "     juldayprev = $juldayprev"
 yearprev=`jultodate $juldayprev 1950 1 1 | cut -c1-4`
+Sdate0=$(jultodate ${juldayprev} 1950 1 1)
+Strdateprev=${Sdate0:0:4}-${Sdate0:4:2}-${Sdate0:6:2}
 
 (( iday = ${JULDAY} ))
 Sdate=$(jultodate ${iday} 1950 1 1)
@@ -34,6 +36,8 @@ forecast_prefix="${FORECASTDIR}/restart.${year}_${day}_00_0000"
 modeldaily_prefix="${FORECASTDIR}/archm."   
 
 forecast_ice_prefix="${FORECASTDIR}/cice/iced.${Strdate}-00000"
+
+forecast_icep_prefix="${FORECASTDIR}/cice/icep.${Strdateprev}"
 
 # for checking -----hycom restart
 echo forecast_prefix=${forecast_prefix}
@@ -59,6 +63,15 @@ do
 	exit 1
     fi
     ln -sf "${ice_prefix}.nc" "ice_forecast${mem}.nc"
+
+    icep_prefix="${forecast_icep_prefix}_mem${mem}"
+    if [ ! -r "${icep_prefix}.nc" ]
+    then
+	echo "ERROR: could not access ${icep_prefix}.nc"
+	exit 1
+    fi
+    ln -sf "${icep_prefix}.nc" "icep_forecast${mem}.nc"
+
     
 done
 

@@ -4,13 +4,13 @@
 #SBATCH --account=nn2993k --qos=devel
 #
 #  Job name:
-#SBATCH -J "en_cln"
+#SBATCH -J "SIC_cln"
 #
 #SBATCH -N 1 
 ##SBATCH --exclusive
 #
 # Wall clock limit
-#SBATCH -t 00:30:00
+#SBATCH -t 00:45:00
 #
 #SBATCH -o enkf_clean.out
 #SBATCH -e enkf_clean.err
@@ -81,7 +81,7 @@ then
           cp ${target} -t ${BACKUPBUFDIR}/ANALYSIS
        fi
 
-       # ice parameter file
+       # ice parameter file: backup and transfer forwardly
        tmp0_target=${target%iced.*}
        tmp_target=${target%-00000_*}
        tmp1_str=${tmp_target#*iced.}
@@ -89,8 +89,11 @@ then
        para_target=${tmp0_target}icep.${tmp1_str}_${tmp2_str}
        echo "para_target=${para_target}"
        if [ -s ${para_target} ]; then
-	  #cp ${para_target} -t ${BACKUPBUFDIR}/ANALYSIS
-	  mv ${para_target} -t ${BACKUPBUFDIR}/${JULDAY}/FORECAST
+	  cp ${para_target} -t ${BACKUPBUFDIR}/ANALYSIS
+       fi
+       if [ -s ${ANALYSISDIR}/icep_forecast${mem}.nc ]; then
+          target=`readlink -e ${ANALYSISDIR}/icep_forecast${mem}.nc`
+          mv ${target} -t ${BACKUPBUFDIR}/${JULDAY}/FORECAST
        fi
 
     done

@@ -6,7 +6,7 @@
 ##SBATCH --account=nn9481k --qos=preproc
 #
 # Job name:
-#SBATCH -J "Nenkf"
+#SBATCH -J "SICenkf"
 #
 #SBATCH -N 1 
 ##SBATCH --exclusive
@@ -59,6 +59,7 @@ do
     if [ ! -f "analysis${mem}.a" -o ! -f "analysis${mem}.b" ]
     then
         echo "${BINDIR}/EnKF_assemble.sh forecast${mem}.a forecastICE.uf ${e} ${NPROC}"
+	python ${BINDIR}/icep_assemble.py -n ${e}
         ${BINDIR}/EnKF_assemble.sh forecast${mem}.a forecastICE.uf ${e} ${NPROC} &
         if [ $? -ne 0 ]
         then
@@ -83,6 +84,7 @@ while [ $istep -gt 0 ]; do
       if [ "$tmpsize" -gt 1 ]; then
          Fnams=$(cat ${Ftemp})
          for inam in ${Fnams} ; do
+	    python ${BINDIR}/icep_assemble.py -n ${inam}
             ${BINDIR}/EnKF_assemble.sh forecast${inam}.a forecastICE.uf ${inam} ${NPROC} &
          done
          wait

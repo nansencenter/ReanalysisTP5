@@ -1,9 +1,9 @@
 #!/bin/bash -l
 
-#SBATCH --account=nn9481k --qos=preproc 
-##SBATCH --account=nn2993k --qos=preproc
+##SBATCH --account=nn9481k --qos=preproc 
+#SBATCH --account=nn2993k --qos=preproc
 #
-#SBATCH -J  TP5_ave
+#SBATCH -J  TP5_SICave
 #SBATCH -N 1
 ##SBATCH --exclusive 
 #SBATCH --ntasks=20 --cpus-per-task=1

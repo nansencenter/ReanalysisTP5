@@ -134,36 +134,47 @@ then
        [ -s ${MODELDIR}/hycom_opt ] && rm ${MODELDIR}/hycom_opt
        [ -s ${MODELDIR}/blkdat.input ] && rm ${MODELDIR}/blkdat.input
 
-       cp ./FILES/hycom_opt_Reana ${MODELDIR}/hycom_opt
+       cp ./FILES/hycom_opt_SICAP ${MODELDIR}/hycom_opt
 
        [ -s ./FILES/ice_in ] && rm ./FILES/ice_in
+       [ -s ./FILES/blkdat.input ] && rm ./FILES/blkdat.input
+
        echo "debuging ..."
        echo $(pwd)
        if [ $PPERT -lt 1 ]; then
           ln -sf ./ice_in_V22 ./FILES/ice_in
           cp ./FILES/ice_in ${MODELDIR}/ice_in
+          cp ./FILES/hycom_opt_Reana ${MODELDIR}/hycom_opt
        else
           ln -sf ./ice_in_Reana ./FILES/ice_in
           cp ./FILES/ice_in ${MODELDIR}/ice_in
 
-          echo " create the perturbed ice parameters ... "
-	  echo ${strdate1}
-
-	  cd ${MODELDIR}/SCRATCH
-          Iceprg=${BINDIR}/Reana_icepara.sh
-          echo " ${Iceprg} ${ENSSIZE} ${strdate1} ${BINDIR} ${MODELDIR}/SCRATCH"
-          ${Iceprg} ${ENSSIZE} ${strdate1} ${BINDIR} ${MODELDIR}/SCRATCH
-          mv ${MODELDIR}/SCRATCH/icep.${strdate1}_mem*.nc ${MODELDIR}/data/cice/.
-          cd -
+          if [ $PPERT -eq 1 ]; then  # used for Reanalysis
+             [ -s ./FILES/blkdat.input_Reana ] && { ln -sf ./blkdat.input_Reana ./FILES/blkdat.input; cp ./FILES/blkdat.input ${MODELDIR}/.; }
+             echo " create the perturbed ice parameters ... "
+	     echo ${strdate1}
+	     cd ${MODELDIR}/SCRATCH
+             Iceprg=${BINDIR}/Reana_icepara.sh
+             echo " ${Iceprg} ${ENSSIZE} ${strdate1} ${BINDIR} ${MODELDIR}/SCRATCH"
+             ${Iceprg} ${ENSSIZE} ${strdate1} ${BINDIR} ${MODELDIR}/SCRATCH
+             mv ${MODELDIR}/SCRATCH/icep.${strdate1}_mem*.nc ${MODELDIR}/data/cice/.
+             cd -
+	  else
+             [ -s ./FILES/blkdat.input_SICAP ] && { ln -sf ./blkdat.input_SICAP ./FILES/blkdat.input; cp ./FILES/blkdat.input ${MODELDIR}/.; }
+             echo " Check the parameter ensemble ... "
+	     echo ${strdate1}
+             echo "${ENSSIZE} ${strdate2} ${BINDIR} ${MODELDIR}/SCRATCH"
+	     Nline=$(ls ${MODELDIR}/data/cice/icep.${strdate1}_mem*.nc | sed -n '$=')
+	     if [ ${Nline} -lt ${ENSSIZE} ]; then
+	        echo "missing the icep files."
+	        echo "stop  $0"
+	        exit 0 
+	     else
+	        echo "The icep files are ready."
+	     fi	     
+	  fi
        fi
 
-       [ -s ./FILES/blkdat.input ] && rm ./FILES/blkdat.input
-       if [ -s ./FILES/blkdat.input_Reana ]; then
-          ln -sf ./blkdat.input_Reana ./FILES/blkdat.input
-       else
-          ln -sf ./blkdat.input_V22 ./FILES/blkdat.input
-       fi
-       cp ./FILES/blkdat.input ${MODELDIR}/.
 
        [ -r ${MODELDIR}/preprocess_mem_new.sh ] && rm ${MODELDIR}/preprocess_mem_new.sh 
        cat ${CWD}/SCRIPTS/preprocess_mem.in |\
@@ -195,8 +206,8 @@ then
        echo "   "`date`
        cd ${MODELDIR}
        NN=7   # how many members in one batch 
-       NN=6   # how many members in one batch 
-       NN=5   # how many members in one batch 
+       #NN=6   # how many members in one batch 
+       #NN=5   # how many members in one batch 
        #NN=13      # how many members in one batch 
        (( NHYCOM = ($ENSSIZE - 1) / $NN + 1 ))
        for (( proc = 0; proc < $NHYCOM; ++proc ))

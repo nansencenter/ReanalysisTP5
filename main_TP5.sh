@@ -8,7 +8,7 @@
 #   This is the top level script for data assimilation cycle 
 #   in TOPAZ5 reanalysis.
 
-STARTASSIM=1           # 1 is default, enter 0 to skip the very first assimilation
+STARTASSIM=0           # 1 is default, enter 0 to skip the very first assimilation
 #STARTASSIM=0 # 1 is default, enter 0 to skip the very first assimilation
 JULDAYSTART0=15706
 
@@ -23,7 +23,7 @@ set -p # nothing is inherited from the shell
 ./SCRIPTS/check_directories.sh
 
 JULDAYSTART=`cat JULDAY.txt`
-((JULDAYEND = 19000)) 
+((JULDAYEND = 26664)) 
 
 echo "  JULDAYSTART = ${JULDAYSTART}"
 echo "  JULDAYEND = ${JULDAYEND}"

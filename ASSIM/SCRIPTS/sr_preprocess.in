@@ -5,7 +5,7 @@
 ##SBATCH --account=nn2993k --qos=preproc 
 #
 # Job name:
-#SBATCH -J "en_pre"
+#SBATCH -J "SIC_pre"
 #
 #SBATCH -N 1 
 ##SBATCH --exclusive
@@ -87,17 +87,24 @@ if [ ${istep} -eq 1 ]; then
    fi
 
    # select the right module on Betzy
-   #module load NCO/4.9.7-iomkl-2020a
-   ml load NCO/5.1.9-iomkl-2022a
+   #ml load NCO/5.1.9-iomkl-2022a
    # calcuating the state means of ocean and ice
    if [ ${istep} -eq -1 ]; then
-      for ifile in forecast ice_forecast ; do
+      if [ -s icep_forecast001.nc ]; then
+         forecastvars="forecast ice_forecast icep_forecast"
+      else
+         forecastvars="forecast ice_forecast"
+      fi
+
+      for ifile in ${forecastvars} ; do
          srun -N1 -n1 ncea ${ifile}???.nc ${ifile}.nc &
       done
       wait
-      for ifile in forecast ice_forecast ; do
+      for ifile in ${forecastvars} ; do
          cp ${ifile}001.nc ${ifile}.nc ${RESULTSDIR}/${JULDAY}/FORECAST
       done
+
+
    else
       echo "Cannot obtaine the mean of the forecast states"
       echo "exit(sr_preprocess)"

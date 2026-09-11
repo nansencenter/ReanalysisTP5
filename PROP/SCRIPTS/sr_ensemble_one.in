@@ -1,7 +1,7 @@
 #!/bin/bash -l
 
-#SBATCH --account=nn9481k 
-##SBATCH --account=nn2993k 
+##SBATCH --account=nn9481k 
+#SBATCH --account=nn2993k 
 
 #SBATCH -J  T04BJNAME
 

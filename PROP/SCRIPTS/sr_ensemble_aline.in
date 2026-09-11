@@ -1,12 +1,12 @@
 #!/bin/bash -l
 
-#SBATCH --account=nn9481k 
-##SBATCH --account=nn2993k 
+##SBATCH --account=nn9481k 
+#SBATCH --account=nn2993k 
 
-#SBATCH -J  T04BJNAME
+#SBATCH -J  SICBJNAME
 
-#SBATCH -N 4   # number of nodes
-##SBATCH -n 30   # number of cores in each node 
+#SBATCH -N 4     # number of nodes
+#SBATCH -n 511   # number of cores in all node 
 ## Each compute node has 24 cores (See more details in section Hardware on Sisu User Guide).
 
 ## System message output file
@@ -20,20 +20,16 @@
 ##SBATCH --mem-per-cpu=3G
 ##SBATCH --exclusive 
 
-#SBATCH  --mail-type=END
+##SBATCH  --mail-type=END
 ##SBATCH --mail-user=jiping.xie@nersc.no
 
 #set -x
 set -e                # Exit on errors
 set -u                # Disallow unset variables
 
-## On Fram:
-export Ncor=10
-export NMPI=319
-
 ## On Betzy:
-export Ncor=5
-export NMPI=636
+#export Ncor=5
+#export NMPI=636
 
 export Ncor=4
 export NMPI=511

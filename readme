@@ -7,8 +7,16 @@ It should be supported by other additional routines like the coupled HYCOM-CICE 
 
 # 1)  introduce four ice parameters with random perturbation used in the TP5 reanalysis
 # 2)  including the ML-based SIT observations in winter month before 2010.
-# 3)  Increased the localization radisu from 200 km to 250 km after April 2000 in the TP5 reanalysis.
-#     updated in spring of 2026 by JX on 22th April.
+# 3)  Increased the localization radisu from 200 km to 250 km after April 2000 in TP5 reanalysis
+#     JX updated in spring of 2026 on 22th April.
+#
+# 4)  SICAP project: introduce 6 ice parameters with the first randomly perterbed 
+#     and optimized by EnKF in the rest cycles. 
+#     It relates to the PPERT setting in common_specs.sh equals 1 and 2.
+#     The relevant files are modified as following:
+#     ASSIM/SCRIPTS:  link_inputs.sh, sr_enkf.in, sr_postprocess.in, sr_preprocess.in 
+#     Updated in 5th May 2026.
+  
 
 
 
